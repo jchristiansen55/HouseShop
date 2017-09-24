@@ -1,8 +1,5 @@
-# csc648-fall17-teamNN
+# CSC 648 Fall 2017 Team 09
 
-- TODO
-
-- Change the repo name to csc648-fall17-teamNN , where nn is your team number
-
-- add ALL your team members to your team's repo.
+# Milestone 0
+### Due: Monday September/24/2017
 
