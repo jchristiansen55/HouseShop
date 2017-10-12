@@ -1,9 +1,15 @@
 var express = require('express');
 var router = express.Router();
 
-/* GET home page. */
-router.get('/', function(req, res) {
-    res.sendFile(path.join(__dirname + '/index.html'));
+var models = require('../models');
+
+router.get('/', function(req, res, next) {
+  models.Listing.findAll().then(function(listings) {
+    res.render('index', {
+      title: 'HouseShop',
+      listings: listings
+    });
+  });
 });
 
 module.exports = router;
