@@ -9,13 +9,12 @@ module.exports = (sequelize, DataTypes) => {
     city: DataTypes.STRING,
     zip: DataTypes.STRING,
     state: DataTypes.STRING,
-    description: DataTypes.TEXT,
-    picture: DataTypes.BLOB,
-	picture_filename: DataTypes.STRING
+    description: DataTypes.TEXT
   }, {
     classMethods: {
       associate: function(models) {
         // associations can be defined here
+	Listing.hasMany(models.Media);
       }
     }
   });
