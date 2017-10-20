@@ -8,10 +8,12 @@ var bodyParser = require('body-parser');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
-
+var models = require('./models');
 var app = express();
 
-// create sequelize var
+
+
+// create sequelize object
 var Sequelize = require('sequelize');
 
 // set up sequelize config
@@ -24,13 +26,45 @@ var sequelize = new Sequelize('csc648_m2_development', 'root', '', {
 //Checking connection status
 var test = sequelize.authenticate()
     .then(function () {
-        console.log("CONNECTED! ");
+        console.log("CONNECTED!");
     })
     .catch(function (err) {
-        console.log("SOMETHING DONE GOOFED");
+        console.log("LORD HELP ME I CAN'T REACH THE DATABASE!");
     })
     .done();
 
+// insert some dang ol' data
+// TODO: Inserts data every time. Insert
+//       data only once.
+
+var firstListing = models.Listing.build({
+    listingID: 3,
+    price: 17,
+    state: 'NY',
+    city: 'NYC',
+    zipcode: 88888,
+    address: '12 Twelve Road',
+    numBedrooms: 1,
+    numBathrooms: 0,
+    square_feet: 2,
+    description: 'w0w new york 8:]'
+});
+
+firstListing.save().then(function(err) {
+ if (err) {
+    console.log('Error in Inserting Record');
+ } else {
+    console.log('Data successfully inserted');
+ }
+});
+
+
+/* To delete an entry */
+/*
+models.Listing.destroy({
+    where: {state: 'CA'}
+});
+*/
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
