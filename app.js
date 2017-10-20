@@ -11,18 +11,38 @@ var users = require('./routes/users');
 
 var app = express();
 
+// create sequelize var
+var Sequelize = require('sequelize');
+
+// set up sequelize config
+var sequelize = new Sequelize('csc648_m2_development', 'root', '', {
+    host: 'localhost',
+    port: 3306,
+    dialect: 'mysql'
+});
+
+//Checking connection status
+var test = sequelize.authenticate()
+    .then(function () {
+        console.log("CONNECTED! ");
+    })
+    .catch(function (err) {
+        console.log("SOMETHING DONE GOOFED");
+    })
+    .done();
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+app.use(expressLayouts);
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 //app.use(express.static(path.join(__dirname, 'public')));
-app.use(expressLayouts);
 
 app.use('/', index);
 app.use('/users', users);

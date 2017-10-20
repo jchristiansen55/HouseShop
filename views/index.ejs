@@ -1,2 +1,10 @@
 <h1><%= title %></h1>
 <p>Welcome to <%= title %></p>
+
+<ul>
+    <%listings.forEach(function(listing) { %>
+        <li>
+            <%= listing.state %>
+        </lis>
+    <% }) %>
+</ul>
