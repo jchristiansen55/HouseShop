@@ -2,6 +2,17 @@
 <p>Welcome to <%= title %></p>
 
 <ul>
+	<form action="/search" method="post">
+        <fieldset>
+          <legend>Create a new listing</legend>
+          <label>
+            State:
+            <input name="state" />
+          </label>
+          <input type="submit" value="Create listing" />
+        </fieldset>
+      </form>
+
     <%listings.forEach(function(listing) { %>
         <li>
             <p>State: </p> <%= listing.state %>

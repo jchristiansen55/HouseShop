@@ -3,11 +3,11 @@ var router = express.Router();
 var models = require('../models');
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
+router.post('/', function(req, res, next) {
     //res.sendFile(path.join(__dirname + '/index.html'));
     models.Listing.findAll({
   		where: {
-    		state: 'CA'
+    		state: req.body.state
   		}
 	}).then(function(listings) {
         res.render('search', {
@@ -16,5 +16,6 @@ router.get('/', function(req, res, next) {
         });
     });
 });
+
 
 module.exports = router;
