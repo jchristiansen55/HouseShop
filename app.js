@@ -48,7 +48,7 @@ var firstListing = models.Listing.build({
     numBathrooms: 900,
     square_feet: 102938,
     description: 'is that a real place?',
-    thumbnail: './public/assets/img3.jpg'
+    thumbnail: 'assets/img3.jpg'
 });
 
 firstListing.save().then(function(err) {
