@@ -2,6 +2,7 @@
 module.exports = (sequelize, DataTypes) => {
   var Listing = sequelize.define('Listing', {
     listingID: DataTypes.INTEGER,
+    thumbnail: DataTypes.STRING,
     price: DataTypes.INTEGER,
     state: DataTypes.STRING,
     city: DataTypes.STRING,
@@ -15,6 +16,7 @@ module.exports = (sequelize, DataTypes) => {
     classMethods: {
       associate: function(models) {
         // associations can be defined here
+        Listing.hasMany(models.Media);
       }
     }
   });

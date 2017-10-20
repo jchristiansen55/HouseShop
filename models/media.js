@@ -7,6 +7,7 @@ module.exports = (sequelize, DataTypes) => {
     classMethods: {
       associate: function(models) {
         // associations can be defined here
+        Media.belongsTo(models.Listing);
       }
     }
   });
