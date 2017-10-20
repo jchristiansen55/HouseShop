@@ -8,6 +8,7 @@ var bodyParser = require('body-parser');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
+var search = require('./routes/search');
 var models = require('./models');
 var app = express();
 
@@ -40,7 +41,7 @@ var test = sequelize.authenticate()
 var firstListing = models.Listing.build({
     listingID: 2,
     price: 12,
-    state: 'NY',
+    state: 'CA',
     city: 'Vancouver',
     zipcode: 999959,
     address: '12a 0xs93ksj',
@@ -48,7 +49,7 @@ var firstListing = models.Listing.build({
     numBathrooms: 900,
     square_feet: 102938,
     description: 'is that a real place?',
-    thumbnail: 'assets/img3.jpg'
+    thumbnail: 'assets/img2.jpg'
 });
 
 firstListing.save().then(function(err) {
@@ -79,8 +80,10 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static('public'));
 
+
 app.use('/', index);
 app.use('/users', users);
+app.use('/search', search);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
