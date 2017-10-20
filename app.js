@@ -38,6 +38,7 @@ var test = sequelize.authenticate()
 // TODO: Inserts data every time. Insert
 //       data only once.
 
+/*
 var firstListing = models.Listing.build({
     listingID: 2,
     price: 12,
@@ -53,6 +54,51 @@ var firstListing = models.Listing.build({
 });
 
 firstListing.save().then(function(err) {
+ if (err) {
+    console.log('Error in Inserting Record');
+ } else {
+    console.log('Data successfully inserted');
+ }
+});
+*/
+
+var secondListing = models.Listing.build({
+    listingID: 3,
+    price: 12,
+    state: 'CA',
+    city: 'San Jose',
+    zipcode: 999959,
+    address: '12a 0xs93ksj',
+    numBedrooms: 8,
+    numBathrooms: 900,
+    square_feet: 102938,
+    description: 'home sweet home',
+    thumbnail: 'assets/img3.jpg'
+});
+
+secondListing.save().then(function(err) {
+ if (err) {
+    console.log('Error in Inserting Record');
+ } else {
+    console.log('Data successfully inserted');
+ }
+});
+
+var thirdListing = models.Listing.build({
+    listingID: 4,
+    price: 12,
+    state: 'CA',
+    city: 'San Lorenzo',
+    zipcode: 999959,
+    address: '12a 0xs93ksj',
+    numBedrooms: 8,
+    numBathrooms: 900,
+    square_feet: 102938,
+    description: 'my oh my',
+    thumbnail: 'assets/img4.jpg'
+});
+
+thirdListing.save().then(function(err) {
  if (err) {
     console.log('Error in Inserting Record');
  } else {

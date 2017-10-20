@@ -4,25 +4,16 @@
 <ul>
 	<form action="/search" method="post">
         <fieldset>
-          <legend>Create a new listing</legend>
+          <legend>Search by city</legend>
           <label>
-            State:
-            <input name="state" />
+            City:
+            <input name="city" />
           </label>
-          <input type="submit" value="Create listing" />
+          <input type="submit" value="Search" />
         </fieldset>
       </form>
 
-      <form action="/search/other" method="post">
-        <fieldset>
-          <legend>Create a new listing</legend>
-          <label>
-            State:
-            <input name="city" />
-          </label>
-          <input type="submit" value="Create listing" />
-        </fieldset>
-      </form>
+
 
     <%listings.forEach(function(listing) { %>
         <li>
