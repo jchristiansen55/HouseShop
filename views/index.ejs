@@ -13,6 +13,17 @@
         </fieldset>
       </form>
 
+      <form action="/search/other" method="post">
+        <fieldset>
+          <legend>Create a new listing</legend>
+          <label>
+            State:
+            <input name="city" />
+          </label>
+          <input type="submit" value="Create listing" />
+        </fieldset>
+      </form>
+
     <%listings.forEach(function(listing) { %>
         <li>
             <p>State: </p> <%= listing.state %>
