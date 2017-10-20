@@ -38,16 +38,17 @@ var test = sequelize.authenticate()
 //       data only once.
 
 var firstListing = models.Listing.build({
-    listingID: 3,
-    price: 17,
+    listingID: 2,
+    price: 12,
     state: 'NY',
-    city: 'NYC',
-    zipcode: 88888,
-    address: '12 Twelve Road',
-    numBedrooms: 1,
-    numBathrooms: 0,
-    square_feet: 2,
-    description: 'w0w new york 8:]'
+    city: 'Vancouver',
+    zipcode: 999959,
+    address: '12a 0xs93ksj',
+    numBedrooms: 8,
+    numBathrooms: 900,
+    square_feet: 102938,
+    description: 'is that a real place?',
+    thumbnail: './public/assets/img3.jpg'
 });
 
 firstListing.save().then(function(err) {
@@ -58,13 +59,13 @@ firstListing.save().then(function(err) {
  }
 });
 
-
 /* To delete an entry */
 /*
 models.Listing.destroy({
-    where: {state: 'CA'}
+    where: {state: 'NY'}
 });
 */
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -76,7 +77,7 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-//app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static('public'));
 
 app.use('/', index);
 app.use('/users', users);
