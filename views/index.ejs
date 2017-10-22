@@ -1,0 +1,26 @@
+<h1><%= title %></h1>
+<p>Welcome to <%= title %></p>
+
+<ul>
+	<form action="/search" method="post">
+        <fieldset>
+          <legend>Search by city</legend>
+          <label>
+            City:
+            <input name="city" />
+          </label>
+          <input type="submit" value="Search" />
+        </fieldset>
+      </form>
+
+
+
+    <%listings.forEach(function(listing) { %>
+        <li>
+            <p>State: </p> <%= listing.state %>
+            <p>City: </p> <%= listing.city %>
+            <p>Number of Bedrooms: </p> <%= listing.numBedrooms %>
+            <p> thumbnail: </p> <img src=<%= listing.thumbnail %> />
+        </li>
+    <% }) %>
+</ul>
