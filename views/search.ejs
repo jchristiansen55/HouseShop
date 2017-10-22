@@ -1,0 +1,13 @@
+<h1><%= title %></h1>
+<p>Welcome to <%= title %></p>
+
+<ul>
+    <%listings.forEach(function(listing) { %>
+        <li>
+            <p>State: </p> <%= listing.state %>
+            <p>City: </p> <%= listing.city %>
+            <p>Number of Bedrooms: </p> <%= listing.numBedrooms %>
+            <p> thumbnail: </p> <img src=<%= listing.thumbnail %> />
+        </li>
+    <% }) %>
+</ul>
