@@ -6,27 +6,3 @@ body {
 a {
   color: #00B7FF;
 }
-.box{
-    margin-top:0%;
-    margin-right:auto;
-    margin-left:32.5%;
-    width:1000px; /* Set this property to whatever you like */
-}
-.header{
-	margin-top:10%;
-}
-.divider{
-	margin-top:5%;
-}
-.footer{
-	margin-top:5%;
-}
-.navbar-header{
-  margin-left:5px;
-  width:100%;
-}
-.alertForNav {
-    padding: .75rem 1.25rem;
-    border: 1px solid transparent;
-    border-radius: .25rem;
-}
