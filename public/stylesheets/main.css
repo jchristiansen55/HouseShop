@@ -5,6 +5,7 @@ html {
 
 body {
     margin: 0 0 100px; /* bottom = footer height */
+    font-family: 'Lato', sans-serif;
 }
 
 footer {
@@ -17,6 +18,10 @@ footer {
 
 p {
     margin-top: 16px;
+}
+
+.div-centered {
+    margin: 0 auto;
 }
 
 .row {
