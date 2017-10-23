@@ -4,7 +4,9 @@ var models = require('../models');
 
 const Op = models.sequelize.Op;
 
-/* GET home page. */
+/* POST search page
+   '/' is NOT Home page
+*/
 router.post('/', function(req, res, next) {
     //res.sendFile(path.join(__dirname + '/index.html'));
     models.Listing.findAll({
@@ -14,8 +16,8 @@ router.post('/', function(req, res, next) {
             }
   		}
 	}).then(function(listings) {
-        res.render('search', {
-            title: 'Listings',
+        res.render('search', { // render the Search/Browse page
+            title: 'Browse Listings',
             listings: listings
         });
     });

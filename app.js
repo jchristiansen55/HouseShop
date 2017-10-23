@@ -18,7 +18,8 @@ var app = express();
 var Sequelize = require('sequelize');
 
 // set up sequelize config
-var sequelize = new Sequelize('csc648_m2_development', 'root', '', {
+// var sequelize = new Sequelize('csc648_m2_development', 'root', '', {
+var sequelize = new Sequelize('database_development', 'root', '', {
     host: 'localhost',
     port: 3306,
     dialect: 'mysql'
@@ -120,6 +121,7 @@ app.set('view engine', 'ejs');
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(expressLayouts);
+
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
