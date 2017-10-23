@@ -1,27 +1,61 @@
-<h1><%= title %></h1>
-<p>Welcome to <%= title %></p>
-<div>is this index.ejs</div>
+<div class="header">
+     <div class="container about">
+            <!-- CONTENT -->
+            <div class="row">
+                <div class="col-lg-4"></div>
+                <div class="col-lg-4">
+                    <h2><center>Feeling at home?</center></h2>
+                    <center>Your ideal home awaits, just enter your zip code!</center>
+                </div><!-- /.col-lg-4 -->
+                <div class="col-lg-4"></div>
 
-<ul>
-	<form action="/search" method="post">
-        <fieldset>
-          <legend>Search by city</legend>
-          <label>
-            City:
-            <input name="city" />
-          </label>
-          <input type="submit" value="Search" />
-        </fieldset>
+            </div><!-- /.row -->
+        </div><!-- /.container -->
+</div>
+     
+<div class="box">
+<div class="col-lg-6">
+    <div class="input-group">
+      <form action="/search" method="post">
+        <input type="text" class="form-control" placeholder="Search for...">
+      	<span class="input-group-btn">
+            <button class="btn btn-default" type="button">Go!</button>
+        </span>
       </form>
+    </div><!-- /input-group -->
+  </div><!-- /.col-lg-6 -->
+</div><!-- /.row -->
+</div>
+
+ <!-- DIVIDER -->
+<div class ="divider">
+<hr align="left" width="100%">
+</div>
+
+  <!-- SECOND HEADER -->
+     <div class="container about">
+            <!-- CONTENT -->
+            <div class="row">
+                <div class="col-lg-4"></div>
+                <div class="col-lg-4">
+                    <h2><center>What is HouseShop</center></h2>
+                    <center>HouseShop is the up and coming premier way to browse and find a home that suits to your every liking. With our simple and intuitive design, we can find you your dream house in no time!  </center>
+                </div><!-- /.col-lg-4 -->
+                <div class="col-lg-4"></div>
+
+            </div><!-- /.row -->
+        </div><!-- /.container -->
+   	
+      
+
+            <!-- FOOTER -->
+<div class = "footer">
+        <div class="container">
+            <footer>
+                <p class="float-right"><a href="#">Back to top</a></p>
+                <p>&copy; 2017 SFSU &middot; <a href="#">About</a></p>
+</div>
 
 
 
-    <%listings.forEach(function(listing) { %>
-        <li>
-            <p>State: </p> <%= listing.state %>
-            <p>City: </p> <%= listing.city %>
-            <p>Number of Bedrooms: </p> <%= listing.numBedrooms %>
-            <p> thumbnail: </p> <img src=<%= listing.thumbnail %> />
-        </li>
-    <% }) %>
-</ul>
+        </div><!-- /.container -->
