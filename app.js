@@ -45,7 +45,7 @@ var firstListing = models.Listing.build({
     price: 12,
     state: 'CA',
     city: 'Vancouver',
-    zipcode: 999959,
+    zipcode: 95864,
     address: '12a 0xs93ksj',
     numBedrooms: 8,
     numBathrooms: 900,
@@ -61,14 +61,13 @@ firstListing.save().then(function(err) {
     console.log('Data successfully inserted');
  }
 });
-*/
 
 var secondListing = models.Listing.build({
     listingID: 3,
     price: 12,
     state: 'CA',
     city: 'San Jose',
-    zipcode: 999959,
+    zipcode: 94015,
     address: '12a 0xs93ksj',
     numBedrooms: 8,
     numBathrooms: 900,
@@ -90,7 +89,7 @@ var thirdListing = models.Listing.build({
     price: 12,
     state: 'CA',
     city: 'San Lorenzo',
-    zipcode: 999959,
+    zipcode: 94015,
     address: '12a 0xs93ksj',
     numBedrooms: 8,
     numBathrooms: 900,
@@ -100,6 +99,28 @@ var thirdListing = models.Listing.build({
 });
 
 thirdListing.save().then(function(err) {
+ if (err) {
+    console.log('Error in Inserting Record');
+ } else {
+    console.log('Data successfully inserted');
+ }
+});
+
+var fourthListing = models.Listing.build({
+    listingID: 6,
+    price: 120,
+    state: 'NY',
+    city: 'Albany',
+    zipcode: 94107,
+    address: '12 Holloway Avenue',
+    numBedrooms: 1000000,
+    numBathrooms: 900,
+    square_feet: 102,
+    description: 'impossebreu',
+    thumbnail: 'assets/img2.jpg'
+});
+
+fourthListing.save().then(function(err) {
  if (err) {
     console.log('Error in Inserting Record');
  } else {
