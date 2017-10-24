@@ -16,8 +16,22 @@ footer {
     padding: 0 2%;
 }
 
+h1 {
+    margin: 0;
+}
+
 p {
     margin-top: 16px;
+}
+
+.btn-group>.btn:last-child:not(:first-child), .btn-group>.dropdown-toggle:not(:first-child) {
+    border-top-left-radius: .25rem;
+    border-bottom-left-radius: .25rem;
+}
+
+.filter button {
+    margin: 0 1%;
+    border-radius: .25rem;
 }
 
 .div-centered {
@@ -56,7 +70,12 @@ p {
     padding-bottom: 5%;
 }
 
-/*  LISTING THUMBNAILS  */
+/*  LISTING  */
+.filter {
+    padding: 1%;
+    background-color: #343a40;
+}
+
 .thumbnail img { width: 300px; }
 
 .thumbnail {
