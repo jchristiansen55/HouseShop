@@ -41,14 +41,23 @@ p {
     margin-bottom: 0;
 }
 
-.about {
-    padding-top: 10%;
+.home {
+    padding: 0;
+}
+
+/* not 'about', should be called header? */
+.about { 
+    padding-top: 5%;
+    padding-bottom: 3%;
 }
 
 /* HOME PAGE */
+.header .searchbar {
+    padding-bottom: 5%;
+}
 
 /*  LISTING THUMBNAILS  */
-img { width: 300px; }
+.thumbnail img { width: 300px; }
 
 .thumbnail {
     position: relative; 
