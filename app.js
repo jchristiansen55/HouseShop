@@ -150,7 +150,7 @@ app.use(cookieParser());
 app.use(express.static('public'));
 
 
-app.use('/', index);
+app.use('/fa17g09', index);
 app.use('/users', users);
 app.use('/search', search);
 
@@ -172,7 +172,7 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-app.set('port', 17009);
-app.listen(app.get('port'));
+//app.set('port', 17009);
+//app.listen(app.get('port'));
 
 module.exports = app;

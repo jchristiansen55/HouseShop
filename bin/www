@@ -4,15 +4,15 @@
  * Module dependencies.
  */
 
-var models = require('../models');
-var app = require('../app');
+var models = require('/home/fa17g09/public_html/models');
+var app = require('/home/fa17g09/public_html/app');
 var debug = require('debug')('express-test:server');
 var http = require('http');
 /**
  * Get port from environment and store in Express.
  */
 
-var port = normalizePort(process.env.PORT || '3000');
+var port = normalizePort(process.env.PORT || '17009');
 app.set('port', port);
 
 /**
