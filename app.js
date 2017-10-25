@@ -39,7 +39,7 @@ var test = sequelize.authenticate()
 // TODO: Inserts data every time. Insert
 //       data only once.
 
-/*
+
 var firstListing = models.Listing.build({
     listingID: 2,
     price: 12,
@@ -174,5 +174,16 @@ app.use(function(err, req, res, next) {
 
 app.set('port', 17009);
 app.listen(app.get('port'));
+
+var fa17g09_env_prefix;
+if (app.get('env') == 'production') {
+    fa17g09_env_prefix = 'fa17g09';
+} else {
+    fa17g09_env_prefix = '';
+}
+
+app.locals.fa17g09_env_prefix = fa17g09_env_prefix;
+console.log('Running using ' + app.get('env') + ' profile.');
+
 
 module.exports = app;
