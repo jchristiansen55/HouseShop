@@ -39,7 +39,7 @@ var test = sequelize.authenticate()
 // TODO: Inserts data every time. Insert
 //       data only once.
 
-
+/*
 var firstListing = models.Listing.build({
     listingID: 2,
     price: 12,
