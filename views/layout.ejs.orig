@@ -23,10 +23,14 @@
         <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet">
 
         <!-- custom stylesheet -->
+<<<<<<< HEAD
         <link rel="stylesheet" href="stylesheets/main.css"> 
 
         <!-- FONT AWESOME ICONS -->
-        <script src="https://use.fontawesome.com/c8878a39bb.js"></script
+        <script src="https://use.fontawesome.com/c8878a39bb.js"></script>
+=======
+        <link rel="stylesheet" href="./public/stylesheets/main.css"> 
+>>>>>>> server_state_m2
     </head>
     <body>
         <!--[if lt IE 8]>

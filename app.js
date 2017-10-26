@@ -19,7 +19,7 @@ var Sequelize = require('sequelize');
 
 // set up sequelize config
 // var sequelize = new Sequelize('csc648_m2_development', 'root', '', {
-var sequelize = new Sequelize('database_development', 'root', '', {
+var sequelize = new Sequelize('fa17g09', 'fa17g09', 'csc648fa17g09', {
     host: 'localhost',
     port: 3306,
     dialect: 'mysql'
@@ -147,10 +147,11 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static('public'));
+app.use(express.static(path.join(__dirname, 'public')));
 
 
-app.use('/', index);
+// NOTE: remove "fa17g09" to run locally
+app.use('/fa17g09', index);
 app.use('/users', users);
 app.use('/search', search);
 
@@ -172,7 +173,7 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-app.set('port', 17009);
-app.listen(app.get('port'));
+//app.set('port', 17009);
+//app.listen(app.get('port'));
 
 module.exports = app;
