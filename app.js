@@ -149,7 +149,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/fa17g09', index);
+app.use('/', index);
 app.use('/users', users);
 app.use('/search', search);
 
@@ -184,7 +184,7 @@ if (app.get('env') == 'production') {
 app.locals.fa17g09_env_prefix = fa17g09_env_prefix;
 console.log('Running using ' + app.get('env') + ' profile.');
 
-app.use('/' + fa17g09_env_prefix, index);
+//app.use('/' + fa17g09_env_prefix, index);
 
 
 module.exports = app;
