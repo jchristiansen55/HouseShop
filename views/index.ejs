@@ -10,6 +10,7 @@
             <div class="col-lg-4"></div>
         </div>
     </div>
+
     <div class="container">
         <div class="row">
             <div class="col-lg-7 div-centered searchbar">
@@ -41,7 +42,7 @@
         <div class="col-lg-2"></div>
     </div>
     <div class="row">
-        <form action="/search" method="post" class="form-inline div-centered">
+        <form action="<%= fa17g09_env_prefix %>/search" method="get" class="form-inline div-centered">
             <button name="city" type="submit" value="Search" class="form-control btn btn-primary btn-lg">
                 Show All Listings
             </button>            

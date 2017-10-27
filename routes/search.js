@@ -42,6 +42,17 @@ router.post('/', function(req, res, next) {
     });
 });
 
+router.get('/', function(req, res, next) {
+    //res.sendFile(path.join(__dirname + '/index.html'));
+    models.Listing.findAll()
+    .then(function(listings) {
+        res.render('search', { // render the Search/Browse page
+            title: 'Browse Listings',
+            listings: listings
+        });
+    });
+});
+
 /*
 router.post('/other', function(req, res, next) {
     //res.sendFile(path.join(__dirname + '/index.html'));

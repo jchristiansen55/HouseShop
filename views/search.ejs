@@ -1,14 +1,15 @@
 <section class="filter row">
     <div class="btn-group div-centered">
-        <select class="custom-select">
-            <option selected>Any Beds <i class="fa fa-bed" aria-hidden="true"></i></option>
-            <%  var rooms = 5; %>
-            <% for (var i = 0; i < rooms; i++){ %>
-                <option value=""><%= i %>+ Beds</option>
-            <% } %>
-        </select>
+        <form action="filter" method="post" class="form-inline">
+                <select name="taskOption">
+                        <%  var rooms = 5; %>
+                        <% for (var i = 0; i < rooms; i++){ %>
+                            <option value=<%= i %>> <%= i %>+ Beds</option>
+                        <% } %>
+                </select>
+            <input type="submit" class="btn btn-primary">
+        </form>
     </div>
-    <button type="button" class="btn btn-primary">Apply Filter</button>
 </section>
     
 <h1><%= title %></h1>
