@@ -5,19 +5,37 @@ html {
 
 body {
     margin: 0 0 100px; /* bottom = footer height */
+    font-family: 'Lato', sans-serif;
 }
 
 footer {
     position: absolute;
     left: 0;
     bottom: 0;
-    height: 5%;
     width: 100%;
     padding: 0 2%;
 }
 
+h1 {
+    margin: 0;
+}
+
 p {
     margin-top: 16px;
+}
+
+.btn-group>.btn:last-child:not(:first-child), .btn-group>.dropdown-toggle:not(:first-child) {
+    border-top-left-radius: .25rem;
+    border-bottom-left-radius: .25rem;
+}
+
+.filter button {
+    margin: 0 1%;
+    border-radius: .25rem;
+}
+
+.div-centered {
+    margin: 0 auto;
 }
 
 .row {
@@ -37,6 +55,41 @@ p {
     margin-bottom: 0;
 }
 
-.about {
-    padding-top: 10%;
+.home {
+    padding: 0;
 }
+
+/* not 'about', should be called header? */
+.about { 
+    padding-top: 5%;
+    padding-bottom: 3%;
+}
+
+/* HOME PAGE */
+.header .searchbar {
+    padding-bottom: 5%;
+}
+
+/*  LISTING  */
+.filter {
+    padding: 1%;
+    background-color: #343a40;
+}
+
+.thumbnail img { width: 300px; }
+
+.thumbnail {
+    position: relative; 
+    margin: 20px;
+}
+
+.caption {
+    position: absolute;
+    top: 50%; 
+    left: 0; 
+    bottom: 0;
+    right: 0;
+    color: #fefefe;
+    background-color: rgba(108, 122, 137, 0.5);
+}
+
