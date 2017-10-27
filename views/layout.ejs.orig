@@ -3,7 +3,6 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title><%= title %></title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -24,42 +23,64 @@
         <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet">
 
         <!-- custom stylesheet -->
-        <link rel="stylesheet" href="<%= fa17g09_env_prefix %>/stylesheets/main.css"> 
+<<<<<<< HEAD
+        <link rel="stylesheet" href="stylesheets/main.css"> 
+
+        <!-- FONT AWESOME ICONS -->
+        <script src="https://use.fontawesome.com/c8878a39bb.js"></script>
+=======
+        <link rel="stylesheet" href="./public/stylesheets/main.css"> 
+>>>>>>> server_state_m2
     </head>
     <body>
         <!--[if lt IE 8]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
-        <div class="alert alert-primary" role="alert">
-            Disclaimer: This website is a school project.
-        </div>
-        <!-- NAV BAR -->
-        <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-            <a class="navbar-brand" href="#">LOGO</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse nav-end" id="navbarCollapse">
-                <ul class="nav navbar-nav justify-content-end">
-                    <li class="nav-item">
-                        <a class="nav-link" href="/about.html">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Agent</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Contact</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Sign In</a>
-                    </li>
-                </ul>
+
+        <div class="container-fluid">
+            <!-- DISCLAIMER TOP BAR -->
+            <div class="alert alert-primary row" role="alert">
+                Disclaimer: This website is a school project.
             </div>
-        </nav>
-        <!-- END NAV BAR -->
+            <!-- END DISCLAIMER -->
+
+            <!-- NAV BAR -->
+            <div class="row">
+                <nav class="navbar navbar-expand-md navbar-dark bg-dark col-lg-12">
+                    <a class="navbar-brand col-lg-1 col-md-1 col-sm-1 col-1" href="/">LOGO</a>
+                    <button class="navbar-toggler col-lg-1 col-md-1 col-sm-1 col-2" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="searchbar col-lg-7 col-md-7 col-sm-7">
+                        <form action="/search" method="post" class="form-inline">
+                            <input name="city" type="query" class="form-control col-lg-10 col-md-10 col-sm-10" id="search" placeholder="Enter address, zip code, or city ..." autocomplete="off"  />
+                            <input type="submit" value="Search" class="form-control btn btn-primary w100 col-lg-2 col-md-2 col-sm-2">                                
+                        </form>
+                    </div>
+                    <div class="collapse navbar-collapse nav-end col-lg-4 col-md-4 col-sm-4" id="navbarCollapse">
+                        <ul class="nav navbar-nav justify-content-end">
+                            <li class="nav-item">
+                                <a class="nav-link" href="/about.html">About</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Agent</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Contact</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Sign In</a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+            <!-- END NAV BAR -->
+        </div>
+        <!-- END HEADER CONTAINER -->
 
         <!-- MAIN CONTENT -->
-        <div id= "main" class="main container-fluid home">    
+        <div id= "main" class="main container-fluid">    
             <%- body %>        
         </div>
         <!-- END MAIN CONTENT -->
@@ -71,6 +92,7 @@
                 <p>&copy; 2017 SFSU &middot; <a href="/about.html">About</a></p>
             </footer>            
         </div>
+        <!-- END FOOTER -->
 
         <!-- JavaScript plugins -->
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
