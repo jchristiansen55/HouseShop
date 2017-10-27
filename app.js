@@ -131,7 +131,7 @@ fourthListing.save().then(function(err) {
 /* To delete an entry */
 /*
 models.Listing.destroy({
-    where: {state: 'NY'}
+    where: {state: 'CA'}
 });
 */
 
