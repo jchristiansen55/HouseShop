@@ -149,6 +149,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use('/fa17g09', index);
 app.use('/users', users);
 app.use('/search', search);
 
