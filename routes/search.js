@@ -14,22 +14,22 @@ router.post('/', function(req, res, next) {
             [Op.or]: [
                 {
                     address: {
-                        [Op.like]: '%' + req.body.city + '%'
+                        [Op.like]: '%' + req.body.searchQuery + '%'
                     }
                 },
                 {
     		        city: {
-                        [Op.like]: '%' + req.body.city + '%'
+                        [Op.like]: '%' + req.body.searchQuery + '%'
                     }
                 },
                 {
                     state: {
-                        [Op.like]: '%' + req.body.city + '%'
+                        [Op.like]: '%' + req.body.searchQuery + '%'
                     }
                 },
                 {
                     zipcode: {
-                        [Op.like]: '%' + req.body.city + '%'
+                        [Op.like]: '%' + req.body.searchQuery + '%'
                     }
                 }
             ]
@@ -52,22 +52,6 @@ router.get('/', function(req, res, next) {
         });
     });
 });
-
-/*
-router.post('/other', function(req, res, next) {
-    //res.sendFile(path.join(__dirname + '/index.html'));
-    models.Listing.findAll({
-  		where: {
-    		city: req.body.city
-  		}
-	}).then(function(listings) {
-        res.render('search', {
-            title: 'Listings',
-            listings: listings
-        });
-    });
-});
-*/
 
 
 module.exports = router;
