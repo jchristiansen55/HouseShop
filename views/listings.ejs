@@ -1,0 +1,17 @@
+<form ref='uploadForm' id='uploadForm' encType="multipart/form-data"  action="<%= fa17g09_env_prefix %>/listings" method="post">
+  <fieldset>
+    <legend>Create a new listing</legend>
+    <label>
+      Address:
+      <input type="string" name="Address" />
+      <br/>City:
+      <input type="string" name="City" />
+      <br/>State:
+      <input type="string" name="State" />
+      <br/>Number of Bedrooms:
+      <input type="string" name="numBedrooms" />
+	Picture: <input type="file" name="imageFile" />
+      <input type="submit" value="Create listing" />
+    </label>
+  </fieldset>
+</form>
