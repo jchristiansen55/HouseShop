@@ -1,7 +1,6 @@
 'use strict';
-module.exports = (sequelize, DataTypes) => {
+module.exports = function(sequelize, DataTypes) {
   var Listing = sequelize.define('Listing', {
-    listingID: DataTypes.INTEGER,
     thumbnail: DataTypes.STRING,
     price: DataTypes.INTEGER,
     state: DataTypes.STRING,
@@ -10,15 +9,13 @@ module.exports = (sequelize, DataTypes) => {
     address: DataTypes.STRING,
     numBedrooms: DataTypes.INTEGER,
     numBathrooms: DataTypes.FLOAT,
-    square_feet: DataTypes.INTEGER,
+    squareFeet: DataTypes.INTEGER,
     description: DataTypes.STRING
-  }, {
-    classMethods: {
-      associate: function(models) {
-        // associations can be defined here
+});
+
+    Listing.associate = function(models) {
         Listing.hasMany(models.Media);
-      }
     }
-  });
-  return Listing;
+
+    return Listing;
 };

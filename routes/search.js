@@ -10,6 +10,7 @@ const Op = models.sequelize.Op;
 router.post('/', function(req, res, next) {
     //res.sendFile(path.join(__dirname + '/index.html'));
     models.Listing.findAll({
+        include: [ models.Media ], // !! This line requests retrieval of the associated model.
   		where: {
             [Op.or]: [
                 {
@@ -39,6 +40,20 @@ router.post('/', function(req, res, next) {
             title: 'Browse Listings',
             listings: listings
         });
+
+        // START HOW TO GET AND USE ASSOCIATED MODELS
+        console.log(models.Listing.prototype);
+
+        listings.forEach(function(listing) {
+            console.log("listing.address: " + listing.address);
+            listing.getMedia().then(function(media){
+                media.forEach(function(medium) {
+                    console.log("medium.id: " + medium.id + ", medium.imageFilePath: " + medium.imageFilePath);
+                });
+            });
+        });
+        // END HOW TO GET AND USE ASSOCIATED MODELS
+
     });
 });
 
