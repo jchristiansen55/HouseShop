@@ -11,6 +11,7 @@ var users = require('./routes/users');
 var search = require('./routes/search');
 var listings = require('./routes/listings');
 var filter = require('./routes/filter');
+var login = require('./routes/login');
 var models = require('./models');
 var app = express();
 
@@ -57,7 +58,7 @@ app.use('/users', users);
 app.use('/search', search);
 app.use('/listings', listings);
 app.use('/filter', filter);
-
+app.use('/login', login);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
