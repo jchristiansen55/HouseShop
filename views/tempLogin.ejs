@@ -16,8 +16,8 @@
             <div class="col-lg-7 div-centered">
                 <form action="<%= fa17g09_env_prefix %>/login" method="post" class="form-inline">
                     <div class="container">
-                        <label><b>Username</b></label>
-                        <input type="text" placeholder="Enter Username" name="uname" required>
+                        <label><b>Email</b></label>
+                        <input type="text" placeholder="Enter Email" name="email" required>
 
                         <label><b>Password</b></label>
                         <input type="password" placeholder="Enter Password" name="psw" required>
@@ -25,11 +25,27 @@
                         <button type="submit">Login</button>
                         <input type="checkbox" checked="checked"> Remember me
                     </div>
+                </form>
+                <div>
+                    <h2>Or sign up</h2>
+                </div>
+                <form action="<%= fa17g09_env_prefix %>/signup" method="post" class="form-inline">
+                    <div class="container">
 
-                    <div class="container" style="background-color:#f1f1f1">
-                        <button type="button" class="cancelbtn">Cancel</button>
-                            <span class="psw">Forgot <a href="#">password?</a></span>
-                    </div>                          
+                        <label><b>firstName</b></label>
+                        <input type="firstName" placeholder="Enter First Name" name="firstName" required>
+
+                       <label><b>lastName</b></label>
+                        <input type="lastName" placeholder="Enter Last Name" name="lastName" required>
+
+                        <label><b>Password</b></label>
+                        <input type="password" placeholder="Enter Password" name="password" required>
+
+                        <label><b>Email</b></label>
+                        <input type="email" placeholder="Enter Email" name="email" required>
+
+                        <button type="submit">Login</button>
+                    </div>
                 </form>
             </div>
         </div>

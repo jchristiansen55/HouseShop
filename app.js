@@ -12,10 +12,10 @@ var search = require('./routes/search');
 var listings = require('./routes/listings');
 var filter = require('./routes/filter');
 var login = require('./routes/login');
+var signup = require('./routes/signup');
 var models = require('./models');
 var app = express();
-
-
+var passport = require('passport');
 
 // create sequelize object
 var Sequelize = require('sequelize');
@@ -59,6 +59,8 @@ app.use('/search', search);
 app.use('/listings', listings);
 app.use('/filter', filter);
 app.use('/login', login);
+app.use('/signup', signup);
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');

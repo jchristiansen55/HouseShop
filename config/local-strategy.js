@@ -1,10 +1,19 @@
-var express = require('express');
-var router = express.Router();
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 
+passport.use(new LocalStrategy({
+    usernameField: 'email',
+    passwordField: 'password',
+    session: false
+  },
+  function(username, password, done) {
+    // ...
+  }
+));
+
+/*
 passport.use(new LocalStrategy(
-  function(email, password, done) {
+  function(username, password, done) {
     User.findOne({ username: email }, function (err, user) {
       if (err) { return done(err); }
       if (!user) { return done(null, false); }
@@ -13,14 +22,4 @@ passport.use(new LocalStrategy(
     });
   }
 ));
-
-router.get('/',
-  function(req, res){
-    res.render('tempLogin');
-  });
-
-router.post('/', passport.authenticate('local', { failureRedirect: 'login' }),function(req, res) {
-    res.redirect('index');
-});
-
-module.exports = router;
+*/
