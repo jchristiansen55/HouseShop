@@ -1,5 +1,7 @@
 var express = require('express');
 var router = express.Router();
+var passport = require('passport');
+var LocalStrategy = require('passport-local').Strategy;
 
 /* GET signup page. */
 router.get('/', function(req, res, next) {
@@ -16,10 +18,27 @@ router.post('/', function(req, res) {
         password: req.body.password,
         email: req.body.email
     };
+    // signup
+    passport.use(
+         'local-signup',
+         new LocalStrategy({
+             usernameField : 'username',
+             passwordField : 'password',
+         }, function(req, username, password, done) {
+            // if there is no user with that username
+            // create the user
+            var newUser = {
+                username: username,
+                password: password
+            };
 
-    models.User.create(user).then(function(user) {
-            res.redirect('/signup');
+            return done(null, newUserMysql);
+        }
+         ));
+    models.User.create(user).then(function(newUser) {
+        res.redirect('/signup');
     });
+
 });
 
 module.exports = router;
