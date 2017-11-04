@@ -4,12 +4,10 @@ var models = require('../models');
 
 const Op = models.sequelize.Op;
 
-/* POST search page
-   '/' is NOT Home page
-*/
-router.post('/', function(req, res, next) {
-    //res.sendFile(path.join(__dirname + '/index.html'));
-    models.Listing.findAll({
+
+function buildListingsQuery() {
+    return {
+        order: models.sequelize.literal(orderMode),
         include: [ models.Media ], // !! This line requests retrieval of the associated model.
   		where: {
             [Op.or]: [
@@ -35,10 +33,25 @@ router.post('/', function(req, res, next) {
                 }
             ]
   		}
-	}).then(function(listings) {
+	};
+}
+
+/* POST search page
+   '/' is NOT Home page
+*/
+router.post('/', function(req, res, next) {
+    //res.sendFile(path.join(__dirname + '/index.html'));
+    if(req.body.sortOption) {
+        orderMode = req.body.sortOption;
+    } else {
+        orderMode = "price DESC"; // default sort
+    }
+
+    models.Listing.findAll(buildListingsQuery()).then(function(listings) {
         res.render('search', { // render the Search/Browse page
             title: 'Browse Listings',
-            listings: listings
+            listings: listings,
+            previousSearchString: req.body.city
         });
 
         // START HOW TO GET AND USE ASSOCIATED MODELS
