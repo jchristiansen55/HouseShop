@@ -1,5 +1,5 @@
 0 info it worked if it ends with ok
-1 verbose cli [ '/usr/bin/node', '/usr/bin/npm', 'run', 'start' ]
+1 verbose cli [ '/usr/bin/node', '/usr/bin/npm', 'start' ]
 2 info using npm@3.10.10
 3 info using node@v6.11.3
 4 verbose run-script [ 'prestart', 'start', 'poststart' ]
@@ -7,7 +7,7 @@
 6 silly lifecycle express-test@0.0.0~prestart: no script for prestart, continuing
 7 info lifecycle express-test@0.0.0~start: express-test@0.0.0
 8 verbose lifecycle express-test@0.0.0~start: unsafe-perm in lifecycle true
-9 verbose lifecycle express-test@0.0.0~start: PATH: /home/rickygoals/Downloads/node-v6.11.3-linux-x64/lib/node_modules/npm/bin/node-gyp-bin:/home/rickygoals/Documents/CSC648/csc648-fall17-team09/node_modules/.bin:/home/rickygoals/.npm-global/bin:/home/rickygoals/.npm-global/bin:~/idea-IU-171.3780.107/bin:/usr/local/sbin:/usr/sbin:/sbin:/home/rickygoals/.npm-global/bin:~/idea-IU-171.3780.107/bin:/usr/local/sbin:/usr/sbin:/sbin:~/idea-IU-171.3780.107/bin:/usr/local/sbin:/usr/sbin:/sbin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/usr/lib/jvm/java-8-oracle/bin:/usr/lib/jvm/java-8-oracle/db/bin:/usr/lib/jvm/java-8-oracle/jre/bin:/home/rickygoals/idea-IU-171.3780.107/bin
+9 verbose lifecycle express-test@0.0.0~start: PATH: /home/rickygoals/Downloads/node-v6.11.3-linux-x64/lib/node_modules/npm/bin/node-gyp-bin:/home/rickygoals/Documents/CSC648/csc648-fall17-team09/node_modules/.bin:~/.npm-global/bin:~/idea-IU-171.3780.107/bin:/usr/local/sbin:/usr/sbin:/sbin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/usr/lib/jvm/java-8-oracle/bin:/usr/lib/jvm/java-8-oracle/db/bin:/usr/lib/jvm/java-8-oracle/jre/bin:/home/rickygoals/idea-IU-171.3780.107/bin
 10 verbose lifecycle express-test@0.0.0~start: CWD: /home/rickygoals/Documents/CSC648/csc648-fall17-team09
 11 silly lifecycle express-test@0.0.0~start: Args: [ '-c', 'node ./bin/www' ]
 12 silly lifecycle express-test@0.0.0~start: Returned: code: 1  signal: null
@@ -25,7 +25,7 @@
 15 verbose pkgid express-test@0.0.0
 16 verbose cwd /home/rickygoals/Documents/CSC648/csc648-fall17-team09
 17 error Linux 3.16.0-4-amd64
-18 error argv "/usr/bin/node" "/usr/bin/npm" "run" "start"
+18 error argv "/usr/bin/node" "/usr/bin/npm" "start"
 19 error node v6.11.3
 20 error npm  v3.10.10
 21 error code ELIFECYCLE

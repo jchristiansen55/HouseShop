@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- Can do this in future?
+            Place favicon.ico and apple-touch-icon.png in the root directory -->
+            <!-- <link rel="apple-touch-icon" href="apple-touch-icon.png"> -->
+
+        <!-- BOOTSTRAP -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+
+        <!-- NORMALIZE -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.min.css">
+
+        <!-- MODERNIZR -->
+        <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script> -->
+
+        <!-- GOOGLE FONTS -->
+        <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet">
+
+        <!-- custom stylesheet -->
+<<<<<<< HEAD
+        <link rel="stylesheet" href="stylesheets/main.css"> 
+
+        <!-- FONT AWESOME ICONS -->
+        <script src="https://use.fontawesome.com/c8878a39bb.js"></script>
+=======
+        <link rel="stylesheet" href="./public/stylesheets/main.css"> 
+>>>>>>> server_state_m2
+    </head>
+    <body>
+        <!--[if lt IE 8]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+        <div class="container-fluid">
+            <!-- DISCLAIMER TOP BAR -->
+            <div class="alert alert-primary row" role="alert">
+                Disclaimer: This website is a school project.
+            </div>
+            <!-- END DISCLAIMER -->
+
+            <!-- NAV BAR -->
+            <div class="row">
+                <nav class="navbar navbar-expand-md navbar-dark bg-dark col-lg-12">
+                    <a class="navbar-brand col-lg-1 col-md-1 col-sm-1 col-1" href="/">LOGO</a>
+                    <button class="navbar-toggler col-lg-1 col-md-1 col-sm-1 col-2" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="searchbar col-lg-7 col-md-7 col-sm-7">
+                        <form action="/search" method="post" class="form-inline">
+                            <input name="city" type="query" class="form-control col-lg-10 col-md-10 col-sm-10" id="search" placeholder="Enter address, zip code, or city ..." autocomplete="off"  />
+                            <input type="submit" value="Search" class="form-control btn btn-primary w100 col-lg-2 col-md-2 col-sm-2">                                
+                        </form>
+                    </div>
+                    <div class="collapse navbar-collapse nav-end col-lg-4 col-md-4 col-sm-4" id="navbarCollapse">
+                        <ul class="nav navbar-nav justify-content-end">
+                            <li class="nav-item">
+                                <a class="nav-link" href="/about.html">About</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Agent</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Contact</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Sign In</a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+            <!-- END NAV BAR -->
+        </div>
+        <!-- END HEADER CONTAINER -->
+
+        <!-- MAIN CONTENT -->
+        <div id= "main" class="main container-fluid">    
+            <%- body %>        
+        </div>
+        <!-- END MAIN CONTENT -->
+
+        <!-- FOOTER -->
+        <div class="container">
+            <footer>
+                <p class="float-right"><a href="#">Back to top</a></p>
+                <p>&copy; 2017 SFSU &middot; <a href="/about.html">About</a></p>
+            </footer>            
+        </div>
+        <!-- END FOOTER -->
+
+        <!-- JavaScript plugins -->
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.12.4.min.js"><\/script>')</script>
+
+        <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
+        <script>
+            window.ga=function(){ga.q.push(arguments)};ga.q=[];ga.l=+new Date;
+            ga('create','UA-XXXXX-Y','auto');ga('send','pageview')
+        </script>
+        <script src="https://www.google-analytics.com/analytics.js" async defer></script>
+    </body>
+</html>
+
