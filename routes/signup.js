@@ -2,13 +2,12 @@ var express = require('express');
 var router = express.Router();
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
+var models = require('../models');
 
 /* GET signup page. */
 router.get('/', function(req, res, next) {
   res.render('signup');
 });
-
-var models = require('../models');
 
 /* POST new user. */
 router.post('/', function(req, res) {
@@ -28,7 +27,7 @@ router.post('/', function(req, res) {
             // if there is no user with that username
             // create the user
             var newUser = {
-                username: username,
+                username: email,
                 password: password
             };
 
