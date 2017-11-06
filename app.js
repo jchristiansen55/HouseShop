@@ -11,6 +11,7 @@ var users = require('./routes/users');
 var search = require('./routes/search');
 var listings = require('./routes/listings');
 var filter = require('./routes/filter');
+var listing = require('./routes/listing');
 var models = require('./models');
 var app = express();
 
@@ -57,6 +58,7 @@ app.use('/users', users);
 app.use('/search', search);
 app.use('/listings', listings);
 app.use('/filter', filter);
+app.use('/listing', listing); // need this for individual listing??
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

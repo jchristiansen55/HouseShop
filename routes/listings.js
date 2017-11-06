@@ -15,7 +15,7 @@ var models = require('../models');
 /* POST new listing. */
 router.post('/', function(req, res) {
     models.Listing.create({ address: req.body.Address, thumbnail: 'assets/' + req.files.imageFile.name, city: req.body.City,  state: req.body.State,  numBedrooms: req.body.numBedrooms}).then(function() {
-	       let imageFile = req.files.imageFile;
+	       var imageFile = req.files.imageFile;
 	       imageFile.mv(__dirname + '/../public/assets/' + req.files.imageFile.name, function(err) {
     	          if (err){
       		              return res.status(500).send(err);

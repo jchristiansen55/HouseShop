@@ -24,6 +24,10 @@ p {
     margin-top: 16px;
 }
 
+.image-logo {
+    width: 40px;
+}
+
 .btn-group>.btn:last-child:not(:first-child), .btn-group>.dropdown-toggle:not(:first-child) {
     border-top-left-radius: .25rem;
     border-bottom-left-radius: .25rem;
@@ -93,3 +97,38 @@ p {
     background-color: rgba(108, 122, 137, 0.5);
 }
 
+.listing-images {
+    width: 100%;
+}
+
+.listing-images .container {
+    margin: 0;
+    padding: 0;
+}
+
+.listing-image-container {
+    margin: 0;
+    /*display: flex !important;*/
+}
+
+.listing-image-container img {
+    padding: 0;
+}
+
+.listing-info {
+    text-align: justify;
+}
+
+.listing-info h3 {
+    font-size: 1.2rem;
+}
+
+/* Listing: Image slider */
+.carousel-item {
+    max-height: 400px;
+    max-width: 100%;
+}
+
+.carousel-item img {
+    width: 100%;
+}
