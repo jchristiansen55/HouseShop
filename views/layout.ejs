@@ -26,7 +26,7 @@
         <link rel="stylesheet" href="stylesheets/main.css"> 
 
         <!-- FONT AWESOME ICONS -->
-        <script src="https://use.fontawesome.com/c8878a39bb.js"></script
+        <script src="https://use.fontawesome.com/c8878a39bb.js"></script>
     </head>
     <body>
         <!--[if lt IE 8]>
@@ -43,12 +43,12 @@
             <!-- NAV BAR -->
             <div class="row">
                 <nav class="navbar navbar-expand-md navbar-dark bg-dark col-lg-12">
-                    <a class="navbar-brand col-lg-1 col-md-1 col-sm-1 col-1" href="/fa17g09">LOGO</a>
+                    <a class="navbar-brand col-lg-1 col-md-1 col-sm-1 col-1" href="/">LOGO</a>
                     <button class="navbar-toggler col-lg-1 col-md-1 col-sm-1 col-2" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     <div class="searchbar col-lg-7 col-md-7 col-sm-7">
-                        <form action="search" method="post" class="form-inline">
+                        <form action="/search" method="post" class="form-inline">
                             <input name="city" type="query" class="form-control col-lg-10 col-md-10 col-sm-10" id="search" placeholder="Enter address, zip code, or city ..." autocomplete="off"  />
                             <input type="submit" value="Search" class="form-control btn btn-primary w100 col-lg-2 col-md-2 col-sm-2">                                
                         </form>
@@ -65,7 +65,8 @@
                                 <a class="nav-link" href="#">Contact</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Sign In</a>
+                                <!-- <a class="nav-link" href="#">Sign In</a> -->
+                                <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">Sign In</button>
                             </li>
                         </ul>
                     </div>
@@ -77,7 +78,115 @@
 
         <!-- MAIN CONTENT -->
         <div id= "main" class="main container-fluid">    
-            <%- body %>        
+            <%- body %> 
+             <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                 <h2 class="modal-title" id="myModalLabel">Welcome to HouseShop</h2>
+
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                    </button>
+                 </div>
+
+                <div class="modal-body">
+                    <div role="tabpanel">
+
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li role="presentation" class="active"><a href="#uploadTab" aria-controls="uploadTab" role="tab" data-toggle="tab">Sign Up</a>
+                            </li>
+
+                            <li role="presentation"><a href="#SignUp" aria-controls="SignUp" role="tab" data-toggle="tab">Sign In</a>
+                            </li>
+                        </ul>
+                                    <div class="row">
+                                    <div class="col-xs-6 col-sm-6 col-md-6">
+                                    </div>
+                                    </div>
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <div role="tabpanel" class="tab-pane active" id="uploadTab">
+                            <form role="form">
+                                <div class="row">
+                                    <div class="col-xs-6 col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                           <input type="text" name="first_name" id="first_name" class="form-control input-sm" placeholder="First Name">
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-6 col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <input type="text" name="last_name" id="last_name" class="form-control input-sm" placeholder="Last Name">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <input type="email" name="email" id="email" class="form-control input-sm" placeholder="Email Address">
+                                </div>
+                                <div class="form-group">
+                                    <input type="Phone" name="Phone" id="Phone" class="form-control input-sm" placeholder="Phone Number">
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-xs-6 col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <input type="password" name="password" id="password" class="form-control input-sm" placeholder="Password">
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-6 col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <input type="password" name="password_confirmation" id="password_confirmation" class="form-control input-sm" placeholder="Confirm Password">
+                                        </div>
+                                    </div>
+                                    <div class="center-terms">
+                                    <input id="checkBox" type="checkbox"  <p>I agree to the terms </p>  
+                                    </div>
+
+                                </div>
+                                        
+
+                                 <div class="col-xs-6 col-sm-6 col-md-6 center-sign_up_in">
+                                <input type="submit" value="Sign Up" class="btn btn-info btn-block "> 
+                                </div>
+
+                            </form>
+
+                            </div>
+
+                            <div role="tabpanel" class="tab-pane" id="SignUp">
+                             <form role="form">
+                                <div class="row">
+                                    <div class="col-xs-6 col-sm-6 col-md-6">      
+                                        <div class="form-group">
+                                <input type="text" name="User Name" id="user_name" class="form-control input-sm" placeholder="User Name">
+                                        </div>
+                                    </div>
+                                </div>
+                                    <div class="row">
+                                    <div class="col-xs-6 col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <input type="password" name="password" id="password" class="form-control input-sm" placeholder="Password">
+                                         <button class="astext">Forgot Password?</button>
+                                     </div>
+                                    </div>
+                                 </div>
+                                 <div class="col-xs-6 col-sm-6 col-md-6 center-sign_up_in">
+                                <input type="submit" value="Login" class="btn btn-info btn-block"> 
+                                </div>
+                            </form>
+                             </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer ">
+                    <div class ="center-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>       
         </div>
         <!-- END MAIN CONTENT -->
 
