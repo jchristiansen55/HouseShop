@@ -5,15 +5,9 @@ var LocalStrategy = require('../config/local-strategy').Strategy;
 var models = require('../models');
 
 router.use(passport.initialize());
-  passport.serializeUser(function(user, done) {
-      console.log("in passport.js");
-    done(null, user.id);
-  });
 
-
-router.post('/', passport.authenticate('local', { failureRedirect: 'search'}), function(req, res) {
-    res.redirect('about');
-});
+router.post('/', passport.authenticate('local', { failureRedirect: 'search',
+                                                  successRedirect: 'about' }));
 
 router.get('/',
   function(req, res){

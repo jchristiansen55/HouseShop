@@ -17,7 +17,7 @@ router.post('/', function(req, res) {
         password: req.body.password,
         email: req.body.email
     };
-    // signup
+    
     passport.use(
          'local-signup',
          new LocalStrategy({
