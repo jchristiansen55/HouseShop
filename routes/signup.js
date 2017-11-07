@@ -17,23 +17,7 @@ router.post('/', function(req, res) {
         password: req.body.password,
         email: req.body.email
     };
-    
-    passport.use(
-         'local-signup',
-         new LocalStrategy({
-             usernameField : 'username',
-             passwordField : 'password',
-         }, function(req, username, password, done) {
-            // if there is no user with that username
-            // create the user
-            var newUser = {
-                username: email,
-                password: password
-            };
 
-            return done(null, newUserMysql);
-        }
-         ));
     models.User.create(user).then(function(newUser) {
         res.redirect('/signup');
     });
