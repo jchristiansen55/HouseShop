@@ -15,7 +15,6 @@ var login = require('./routes/login');
 var signup = require('./routes/signup');
 var models = require('./models');
 var app = express();
-var passport = require('passport');
 
 // create sequelize object
 var Sequelize = require('sequelize');
