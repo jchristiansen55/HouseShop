@@ -6,7 +6,7 @@ const Op = models.sequelize.Op;
 
 /* POST search page
    '/' is NOT Home page
-*/
+*/ 
 router.post('/', function(req, res, next) {
     //res.sendFile(path.join(__dirname + '/index.html'));
     models.Listing.findAll({
