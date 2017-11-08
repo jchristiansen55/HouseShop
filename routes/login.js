@@ -6,8 +6,8 @@ var models = require('../models');
 
 router.use(passport.initialize());
 
-router.post('/', passport.authenticate('local', { failureRedirect: 'search',
-                                                  successRedirect: 'about' }));
+router.post('/', passport.authenticate('local', { failureRedirect: 'about.html',
+                                                  successRedirect: 'fa17g09/' }));
 
 router.get('/',
   function(req, res){
