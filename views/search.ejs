@@ -17,11 +17,27 @@
         Sort results by:
         <form action="<%= fa17g09_env_prefix %>/search" method="post" class="form-inline">
                 <select name="sortOption">
-                    <option value="numBedrooms DESC">Number of Bedrooms (descending)</option>
-                    <option value="numBedrooms ASC">Number of Bedrooms (ascending)</option>
+                    <%
+                    var optionsMap = new Map();
+                    optionsMap.set("price ASC", "Price (low to high)");
+                    optionsMap.set("price DESC", "Price (high to low)");
+                    optionsMap.set("numBedrooms DESC", "Number of Bedrooms (descending)");
+                    optionsMap.set("numBedrooms ASC", "Number of Bedrooms (ascending)");
+
+                    for (var [key, value] of optionsMap) {
+                        var selected = "";
+                        if (locals.previousSortOption) {
+                            if  (locals.previousSortOption == key){
+                                selected = 'selected="selected"';
+                            }
+                        }
+
+                        %><option value="<%= key %>" <%= selected %>><%= value %></option><%
+                    }
+                    %>
                 </select>
-                <input name="city" type="hidden" value="<% if(locals.previousSearchString) { %><%=previousSearchString %><%}%>"/>
-            <input type="submit" name="Sort" class="btn btn-primary">
+                <input name="city" type="hidden" value="<% if (locals.previousSearchString) { %><%=previousSearchString %><%}%>"/>
+            <input type="submit" value="Sort" class="btn btn-primary">
         </form>
     </div>
 </section>
@@ -37,6 +53,7 @@
                 <div class="caption">
                     <p>City: <%= listing.city %> </p>
                     <p>State: <%= listing.state %> </p>
+                    <p>Price: <%= listing.price %> </p>
                     <p>Number of Bedrooms: <%= listing.numBedrooms %> </p>
                 </div>
             </div>
