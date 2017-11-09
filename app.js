@@ -13,6 +13,8 @@ var users = require('./routes/users');
 var search = require('./routes/search');
 var listings = require('./routes/listings');
 var filter = require('./routes/filter');
+var sendMessages = require('./routes/sendMessages');
+var getMessages = require('./routes/getMessages');
 var login = require('./routes/login');
 var signup = require('./routes/signup');
 var models = require('./models');
@@ -85,6 +87,8 @@ app.use('/users', users);
 app.use('/search', search);
 app.use('/listings', listings);
 app.use('/filter', filter);
+app.use('/sendMessages', sendMessages);
+app.use('/getMessages', getMessages);
 app.use('/login', login);
 app.use('/signup', signup);
 

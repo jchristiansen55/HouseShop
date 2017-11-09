@@ -6,7 +6,7 @@ const Op = models.sequelize.Op;
 
 /* POST search page
    '/' is NOT Home page
-*/
+*/ 
 router.post('/', function(req, res, next) {
     var queryBuilderArguments = {searchString : req.body.city};
     if(req.body.sortOption) {
