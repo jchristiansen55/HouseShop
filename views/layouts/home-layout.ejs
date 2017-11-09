@@ -27,6 +27,52 @@
         <!-- custom stylesheet -->
         <link rel="stylesheet" href="<%= fa17g09_env_prefix %>/stylesheets/main.css"> 
     </head>
+
+    <script type="text/javascript">
+        $('.form').find('input, textarea').on('keyup blur focus', function (e) {
+  
+  var $this = $(this),
+      label = $this.prev('label');
+
+      if (e.type === 'keyup') {
+            if ($this.val() === '') {
+          label.removeClass('active highlight');
+        } else {
+          label.addClass('active highlight');
+        }
+    } else if (e.type === 'blur') {
+        if( $this.val() === '' ) {
+            label.removeClass('active highlight'); 
+            } else {
+            label.removeClass('highlight');   
+            }   
+    } else if (e.type === 'focus') {
+      
+      if( $this.val() === '' ) {
+            label.removeClass('highlight'); 
+            } 
+      else if( $this.val() !== '' ) {
+            label.addClass('highlight');
+            }
+    }
+
+});
+
+$('.tab a').on('click', function (e) {
+  
+  e.preventDefault();
+  
+  $(this).parent().addClass('active');
+  $(this).parent().siblings().removeClass('active');
+  
+  target = $(this).attr('href');
+
+  $('.tab-content > div').not(target).hide();
+  
+  $(target).fadeIn(600);
+  
+});
+    </script>
     <body>
         <!--[if lt IE 8]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
@@ -50,7 +96,7 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Contact</a>
-                    </li>
+                    </li> 
                     <li class="nav-item">
                         <!-- <a class="nav-link" href="#">Sign In</a> -->
                         <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">Sign In</button>
@@ -76,7 +122,12 @@
 
                 <div class="modal-body">
                     <div role="tabpanel">
-
+                        <!-- <div class="form">
+<ul class="tab-group">
+        <li class="tab testing"><a href="#signup">Sign Up</a></li>
+        <li class="tab"><a href="#login">Log In</a></li>
+      </ul>
+  </div> -->
                         <!-- Nav tabs -->
                         <ul class="nav nav-tabs" role="tablist">
                             <li role="presentation" class="active">
@@ -88,7 +139,9 @@
 
                             <li role="presentation">
                                 <!-- <a href="#SignUp" aria-controls="SignUp" role="tab" data-toggle="tab">Sign In</a> -->
-                                <button type="button" class="btn btn-light" href="#SignUp" aria-controls="SignUp" role="tab" data-toggle="tab">Light</button>
+                                <div class="divider"></div>
+                                 <button type="button" class="btn btn-secondary" href="#SignUp" aria-controls="SignUp" role="tab" data-toggle="tab">Login</button>
+                                <!-- <button type="button" class="btn btn-light" href="#SignUp" aria-controls="SignUp" role="tab" data-toggle="tab">Login</button> -->
                             </li>
                         </ul>
                                     <div class="row">
