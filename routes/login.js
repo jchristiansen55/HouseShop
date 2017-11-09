@@ -1,10 +1,8 @@
 var express = require('express');
-var router = express.Router();
 var passport = require('passport');
-var LocalStrategy = require('../config/local-strategy').Strategy;
 var models = require('../models');
+var router = express.Router();
 
-router.use(passport.initialize());
 
 router.post('/', passport.authenticate('local', { failureRedirect: 'about.html',
                                                   successRedirect: 'fa17g09/' }));
@@ -14,4 +12,11 @@ router.get('/',
     res.render('tempLogin');
   });
 
+
+
+
+
+
 module.exports = router;
+
+

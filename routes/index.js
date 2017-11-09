@@ -8,7 +8,7 @@ var models = require('../models');
 router.get('/fa17g09', function(req, res, next) {
     //res.sendFile(path.join(__dirname + '/index.html'));
     res.locals.login = req.isAuthenticated();
-  console.log('Runn\n\n' + res.locals.login );
+  console.log('Runn\n\n' + req.user );
 
 
     models.Listing.findAll().then(function(listings) {
