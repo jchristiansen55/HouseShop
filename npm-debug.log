@@ -24,7 +24,7 @@
 14 verbose stack     at Process.ChildProcess._handle.onexit (internal/child_process.js:230:5)
 15 verbose pkgid express-test@0.0.0
 16 verbose cwd /home/rickygoals/Documents/CSC648/csc648-fall17-team09
-17 error Linux 3.16.0-4-amd64
+17 error Linux 4.9.0-4-amd64
 18 error argv "/usr/bin/node" "/usr/bin/npm" "start"
 19 error node v6.11.3
 20 error npm  v3.10.10
