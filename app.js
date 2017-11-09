@@ -10,8 +10,8 @@ var index = require('./routes/index');
 var users = require('./routes/users');
 var search = require('./routes/search');
 var filter = require('./routes/filter');
-var messages = require('./routes/messages');
-var messages2 = require('./routes/messages2');
+var sendMessages = require('./routes/sendMessages');
+var getMessages = require('./routes/getMessages');
 var models = require('./models');
 var app = express();
 
@@ -57,8 +57,8 @@ app.use('/', index);
 app.use('/users', users);
 app.use('/search', search);
 app.use('/filter', filter);
-app.use('/messages', messages);
-app.use('/messages2', messages2);
+app.use('/sendMessages', sendMessages);
+app.use('/getMessages', getMessages);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
