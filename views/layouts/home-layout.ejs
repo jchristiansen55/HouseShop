@@ -7,10 +7,6 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-        <!-- Can do this in future?
-            Place favicon.ico and apple-touch-icon.png in the root directory -->
-            <!-- <link rel="apple-touch-icon" href="apple-touch-icon.png"> -->
-
         <!-- BOOTSTRAP -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
        
@@ -18,14 +14,14 @@
         <!-- NORMALIZE -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.min.css">
 
-        <!-- MODERNIZR -->
-        <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script> -->
-
         <!-- GOOGLE FONTS -->
         <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet">
 
         <!-- custom stylesheet -->
         <link rel="stylesheet" href="<%= fa17g09_env_prefix %>/stylesheets/main.css"> 
+
+        <!-- FONT AWESOME ICONS -->
+        <script src="https://use.fontawesome.com/c8878a39bb.js"></script>
     </head>
 
     <script type="text/javascript">
@@ -82,12 +78,14 @@ $('.tab a').on('click', function (e) {
         </div>
         <!-- NAV BAR -->
         <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-            <a class="navbar-brand" href="#">LOGO</a>
+            <a class="navbar-brand" href="#">
+                <img src="assets/logo-houseshop.svg" class="image-logo">
+            </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse nav-end" id="navbarCollapse">
-                <ul class="nav navbar-nav justify-content-end">
+                <ul class="nav navbar-nav justify-content-end text-centered">
                     <li class="nav-item">
                         <a class="nav-link" href="/about.html">About</a>
                     </li>

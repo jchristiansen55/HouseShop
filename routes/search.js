@@ -19,7 +19,7 @@ router.post('/', function(req, res, next) {
                     }
                 },
                 {
-    		        city: {
+                    city: {
                         [Op.like]: '%' + req.body.city + '%'
                     }
                 },
@@ -34,8 +34,8 @@ router.post('/', function(req, res, next) {
                     }
                 }
             ]
-  		}
-	}).then(function(listings) {
+        }
+    }).then(function(listings) {
         res.render('search', { // render the Search/Browse page
             title: 'Browse Listings',
             listings: listings
@@ -57,6 +57,33 @@ router.post('/', function(req, res, next) {
     });
 });
 
+/**
+    POST to Listing page when user clicks on a thumbnail
+*/
+// router.post('/listing', function(req, res, next) {
+//     models.Listing.findAll({
+//   		where: {
+//             city: req.body.city,
+
+//   		}
+// 	}).then(function(listings) {
+//         res.render('listing', { // render the Listing page
+//             title: 'Browse -> listing',
+//             listings: listings
+//         });
+//     });
+// });
+
+router.post('/listing', function(req, res) {
+  var string = 'test1'; // remove this?
+  // var string = encodeURIComponent('test1'); // remove this?
+  res.redirect('/?listing_id=' + string);
+});
+
+
+/**
+    Show All Listings
+*/
 router.get('/', function(req, res, next) {
     //res.sendFile(path.join(__dirname + '/index.html'));
     models.Listing.findAll()
