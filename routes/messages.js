@@ -16,9 +16,46 @@ con.connect(function(err) {
 });
 
 const Op = models.sequelize.Op;
+// replace kevin with unique id from nemi and henry
+// router.post('/', function(req, res, next) {
+//     var sql = "INSERT INTO messages2 (sender, content, conversation_id) VALUES ('Kevin', '"+ req.body.messages +"', 127)";
+//     con.query(sql, function (err, result) {
+//         if (err) throw err;
+//         console.log("1 record inserted");
+//     });
+// });
+
+// router.get('/', function(req, res, next) {
+//     res.render('messages');
+//     var sql = "SELECT sender, content FROM messages2 WHERE conversation_id='127'";
+//     con.query(sql, function (err, result, fields) {
+//         if (err) throw err;
+//         console.log(result);
+//       });
+// });
+
+
+// router.post('/', function(req, res, next) {
+//     var sql = "INSERT INTO messages3 (sender, receiver, content) VALUES ('Kevin', 'Steve', '"+ req.body.messages +"')";
+//     con.query(sql, function (err, result) {
+//         if (err) throw err;
+//         console.log("1 record inserted");
+//     });
+// });
+
+// router.get('/', function(req, res, next) {
+//     var sql = "SELECT sender, content, receiver FROM messages3 WHERE sender='Kevin' && receiver='Steve'";
+//     con.query(sql, function (err, result, fields) {
+//         if (err) throw err;
+//         console.log(result);
+//         res.render('messages', {
+//             results: result
+//         });
+//       });
+// });
 
 router.post('/', function(req, res, next) {
-    var sql = "INSERT INTO messages2 (sender, content, conversation_id) VALUES ('Kevin', '"+ req.body.messages +"', 127)";
+    var sql = "INSERT INTO messages4 (sender, receiver, content) VALUES ('Kevin', 'Steve', '"+ req.body.messages +"')";
     con.query(sql, function (err, result) {
         if (err) throw err;
         console.log("1 record inserted");
@@ -26,14 +63,14 @@ router.post('/', function(req, res, next) {
 });
 
 router.get('/', function(req, res, next) {
-    res.render('messages');
-    var sql = "SELECT sender, content FROM messages2 WHERE conversation_id='127'";
+    var sql = "SELECT sender, content, receiver FROM messages4 WHERE sender='Kevin' && receiver='Steve' OR (receiver='Kevin' && sender='Steve') ";
     con.query(sql, function (err, result, fields) {
         if (err) throw err;
         console.log(result);
+        res.render('messages', {
+            results: result
+        });
       });
 });
-
-
 
 module.exports = router;
