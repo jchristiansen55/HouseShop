@@ -6,18 +6,11 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-        <!-- Can do this in future?
-            Place favicon.ico and apple-touch-icon.png in the root directory -->
-            <!-- <link rel="apple-touch-icon" href="apple-touch-icon.png"> -->
-
         <!-- BOOTSTRAP -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
 
         <!-- NORMALIZE -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.min.css">
-
-        <!-- MODERNIZR -->
-        <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script> -->
 
         <!-- GOOGLE FONTS -->
         <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet">
@@ -46,16 +39,24 @@
                     <a class="navbar-brand col-lg-1 col-md-1 col-sm-1 col-1" href="/">
                         <img src="assets/logo-houseshop.svg" class="image-logo">
                     </a>
-                    <button class="navbar-toggler col-lg-1 col-md-1 col-sm-1 col-2" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <button class="navbar-toggler col-sm-1" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
-                    <div class="searchbar col-lg-7 col-md-7 col-sm-7">
+                    <div class="searchbar col-lg-7 col-md-6 col-sm-12">
                         <form action="/search" method="post" class="form-inline">
-                            <input name="city" type="query" class="form-control col-lg-10 col-md-10 col-sm-10" id="search" placeholder="Enter address, zip code, or city ..." autocomplete="off"  />
-                            <input type="submit" value="Search" class="form-control btn btn-primary w100 col-lg-2 col-md-2 col-sm-2">                                
+                            <div class="col-lg-12">
+                                <div class="input-group">
+                                    <input type="query" name="city" id="search" class="form-control" placeholder="Enter address, zip code, or city ..." aria-label="Search for..." />
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-primary" type="submit">
+                                            <i class="fa fa-search" aria-hidden="true"></i>
+                                        </button>
+                                    </span>
+                                </div>      
+                            </div>                      
                         </form>
                     </div>
-                    <div class="collapse navbar-collapse nav-end col-lg-4 col-md-4 col-sm-4" id="navbarCollapse">
+                    <div class="collapse navbar-collapse nav-end col-lg-4 col-md-5 col-sm-12" id="navbarCollapse">
                         <ul class="nav navbar-nav justify-content-end">
                             <li class="nav-item">
                                 <a class="nav-link" href="/about.html">About</a>

@@ -13,10 +13,16 @@
 
     <div class="container">
         <div class="row">
-            <div class="col-lg-7 div-centered searchbar">
+            <div class="searchbar div-centered col-lg-7">
                 <form action="<%= fa17g09_env_prefix %>/search" method="post" class="form-inline">
-                    <input name="city" type="query" class="form-control col-lg-10 col-md-10 col-sm-10" id="search" placeholder="Enter address, zip code, or city ..." autocomplete="off"  />
-                    <input type="submit" value="Search" class="form-control btn btn-primary w100 col-lg-2 col-md-2 col-sm-2">                                
+                    <div class="input-group col-12">
+                        <input type="query" name="city" id="search" class="form-control" placeholder="Enter address, zip code, or city ..." aria-label="Search for..." />
+                        <span class="input-group-btn">
+                            <button class="btn btn-primary" type="submit">
+                                <i class="fa fa-search" aria-hidden="true"></i>
+                            </button>
+                        </span>
+                    </div>      
                 </form>
             </div>
         </div>
