@@ -18,7 +18,10 @@
     <section class="container">
         <% for(var i = 0; i < results.length; i++) { %>
             <section class="container">
-                <p>Sender: <%= results[i].sender %> </p> 
+                <p>Sender: <%= results[i].sender %> </p>
+                <% if(results.length <= 1) { %>
+                    <p>&nbsp Message: <%= results[results.length-1].content %>
+                <% } %>
                 <%for(var j = i+1; j < results.length; j++) { %>
                     <div class="container">
                         <%if(results[i].sender == results[j].sender) { %>

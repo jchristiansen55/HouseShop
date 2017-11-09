@@ -17,14 +17,32 @@ con.connect(function(err) {
 
 const Op = models.sequelize.Op;
 
-var userId = "Richard";
-
 router.post('/', function(req, res, next) {
-    var sql = "INSERT INTO Messages (sender, receiver, content) VALUES ('" + userId +"', '" + req.body.usr +"', '"+ req.body.messages +"')";
-    con.query(sql, function (err, result) {
-        if (err) throw err;
-        console.log("1 record inserted");
+    var userId;
+    
+    if(req.cookies.UserState == undefined) {
+    req.cookies.UserState = 0;
+    userId = 0;
+    } else {
+    userId = req.cookies.UserState;
+    }  
+      console.log(userId);
+    //var sql = "INSERT INTO Messages (sender, receiver, content) VALUES ('" + userId +"', '" + req.body.usr +"', '"+ req.body.messages +"')";
+
+    var message = {
+        sender: userId,
+        receiver: req.body.usr,
+        content: req.body.messages,
+    };
+    models.Message.create(message).then(function(newUser) {
+        console.log("ran");
     });
+    
+
+    // con.query(sql, function (err, result) {
+    //     if (err) throw err;
+    //     console.log("1 record inserted");
+    // });
 });
 
 router.get('/', function(req, res, next) {
