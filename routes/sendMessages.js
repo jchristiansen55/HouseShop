@@ -7,7 +7,7 @@ var con = mysql.createConnection({
   host: "127.0.0.1",
   user: "root",
   password: "",
-  database: "database_test"
+  database: "fa17g09_development"
 });
 
 con.connect(function(err) {
@@ -20,7 +20,7 @@ const Op = models.sequelize.Op;
 var userId = "Richard";
 
 router.post('/', function(req, res, next) {
-    var sql = "INSERT INTO messages4 (sender, receiver, content) VALUES ('" + userId +"', '" + req.body.usr +"', '"+ req.body.messages +"')";
+    var sql = "INSERT INTO Messages (sender, receiver, content) VALUES ('" + userId +"', '" + req.body.usr +"', '"+ req.body.messages +"')";
     con.query(sql, function (err, result) {
         if (err) throw err;
         console.log("1 record inserted");

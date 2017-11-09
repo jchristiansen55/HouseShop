@@ -9,7 +9,7 @@ var con = mysql.createConnection({
     host: "127.0.0.1",
     user: "root",
     password: "",
-    database: "database_test"
+    database: "fa17g09_development"
   });
   
   con.connect(function(err) {
@@ -20,7 +20,7 @@ var con = mysql.createConnection({
 var userId = "Steve";
 
 router.get('/', function(req, res, next) {
-  var sql = "SELECT sender, content FROM messages4 WHERE receiver='"+ userId +"' ORDER BY sender";
+  var sql = "SELECT sender, content FROM Messages WHERE receiver='"+ userId +"' ORDER BY sender";
   con.query(sql, function (err, result, fields) {
       if (err) throw err;
       var obj;
