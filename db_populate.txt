@@ -4,7 +4,6 @@
 
 /*
 var firstListing = models.Listing.build({
-    listingID: 2,
     price: 12,
     state: 'CA',
     city: 'Vancouver',
@@ -12,7 +11,7 @@ var firstListing = models.Listing.build({
     address: '12a 0xs93ksj',
     numBedrooms: 8,
     numBathrooms: 900,
-    square_feet: 102938,
+    squareFeet: 102938,
     description: 'is that a real place?',
     thumbnail: 'assets/img2.jpg'
 });
@@ -26,7 +25,6 @@ firstListing.save().then(function(err) {
 });
 
 var secondListing = models.Listing.build({
-    listingID: 3,
     price: 12,
     state: 'CA',
     city: 'San Jose',
@@ -34,7 +32,7 @@ var secondListing = models.Listing.build({
     address: '12a 0xs93ksj',
     numBedrooms: 8,
     numBathrooms: 900,
-    square_feet: 102938,
+    squareFeet: 102938,
     description: 'home sweet home',
     thumbnail: 'assets/img3.jpg'
 });
@@ -48,7 +46,6 @@ secondListing.save().then(function(err) {
 });
 
 var thirdListing = models.Listing.build({
-    listingID: 4,
     price: 12,
     state: 'CA',
     city: 'San Lorenzo',
@@ -56,7 +53,7 @@ var thirdListing = models.Listing.build({
     address: '12a 0xs93ksj',
     numBedrooms: 8,
     numBathrooms: 900,
-    square_feet: 102938,
+    squareFeet: 102938,
     description: 'my oh my',
     thumbnail: 'assets/img4.jpg'
 });
@@ -70,7 +67,6 @@ thirdListing.save().then(function(err) {
 });
 
 var fourthListing = models.Listing.build({
-    listingID: 6,
     price: 120,
     state: 'NY',
     city: 'Albany',
@@ -78,7 +74,7 @@ var fourthListing = models.Listing.build({
     address: '12 Holloway Avenue',
     numBedrooms: 1000000,
     numBathrooms: 900,
-    square_feet: 102,
+    squareFeet: 102,
     description: 'impossebreu',
     thumbnail: 'assets/img2.jpg'
 });

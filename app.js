@@ -1,4 +1,6 @@
+var cookieSession = require('cookie-session')
 var express = require('express');
+
 var expressLayouts = require('express-ejs-layouts');
 var path = require('path');
 var favicon = require('serve-favicon');
@@ -9,12 +11,16 @@ var bodyParser = require('body-parser');
 var index = require('./routes/index');
 var users = require('./routes/users');
 var search = require('./routes/search');
+var listings = require('./routes/listings');
 var filter = require('./routes/filter');
 var sendMessages = require('./routes/sendMessages');
 var getMessages = require('./routes/getMessages');
+var login = require('./routes/login');
+var signup = require('./routes/signup');
 var models = require('./models');
+var user  = require('./models/user.js');
 var app = express();
-
+var passport = require('passport');
 
 
 // create sequelize object
@@ -28,6 +34,12 @@ var sequelize = new Sequelize('fa17g09', 'fa17g09', 'csc648fa17g09', {
     dialect: 'mysql'
 });
 
+
+
+
+
+
+
 //Checking connection status
 var test = sequelize.authenticate()
     .then(function () {
@@ -39,6 +51,13 @@ var test = sequelize.authenticate()
     .done();
 
 
+
+
+
+
+
+var auth  = require('./config/auth.js')(app, models);
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -48,19 +67,35 @@ app.set('view engine', 'ejs');
 app.use(expressLayouts);
 
 app.use(logger('dev'));
+
+app.use(express.static(path.join(__dirname, 'public')));
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(cookieParser('MySecret'));
+app.use(cookieSession({ 
+  key    : 'MySecret',
+  secret : 'MySecret',
+  cookie : {
+    maxAge: 300000000
+  }
+}));
 
 app.use('/', index);
 app.use('/users', users);
 app.use('/search', search);
+app.use('/listings', listings);
 app.use('/filter', filter);
 app.use('/sendMessages', sendMessages);
 app.use('/getMessages', getMessages);
+app.use('/login', login);
+app.use('/signup', signup);
 
 // catch 404 and forward to error handler
+
+
+
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
   err.status = 404;
@@ -97,6 +132,8 @@ if (app.get('env') == 'production') {
 
 app.locals.fa17g09_env_prefix = fa17g09_env_prefix;
 console.log('Running using ' + app.get('env') + ' profile.');
+
+
 
 
 module.exports = app;
