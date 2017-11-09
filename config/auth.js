@@ -1,8 +1,14 @@
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
-var models = require('../models');
 
-passport.use(new LocalStrategy( {
+module.exports = function(app, models){
+
+	
+	app.use(passport.initialize());
+	app.use(passport.session());
+
+	// passport config
+	passport.use(new LocalStrategy( {
     usernameField: 'email',
     passwordField: 'password',
     session: false
@@ -15,15 +21,15 @@ passport.use(new LocalStrategy( {
             if (!user) { 
                 return done(null, false); 
             }
-      
-            passport.serializeUser(function(user, done) {
-                done(null, user.id);
-            });
+      		return done(null, user);
+    		});
+  		}
+		)); 
+	passport.serializeUser(function(user, done) {
+		console.log('serializing user: ');
+    	console.log(user);
+	 	done(null, user.id);
+	});
 
-
-      return done(null, user);
-    });
-  }
-)); 
-
-
+	
+};
