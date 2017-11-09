@@ -3,6 +3,7 @@ var LocalStrategy = require('passport-local').Strategy;
 
 module.exports = function(app, models){
 
+	
 	app.use(passport.initialize());
 	app.use(passport.session());
 
@@ -28,13 +29,6 @@ module.exports = function(app, models){
 		console.log('serializing user: ');
     	console.log(user);
 	 	done(null, user.id);
-	});
-
-	passport.deserializeUser(function(id, done) {
-	  user.findById(id, function(err, user) {
-	  	console.log('no im not serial');
-	    done(err, user);
-	  });
 	});
 
 	

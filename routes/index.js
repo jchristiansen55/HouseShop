@@ -5,11 +5,26 @@ var models = require('../models');
 /* GET home page. */
 
 
+var User = require('../models/user');
+
+
+var isAuthenticated = function(req,res,next){
+	console.log('con log' + req.session.passport.user);
+	if(req.user) {
+		return next();
+	} else {
+		return res.status(401).json({
+			error: 'User not authenticated'
+		});
+	}
+};
+
 router.get('/fa17g09', function(req, res, next) {
     //res.sendFile(path.join(__dirname + '/index.html'));
-    res.locals.login = req.isAuthenticated();
-  console.log('Runn\n\n' + req.user );
-
+   
+  console.log('Runn\n\n' + req.isAuthenticated());
+  let cookiename = 'cookieName';
+	console.log(req.cookies) ;
 
     models.Listing.findAll().then(function(listings) {
         res.render('index', {

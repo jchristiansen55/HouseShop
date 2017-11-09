@@ -1,4 +1,6 @@
+var cookieSession = require('cookie-session')
 var express = require('express');
+
 var expressLayouts = require('express-ejs-layouts');
 var path = require('path');
 var favicon = require('serve-favicon');
@@ -30,6 +32,12 @@ var sequelize = new Sequelize('fa17g09', 'fa17g09', 'csc648fa17g09', {
     dialect: 'mysql'
 });
 
+
+
+
+
+
+
 //Checking connection status
 var test = sequelize.authenticate()
     .then(function () {
@@ -39,7 +47,6 @@ var test = sequelize.authenticate()
         console.log("LORD HELP ME I CAN'T REACH THE DATABASE!");
     })
     .done();
-
 
 
 
@@ -60,15 +67,17 @@ app.use(expressLayouts);
 app.use(logger('dev'));
 
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(cookieParser());
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-
-app.use(require('express-session')({
-  secret: 'keyboard cat',
-  resave: true,
-  saveUninitialized: true
+app.use(cookieParser('MySecret'));
+app.use(cookieSession({ 
+  key    : 'MySecret',
+  secret : 'MySecret',
+  cookie : {
+    maxAge: 300000000
+  }
 }));
 
 app.use('/', index);

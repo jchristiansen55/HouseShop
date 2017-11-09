@@ -4,8 +4,13 @@ var models = require('../models');
 var router = express.Router();
 
 
-router.post('/', passport.authenticate('local', { failureRedirect: 'about.html',
-                                                  successRedirect: 'fa17g09/' }));
+router.post('/', passport.authenticate('local', { failureRedirect: 'about.html'}),
+		function(req, res){
+		console.log(req.user.id);
+			
+    res.cookie('UserState', req.user.id);
+			res.redirect('fa17g09/');
+		});
 
 router.get('/',
   function(req, res){
