@@ -131,6 +131,14 @@ p {
     text-align: center;
 }
 
+.nav a {
+    font-size: 1.25rem;
+}
+
+.nav-item {
+    padding: 0 0.5rem;
+}
+
 .navbar-toggler {
     padding: .25rem;
 }
