@@ -23,7 +23,7 @@ router.get('/fa17g09', function(req, res, next) {
     //res.sendFile(path.join(__dirname + '/index.html'));
    
   console.log('Runn\n\n' + req.isAuthenticated());
-  let cookiename = 'cookieName';
+  var cookiename = 'cookieName';
 	console.log(req.cookies) ;
 
     models.Listing.findAll().then(function(listings) {

@@ -12,6 +12,7 @@
     </div>
 </section>
 
+
 <section class="sort row">
     <div class="btn-group div-centered">
         Sort results by:
@@ -25,7 +26,6 @@
                     optionsMap.set("numBedrooms ASC", "Number of Bedrooms (ascending)");
                     optionsMap.set("squareFeet DESC", "SqFt (descending)");
                     optionsMap.set("squareFeet ASC", "SqFt (ascending)");
-
                     for (var [key, value] of optionsMap) {
                         var selected = "";
                         if (locals.previousSortOption) {
@@ -33,10 +33,8 @@
                                 selected = 'selected="selected"';
                             }
                         }
-
-                        %><option value="<%= key %>" <%= selected %>><%= value %></option><%
-                    }
-                    %>
+                        %><option value="<%= key %>" <%= selected %>><%= value %></option>
+                    <%}%>
                 </select>
                 <input name="city" type="hidden" value="<% if (locals.previousSearchString) { %><%=previousSearchString %><%}%>"/>
             <input type="submit" value="Sort" class="btn btn-primary">
@@ -44,21 +42,37 @@
     </div>
 </section>
 
-<h1><%= title %></h1>
-<p>Welcome to <%= title %></p>
+
 
 <section class="row">
     <div class="results">
         <%listings.forEach(function(listing) { %>
-            <div class="thumbnail">
-                <img src=<%= listing.thumbnail %> class="img-responsive" />
-                <div class="caption">
-                    <p>City: <%= listing.city %> </p>
-                    <p>State: <%= listing.state %> </p>
-                    <p>Price: <%= listing.price %> </p>
-                    <p>Number of Bedrooms: <%= listing.numBedrooms %> </p>
+            <a href="/listing">
+                <div class="thumbnail">
+                    <img src=<%= listing.thumbnail %> class="img-responsive" />
+                    <div class="caption">
+<!--                         <p>City: <%= listing.city %> </p>
+                        <p>State: <%= listing.state %> </p>
+                        <p>Price: <%= listing.price %> </p>
+                        <p>Number of Bedrooms: <%= listing.numBedrooms %> </p> -->
+                        <div class="listing-address">
+                            <h4>$875,000 <%= listing.price %> </h4>
+                            <p><%= listing.address %></p>
+                            <p><%= listing.city %>, <%= listing.state %></p>
+                        </div>
+                        <div class="listing-features">
+                            <h5>
+                                <%= listing.numBedrooms %> 
+                                <i class="fa fa-bed" aria-hidden="true"></i>
+                            </h5>
+                            <h5>
+                                5 
+                                <i class="fa fa-bath" aria-hidden="true"></i>
+                            </h5>
+                        </div>
+                    </div>
                 </div>
-            </div>
+            </a>
         <% }) %>
     </div>
 </section>
