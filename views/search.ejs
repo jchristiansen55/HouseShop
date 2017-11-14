@@ -11,36 +11,54 @@
         </form>
     </div>
 </section>
-    
-<!-- <h1><%= title %></h1>
-<p>Welcome to <%= title %></p> -->
+
+<section class="sort row">
+    <div class="btn-group div-centered">
+        Sort results by:
+        <form action="<%= fa17g09_env_prefix %>/search" method="post" class="form-inline">
+                <select name="sortOption">
+                    <%
+                    var optionsMap = new Map();
+                    optionsMap.set("price ASC", "Price (low to high)");
+                    optionsMap.set("price DESC", "Price (high to low)");
+                    optionsMap.set("numBedrooms DESC", "Number of Bedrooms (descending)");
+                    optionsMap.set("numBedrooms ASC", "Number of Bedrooms (ascending)");
+                    optionsMap.set("squareFeet DESC", "SqFt (descending)");
+                    optionsMap.set("squareFeet ASC", "SqFt (ascending)");
+
+                    for (var [key, value] of optionsMap) {
+                        var selected = "";
+                        if (locals.previousSortOption) {
+                            if  (locals.previousSortOption == key){
+                                selected = 'selected="selected"';
+                            }
+                        }
+
+                        %><option value="<%= key %>" <%= selected %>><%= value %></option><%
+                    }
+                    %>
+                </select>
+                <input name="city" type="hidden" value="<% if (locals.previousSearchString) { %><%=previousSearchString %><%}%>"/>
+            <input type="submit" value="Sort" class="btn btn-primary">
+        </form>
+    </div>
+</section>
+
+<h1><%= title %></h1>
+<p>Welcome to <%= title %></p>
 
 <section class="row">
     <div class="results">
-        <%listings.forEach(function(listing) { %>   
-            <!-- <a href="/listing/<%= listing.id %>"> -->
-            <a href="/listing">
-                <div class="thumbnail">
-                    <img src=<%= listing.thumbnail %> class="img-responsive" />
-                    <div class="caption">
-                        <div class="listing-address">
-                            <h4>$875,000</h4>
-                            <p><%= listing.address %></p>
-                            <p><%= listing.city %>, <%= listing.state %></p>
-                        </div>
-                        <div class="listing-features">
-                            <h5>
-                                <%= listing.numBedrooms %> 
-                                <i class="fa fa-bed" aria-hidden="true"></i>
-                            </h5>
-                            <h5>
-                                5 
-                                <i class="fa fa-bath" aria-hidden="true"></i>
-                            </h5>
-                        </div>
-                    </div>
-                </div>                
-            </a>
+        <%listings.forEach(function(listing) { %>
+            <div class="thumbnail">
+                <img src=<%= listing.thumbnail %> class="img-responsive" />
+                <div class="caption">
+                    <p>City: <%= listing.city %> </p>
+                    <p>State: <%= listing.state %> </p>
+                    <p>Price: <%= listing.price %> </p>
+                    <p>Number of Bedrooms: <%= listing.numBedrooms %> </p>
+                </div>
+            </div>
         <% }) %>
     </div>
 </section>

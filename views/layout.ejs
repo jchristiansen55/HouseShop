@@ -46,12 +46,11 @@
 						<form action="/search" method="post" class="form-inline">
 							<div class="col-lg-12">
 								<div class="input-group">
-									<input type="query" name="city" id="search" class="form-control" placeholder="Enter address, zip code, or city ..." aria-label="Search for..." />
-									<span class="input-group-btn">
-										<button class="btn btn-primary" type="submit">
+                                    <input name="city" type="query" class="form-control col-lg-10 col-md-10 col-sm-10" id="search" placeholder="Enter address, zip code, or city ..." autocomplete="off" value="<% if (locals.previousSearchString) { %><%=previousSearchString %><%}%>" />
+<span class="input-group-btn">
+									<button class="btn btn-primary" type="submit">
 											<i class="fa fa-search" aria-hidden="true"></i>
-										</button>
-									</span>
+									</button>
 								</div>      
 							</div>                      
 						</form>
@@ -216,4 +215,3 @@
 		<script src="https://www.google-analytics.com/analytics.js" async defer></script>
 	</body>
 </html>
-
