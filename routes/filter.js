@@ -4,9 +4,10 @@ var models = require('../models');
 
 const Op = models.sequelize.Op;
 
-/* POST search page
+/* POST to current page
    '/' is NOT Home page
 */
+// TODO: redirect to /search, not /filter
 router.post('/', function(req, res, next) {
     //res.sendFile(path.join(__dirname + '/index.html'));
     models.Listing.findAll({
@@ -14,14 +15,15 @@ router.post('/', function(req, res, next) {
             [Op.or]: [
                 {
                     numBedrooms: {
-                        [Op.like]: '%' + req.body.taskOption + '%'
+                        [Op.gte]: req.body.taskOption
+                        // [Op.gte]: '%' + req.body.taskOption + '%'
                     }
                 }
             ]
   		}
     })
     .then(function(listings) {
-        res.render('filter', { // render the Search/Browse page
+        res.render('search', { // render the Search/Browse page
             title: 'Filtered Listings',
             listings: listings
         });

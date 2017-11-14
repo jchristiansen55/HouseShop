@@ -23,13 +23,17 @@ router.post('/', function(req, res) {
     };
 
     models.Listing.create(listing).then(function(listing) {
-	       let imageFile = req.files.imageFile;
+	       var imageFile = req.files.imageFile;
 
            var media = models.Media.create({
                 ListingId: listing.id,
                 imageFilePath: 'assets/' + req.files.imageFile.name
            });
 
+// =======
+    // models.Listing.create({ address: req.body.Address, thumbnail: 'assets/' + req.files.imageFile.name, city: req.body.City,  state: req.body.State,  numBedrooms: req.body.numBedrooms}).then(function() {
+	       // var imageFile = req.files.imageFile;
+// >>>>>>> horizontal_prototype_listing_page
 	       imageFile.mv(__dirname + '/../public/assets/' + req.files.imageFile.name, function(err) {
     	          if (err){
       		              return res.status(500).send(err);
@@ -37,7 +41,7 @@ router.post('/', function(req, res) {
 	       });
 
 
-           let imageFile2 = req.files.imageFile2;
+           var imageFile2 = req.files.imageFile2;
 
            var media2 = models.Media.create({
                ListingId: listing.id,

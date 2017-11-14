@@ -9,7 +9,8 @@ module.exports = function(sequelize, DataTypes) {
     address: DataTypes.STRING,
     numBedrooms: DataTypes.INTEGER,
     numBathrooms: DataTypes.FLOAT,
-    squareFeet: DataTypes.INTEGER,
+    // squareFeet: DataTypes.INTEGER,
+    // comment out bc error: Unhandled rejection SequelizeDatabaseError: Unknown column ‘squareFeet’ in ‘field list’
     description: DataTypes.STRING
 });
 

@@ -13,6 +13,7 @@ var users = require('./routes/users');
 var search = require('./routes/search');
 var listings = require('./routes/listings');
 var filter = require('./routes/filter');
+var listing = require('./routes/listing');
 var sendMessages = require('./routes/sendMessages');
 var getMessages = require('./routes/getMessages');
 var login = require('./routes/login');
@@ -34,12 +35,6 @@ var sequelize = new Sequelize('fa17g09', 'fa17g09', 'csc648fa17g09', {
     dialect: 'mysql'
 });
 
-
-
-
-
-
-
 //Checking connection status
 var test = sequelize.authenticate()
     .then(function () {
@@ -49,12 +44,6 @@ var test = sequelize.authenticate()
         console.log("LORD HELP ME I CAN'T REACH THE DATABASE!");
     })
     .done();
-
-
-
-
-
-
 
 var auth  = require('./config/auth.js')(app, models);
 
@@ -87,14 +76,13 @@ app.use('/users', users);
 app.use('/search', search);
 app.use('/listings', listings);
 app.use('/filter', filter);
+app.use('/listing', listing); // need this for individual listing??
 app.use('/sendMessages', sendMessages);
 app.use('/getMessages', getMessages);
 app.use('/login', login);
 app.use('/signup', signup);
 
 // catch 404 and forward to error handler
-
-
 
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
@@ -132,8 +120,5 @@ if (app.get('env') == 'production') {
 
 app.locals.fa17g09_env_prefix = fa17g09_env_prefix;
 console.log('Running using ' + app.get('env') + ' profile.');
-
-
-
 
 module.exports = app;
