@@ -5,19 +5,6 @@ var mysql = require('mysql');
 
 const Op = models.sequelize.Op;
 
-var con = mysql.createConnection({
-    host: "127.0.0.1",
-    user: "root",
-    password: "",
-    database: "fa17g09_development"
-  });
-  
-  con.connect(function(err) {
-    if (err) throw err;
-    console.log("Connected to messages!");
-  });
-
-
 router.get('/', function(req, res, next) {
   var userId;
 

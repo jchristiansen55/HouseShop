@@ -3,18 +3,6 @@ var router = express.Router();
 var models = require('../models');
 var mysql = require('mysql');
 
-var con = mysql.createConnection({
-  host: "127.0.0.1",
-  user: "root",
-  password: "",
-  database: "fa17g09_development"
-});
-
-con.connect(function(err) {
-  if (err) throw err;
-  console.log("Connected to messages!");
-});
-
 const Op = models.sequelize.Op;
 
 router.post('/', function(req, res, next) {
