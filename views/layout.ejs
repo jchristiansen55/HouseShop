@@ -16,7 +16,7 @@
 		<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet">
 
 		<!-- custom stylesheet -->
-		<link rel="stylesheet" href="stylesheets/main.css"> 
+		<link rel="stylesheet" href="stylesheets/main.css">
 
 		<!-- FONT AWESOME ICONS -->
 		<script src="https://use.fontawesome.com/c8878a39bb.js"></script>
@@ -43,7 +43,7 @@
 						<span class="navbar-toggler-icon"></span>
 					</button>
 					<div class="searchbar col-lg-7 col-md-6 col-sm-12">
-						<form action="/search" method="post" class="form-inline">
+						<form action="<%= fa17g09_env_prefix %>/search" method="post" class="form-inline">
 							<div class="col-lg-12">
 								<div class="input-group">
                                     <input name="city" type="query" class="form-control col-lg-10 col-md-10 col-sm-10" id="search" placeholder="Enter address, zip code, or city ..." autocomplete="off" value="<% if (locals.previousSearchString) { %><%=previousSearchString %><%}%>" />
@@ -51,8 +51,8 @@
 									<button class="btn btn-primary" type="submit">
 											<i class="fa fa-search" aria-hidden="true"></i>
 									</button>
-								</div>      
-							</div>                      
+								</div>
+							</div>
 						</form>
 					</div>
 					<div class="collapse navbar-collapse nav-end col-lg-4 col-md-5 col-sm-12" id="navbarCollapse">
@@ -79,8 +79,8 @@
 		<!-- END HEADER CONTAINER -->
 
 		<!-- MAIN CONTENT -->
-		<div id= "main" class="main container-fluid">    
-			<%- body %> 
+		<div id= "main" class="main container-fluid">
+			<%- body %>
 			 <!-- Modal -->
 	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 		<div class="modal-dialog">
@@ -142,14 +142,14 @@
 										</div>
 									</div>
 									<div class="center-terms">
-									<input id="checkBox" type="checkbox"  <p>I agree to the terms </p>  
+									<input id="checkBox" type="checkbox"  <p>I agree to the terms </p>
 									</div>
 
 								</div>
-										
+
 
 								 <div class="col-xs-6 col-sm-6 col-md-6 center-sign_up_in">
-								<input type="submit" value="Sign Up" class="btn btn-info btn-block "> 
+								<input type="submit" value="Sign Up" class="btn btn-info btn-block ">
 								</div>
 
 							</form>
@@ -159,7 +159,7 @@
 							<div role="tabpanel" class="tab-pane" id="SignUp">
 							 <form role="form">
 								<div class="row">
-									<div class="col-xs-6 col-sm-6 col-md-6">      
+									<div class="col-xs-6 col-sm-6 col-md-6">
 										<div class="form-group">
 								<input type="text" name="User Name" id="user_name" class="form-control input-sm" placeholder="User Name">
 										</div>
@@ -174,7 +174,7 @@
 									</div>
 								 </div>
 								 <div class="col-xs-6 col-sm-6 col-md-6 center-sign_up_in">
-								<input type="submit" value="Login" class="btn btn-info btn-block"> 
+								<input type="submit" value="Login" class="btn btn-info btn-block">
 								</div>
 							</form>
 							 </div>
@@ -188,7 +188,7 @@
 				</div>
 			</div>
 		</div>
-	</div>       
+	</div>
 		</div>
 		<!-- END MAIN CONTENT -->
 
@@ -197,7 +197,7 @@
 			<footer>
 				<p class="float-right"><a href="#">Back to top</a></p>
 				<p>&copy; 2017 SFSU &middot; <a href="/about.html">About</a></p>
-			</footer>            
+			</footer>
 		</div>
 		<!-- END FOOTER -->
 
