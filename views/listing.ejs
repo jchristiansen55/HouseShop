@@ -2,7 +2,6 @@
 <section class="container listing-info">
     <div class="row">
         <!-- later on, should not have listings, should only have 1 listing, passed by id -->
-        <%listings.forEach(function(listing) { %>
         <div class="col-lg-6 col-md-6">
             <h1><%= listing.address %> </h1> 
             <h1>
@@ -18,7 +17,6 @@
                 <!-- will have this field numBathrooms later? -->
             </h3>                      
         </div> 
-        <% }) %>     
     </div>
 </section>
 
@@ -61,10 +59,8 @@
                     <input type="tel" class="form-control" id="exampleFormControlInput1" placeholder="Phone Number">
                 </div>
                 <div class="form-group">
-                    <%listings.forEach(function(listing) { %>
                         <textarea class="form-control" id="exampleFormControlTextarea1" rows="3">Hello, I am interested in the listing at <%= listing.address %>, <%= listing.city %>, <%= listing.state %>. 
                         </textarea>
-                    <% }) %>
                 </div>
                 <div class="row">
                     <div class="form-group col">
