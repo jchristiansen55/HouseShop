@@ -48,7 +48,7 @@
 <section class="row">
     <div class="results">
         <%listings.forEach(function(listing) { %>
-            <a href="/listing">
+            <a href="/listing/result?listing=<%= listing.id %>">
                 <div class="thumbnail">
                     <img src=<%= listing.thumbnail %> class="img-responsive" />
                     <div class="caption">
