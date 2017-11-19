@@ -5,9 +5,7 @@ var models = require('../models');
 const Op = models.sequelize.Op;
 
 router.get('/:listing?', function(req, res, next) {
-    //res.sendFile(path.join(__dirname + '/index.html'));
     var listingid = req.query.listing;
-    console.log(listingid);
 
     models.Listing.findOne({where: {id: listingid}})
     .then(function(listing) {
