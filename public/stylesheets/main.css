@@ -131,10 +131,14 @@ p {
     text-align: center;
 }
 
-.nav a {
-    font-size: 1.25rem;
+.nav a, .btn-log-in {
+    font-size: 1.1rem;
+    font-weight: 300;
+    letter-spacing: 0.08rem;
 }
+.btn-log-in {
 
+}
 .nav-item {
     padding: 0 0.5rem;
 }
