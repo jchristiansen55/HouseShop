@@ -63,7 +63,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use(cookieParser('MySecret'));
-app.use(cookieSession({ 
+app.use(cookieSession({
   key    : 'MySecret',
   secret : 'MySecret',
   cookie : {
@@ -101,22 +101,7 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-var va17g09_env_prefix;
-if (app.get('env') == 'production') {
-    fa17g09_env_prefix = 'fa17g09';
-} else {
-    fa17g09_env_prefix = '';
-}
-
-app.locals.fa17g09_env_prefix = fa17g09_env_prefix;
-console.log('Running using ' + app.get('env') + ' profile.');
-
-var fa17g09_env_prefix;
-if (app.get('env') == 'production') {
-    fa17g09_env_prefix = 'fa17g09';
-} else {
-    fa17g09_env_prefix = '';
-}
+var fa17g09_env_prefix = require('./prefix');
 
 app.locals.fa17g09_env_prefix = fa17g09_env_prefix;
 console.log('Running using ' + app.get('env') + ' profile.');

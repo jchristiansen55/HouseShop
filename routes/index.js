@@ -1,9 +1,11 @@
 var express = require('express');
 var router = express.Router();
 var models = require('../models');
+var fa17g09_env_prefix = require('../prefix');
 
 /* GET home page. */
 
+console.log("### fa17g09_env_prefix: " + fa17g09_env_prefix);
 
 var User = require('../models/user');
 
@@ -19,9 +21,9 @@ var isAuthenticated = function(req,res,next){
 	}
 };
 
-router.get('/fa17g09', function(req, res, next) {
+router.get('/' + fa17g09_env_prefix, function(req, res, next) {
     //res.sendFile(path.join(__dirname + '/index.html'));
-   
+
   console.log('Runn\n\n' + req.isAuthenticated());
   var cookiename = 'cookieName';
 	console.log(req.cookies) ;

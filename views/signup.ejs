@@ -8,7 +8,7 @@
 <div class="container">
     <div class="col-sm-6 col-sm-offset-3">
         <h1>You're signed up! Please sign in</h1>
-  <form action="<%= fa17g09_env_prefix %>/login" method="post" class="form-inline">
+  <form action="<% if (locals.fa17g09_env_prefix) { %>/<%= fa17g09_env_prefix %><%}%>/login" method="post" class="form-inline">
 		<div class="form-group">
 			<label>Email</label>
 			<input type="text" class="form-control" name="email">
