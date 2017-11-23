@@ -1,36 +1,15 @@
-@import "compass/css3";
-
-$body-bg: #c1bdba;
-$form-bg: #13232f;
-$white: #ffffff;
-
-$main: #1ab188;
-$main-light: lighten($main,5%);
-$main-dark: darken($main,5%);
-
-$gray-light: #a0b3b0;
-$gray: #ddd;
-
-$thin: 300;
-$normal: 400;
-$bold: 600;
-$br: 4px;
-
-*, *:before, *:after {
-  box-sizing: border-box;
-}
-
-html {
+/*html {
     overflow-y: scroll; 
 }
+*/
 
 a {
   text-decoration:none;
-  color:$main;
   transition:.5s ease;
-  &:hover {
-    color:$main-dark;
-  }
+}
+
+a:hover {
+    text-decoration: none;
 }
 
 .form {
@@ -41,43 +20,6 @@ a {
   border-radius:$br;
   box-shadow:0 4px 10px 4px rgba($form-bg,.3);
 }
-
-/*.tab-group {
-  list-style:none;
-  padding:0;
-  margin:0 0 40px 0;
-  &:after {
-    content: "";
-    display: table;
-    clear: both;
-  }
-  li a {
-    display:block;
-    text-decoration:none;
-    padding:15px;
-    background:rgba($gray-light,.25);
-    color:$gray-light;
-    font-size:20px;
-    float:left;
-    width:50%;
-    text-align:center;
-    cursor:pointer;
-    transition:.5s ease;
-    &:hover {
-      background:$main-dark;
-      color:$white;
-    }
-  }
-  .active a {
-    background:$main;
-    color:$white;
-  }
-}
-
-.tab-content > div:last-child {
-  display:none;
-}
-*/
 
 html {
     position: relative;
@@ -206,6 +148,12 @@ p {
     padding-bottom: 5%;
 }
 
+/* SEARCH-LAYOUT */
+.layout-header{
+/*    position: fixed;
+    z-index: 25;*/
+}
+
 /* SEARCH */
 .listing-address, .listing-features {
     text-shadow: 2px 2px 8px #343a40;
@@ -226,32 +174,40 @@ p {
 .listing-features i {
     padding: 0.4rem;
 }
+
+/* SEARCH: MAP*/
+.container-left, .container-right {
+    padding: 0;
+}
+
+.container-map {
+    /*position: relative;*/
+    /*padding-bottom: 56.25%; /* 16:9 */*/
+    /*height: 0;*/
+}
+
+.google-map {
+    /*position: fixed !important;*/
+    height: 100%;
+ }
+
+ /* SEARCH: THUMBNAIL */
+ .card {
+    margin-bottom: 1.25rem;
+ }
+
+.card-img{
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 20rem;
+    width: 100%;
+}
+
 /*  LISTING  */
 .filter {
     padding: 1%;
     background-color: #343a40;
-}
-
-.thumbnail img { width: 25rem; }
-
-.thumbnail {
-    position: relative; 
-    margin: 20px;
-}
-
-.caption {
-    position: absolute;
-    top: 50%; 
-    left: 0; 
-    bottom: 0;
-    right: 0;
-    color: #fefefe;
-    /*background-color: rgba(108, 122, 137, 0.5);*/
-}
-
-.caption p, h4 {
-    margin: 0;
-    padding-top: 0.5rem;
 }
 
 .listing-images {

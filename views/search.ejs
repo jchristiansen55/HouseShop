@@ -12,7 +12,6 @@
     </div>
 </section>
 
-
 <section class="sort row">
     <div class="btn-group div-centered">
         Sort results by:
@@ -43,37 +42,53 @@
     </div>
 </section>
 
-
-
 <section class="row">
-    <div class="results">
-        <%listings.forEach(function(listing) { %>
-            <a href="listing/result?listing=<%= listing.id %>">
-                <div class="thumbnail">
-                    <img src=<%= listing.thumbnail %> class="img-responsive" />
-                    <div class="caption">
-<!--                         <p>City: <%= listing.city %> </p>
-                        <p>State: <%= listing.state %> </p>
-                        <p>Price: <%= listing.price %> </p>
-                        <p>Number of Bedrooms: <%= listing.numBedrooms %> </p> -->
-                        <div class="listing-address">
-                            <h4>$875,000 <%= listing.price %> </h4>
-                            <p><%= listing.address %></p>
-                            <p><%= listing.city %>, <%= listing.state %></p>
-                        </div>
-                        <div class="listing-features">
-                            <h5>
-                                <%= listing.numBedrooms %>
-                                <i class="fa fa-bed" aria-hidden="true"></i>
-                            </h5>
-                            <h5>
-                                5
-                                <i class="fa fa-bath" aria-hidden="true"></i>
-                            </h5>
+    <div class="col-lg-6 col-xs-12 container-map container-left">
+        <div class="google-map" id="map"></div>
+        <script>
+          function initMap() {
+            var uluru = {lat: -25.363, lng: 131.044};
+            var map = new google.maps.Map(document.getElementById('map'), {
+              zoom: 4,
+              center: uluru
+            });
+            var marker = new google.maps.Marker({
+              position: uluru,
+              map: map
+            });
+          }
+        </script>
+        <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCLDSCggrty2quBnMYoWkh872wylJdbnLE&callback=initMap">
+        </script>
+    </div>
+    <div class="col-lg-6 col-xs-12 results container-right">
+        <div class="results">
+            <%listings.forEach(function(listing) { %>
+                <a href="listing/result?listing=<%= listing.id %>">
+                    <div class="card" >
+                        <div class="card-img" style="background-image: url(<%= listing.thumbnail %>);"></div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col">
+                                    <h4 class="card-title"><%= listing.address %></h4>         
+                                    <h5 class="card-title"><%= listing.city %>, <%= listing.state %></h5>
+                                </div>
+                                <div class="col">
+                                    <h4 class="card-title">$875,000 <%= listing.price %> </h4>
+                                    <h6>
+                                        <%= listing.numBedrooms %>
+                                        <i class="fa fa-bed" aria-hidden="true"></i>
+                                        | 
+                                        5 <%= listing.numBathrooms %>
+                                        <i class="fa fa-bath" aria-hidden="true"></i>
+                                    </h6>   
+                                </div>
+                            </div>                          
                         </div>
                     </div>
-                </div>
-            </a>
-        <% }) %>
+                </a>
+            <% }) %>
+        </div>
     </div>
 </section>
