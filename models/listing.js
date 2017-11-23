@@ -16,6 +16,7 @@ module.exports = function(sequelize, DataTypes) {
 
     Listing.associate = function(models) {
         Listing.hasMany(models.Media);
+        Listing.belongsTo(models.User);
     }
 
     return Listing;

@@ -7,6 +7,7 @@ router.use(fileUpload());
 
 /* GET listings page. */
 router.get('/', function(req, res, next) {
+    console.log("### user id: " + req.cookies.UserState);
   res.render('listings');
 });
 
@@ -14,12 +15,14 @@ var models = require('../models');
 
 /* POST new listing. */
 router.post('/', function(req, res) {
+    console.log("### UserState: " + req.cookies.UserState);
     var listing = {
         address: req.body.Address,
         thumbnail: 'assets/' + req.files.imageFile.name,
         city: req.body.City,
         state: req.body.State,
-        numBedrooms: req.body.numBedrooms
+        numBedrooms: req.body.numBedrooms,
+        UserId: req.cookies.UserState // hardcoded for testing purposes
     };
 
     models.Listing.create(listing).then(function(listing) {
