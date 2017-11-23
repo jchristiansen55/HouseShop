@@ -196,12 +196,20 @@ p {
     margin-bottom: 1.25rem;
  }
 
+.wrapper-card-img {
+    padding: 1.25rem;
+}
+
 .card-img{
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
     height: 20rem;
     width: 100%;
+}
+
+.card-body {
+    padding: 0 0 1.1rem 0;
 }
 
 /*  LISTING  */

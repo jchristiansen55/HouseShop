@@ -59,35 +59,47 @@
           }
         </script>
         <script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCLDSCggrty2quBnMYoWkh872wylJdbnLE&callback=initMap">
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD4onUV8SsC5ymczXTW8d-wcJjx9lejwbA&callback=initMap">
         </script>
     </div>
     <div class="col-lg-6 col-xs-12 results container-right">
         <div class="results">
             <%listings.forEach(function(listing) { %>
-                <a href="listing/result?listing=<%= listing.id %>">
-                    <div class="card" >
-                        <div class="card-img" style="background-image: url(<%= listing.thumbnail %>);"></div>
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col">
-                                    <h4 class="card-title"><%= listing.address %></h4>         
-                                    <h5 class="card-title"><%= listing.city %>, <%= listing.state %></h5>
-                                </div>
-                                <div class="col">
-                                    <h4 class="card-title">$875,000 <%= listing.price %> </h4>
-                                    <h6>
-                                        <%= listing.numBedrooms %>
-                                        <i class="fa fa-bed" aria-hidden="true"></i>
-                                        | 
-                                        5 <%= listing.numBathrooms %>
-                                        <i class="fa fa-bath" aria-hidden="true"></i>
-                                    </h6>   
-                                </div>
-                            </div>                          
+                <div class="card" >
+                    <a href="listing/result?listing=<%= listing.id %>">
+                        <div class="wrapper-card-img">
+                            <div class="card-img" style="background-image: url(<%= listing.thumbnail %>);"></div>                            
                         </div>
+                    </a>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col">
+                                <h4 class="card-title">
+                                    <%= listing.address %> <br>
+                                    <%= listing.city %>, <%= listing.state %>
+                                </h4>                                  
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <h5 class="card-title">$875,000 <%= listing.price %> </h5>
+                                <h6>
+                                    <%= listing.numBedrooms %>
+                                    <i class="fa fa-bed" aria-hidden="true"></i>
+                                    | 
+                                    5 <%= listing.numBathrooms %>
+                                    <i class="fa fa-bath" aria-hidden="true"></i>
+                                </h6>   
+                            </div>
+                            <div class="col">
+                                <button type="submit" class="btn btn-primary">
+                                    Add To List 
+                                    <i class="fa fa-plus-circle" aria-hidden="true"></i>
+                                </button>
+                            </div>
+                        </div>                          
                     </div>
-                </a>
+                </div>
             <% }) %>
         </div>
     </div>

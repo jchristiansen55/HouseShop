@@ -45,23 +45,53 @@
         </div>
         <div class="col-lg-2"></div>
     </div>
-    <div class="row">
+ <!--    <div class="row">
         <form action="<%= fa17g09_env_prefix %>/search" method="get" class="form-inline div-centered">
             <button name="city" type="submit" value="Search" class="form-control btn btn-primary btn-lg">
                 Show All Listings
             </button>
         </form>
-        
-    </div>
+    </div> -->
     <div class="row">
-        <div class="results">
         <%listings.forEach(function(listing) { %>
-            <a href="listing/result?listing=<%= listing.id %>">
-                <div class="thumbnail">
-                    <img src=<%= listing.thumbnail %> class="img-responsive" />
+            <div class="col-lg-4"> 
+                <div class="card" >
+                    <a href="listing/result?listing=<%= listing.id %>">
+                        <div class="wrapper-card-img">
+                            <div class="card-img" style="background-image: url(<%= listing.thumbnail %>);"></div>                            
+                        </div>
+                    </a>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col">
+                                <h4 class="card-title">
+                                    <%= listing.address %> <br>
+                                    <%= listing.city %>, <%= listing.state %>
+                                </h4>         
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <h5 class="card-title">$875,000 <%= listing.price %> </h5>
+                                <h6>
+                                    <%= listing.numBedrooms %>
+                                    <i class="fa fa-bed" aria-hidden="true"></i>
+                                    | 
+                                    5 <%= listing.numBathrooms %>
+                                    <i class="fa fa-bath" aria-hidden="true"></i>
+                                </h6>   
+                            </div>
+                            <div class="col">
+                                <button type="submit" class="btn btn-primary">
+                                    Add To List 
+                                    <i class="fa fa-plus-circle" aria-hidden="true"></i>
+                                </button>
+                            </div>
+                        </div>                          
+                    </div>
                 </div>
-            </a>
-        <% }) %>    
-        </div>
+            </div>
+        <% }) %>
     </div>
+
 </section>
