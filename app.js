@@ -14,6 +14,7 @@ var search = require('./routes/search');
 var listings = require('./routes/listings');
 var filter = require('./routes/filter');
 var listing = require('./routes/listing');
+var dashboard = require('./routes/dashboard');
 var sendMessages = require('./routes/sendMessages');
 var getMessages = require('./routes/getMessages');
 var login = require('./routes/login');
@@ -76,7 +77,8 @@ app.use('/users', users);
 app.use('/search', search);
 app.use('/listings', listings);
 app.use('/filter', filter);
-app.use('/listing', listing); // need this for individual listing??
+app.use('/listing', listing);
+app.use('/dashboard', dashboard);
 app.use('/sendMessages', sendMessages);
 app.use('/getMessages', getMessages);
 app.use('/login', login);

@@ -143,8 +143,16 @@ p {
     padding-bottom: 3%;
 }
 
+.header {
+    padding: 2rem;
+}
+
+.header div {
+    padding: 0.7rem;
+}
+
 /* HOME PAGE */
-.header .searchbar {
+#searchbar {
     padding-bottom: 5%;
 }
 
@@ -252,4 +260,21 @@ p {
 
 .carousel-item img {
     width: 100%;
+}
+
+/* DASHBOARD */
+th {
+    text-align: center;
+}
+
+.tabs {
+    padding: 0;
+}
+
+.tab-pane {
+    width: 100%;
+}
+
+.nav-tabs .nav-item {
+    padding: 0;
 }

@@ -10,9 +10,8 @@
             <input type="submit" class="btn btn-primary" value="Apply Filter">
         </form>
     </div>
-</section>
+    <!-- END Filter Options  -->
 
-<section class="sort row">
     <div class="btn-group div-centered">
         Sort results by:
         <!-- note the extra slash before the prefix -->
@@ -39,6 +38,14 @@
                 <input name="city" type="hidden" value="<% if (locals.previousSearchString) { %><%=previousSearchString %><%}%>"/>
             <input type="submit" value="Sort" class="btn btn-primary">
         </form>
+    </div>
+    <!-- END Sorting Options  -->
+
+</section>
+
+<section class="row search-results">
+    <div>
+        <p>Found <%= listings.length %> results</p>
     </div>
 </section>
 

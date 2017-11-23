@@ -1,0 +1,90 @@
+<section class="row header">
+    <div class="col-lg-8 col-md-6 col-sm-12">
+        <h3><%= title %></h3>            
+    </div>
+    <div class="col-lg-4 col-md-6 col-sm-12">
+        <button type="submit" class="btn btn-primary">
+            Create New Listing <i class="fa fa-plus-circle" aria-hidden="true"></i>
+        </button>
+    </div>
+</section>
+<!-- END page header -->
+
+<section class="container">
+    <div class="row">
+        <div class="col tabs">
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+              <li class="nav-item">
+                <a class="nav-link active" id="listings-tab" data-toggle="tab" href="#listings" role="tab" aria-controls="listings" aria-selected="true">Listings</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="contacts-tab" data-toggle="tab" href="#contacts" role="tab" aria-controls="contacts" aria-selected="false">Contacts</a>
+              </li>
+            </ul>
+        </div>
+    </div>
+</section>
+<!-- END Tabs -->
+
+<section class="container">
+    <div class="row tab-content" id="nav-tabContent">
+        <div class="tab-pane fade show active" id="listings" role="tabpanel" aria-labelledby="nav-listings-tab">
+            <table class="table table-hover table-responsive">
+              <thead>
+                <tr>
+                  <th scope="col">ID</th>
+                  <th scope="col">Address</th>
+                  <th scope="col">City</th>
+                  <th scope="col">State</th>
+                  <th scope="col">Zipcode</th>
+                  <th scope="col">Price</th>
+                  <th scope="col">Beds</th>
+                  <th scope="col">Baths</th>
+                </tr>
+              </thead>
+              <tbody>
+                <%listings.forEach(function(listing) { %>
+                    <tr>
+                      <th scope="row"><%= listing.id %></th>
+                      <td><%= listing.address %></td>
+                      <td><%= listing.city %></td>
+                      <td><%= listing.state %></td>
+                      <td><%= listing.zipcode %></td>
+                      <td><%= listing.price %></td>
+                      <td><%= listing.numBedrooms %></td>
+                      <td><%= listing.numBathrooms %></td>
+                    </tr>
+                <% }) %>
+              </tbody>
+            </table>
+        </div>
+        <!-- END Listings Content Tab -->
+
+        <div class="tab-pane fade" id="contacts" role="tabpanel" aria-labelledby="nav-contacts-tab">
+            <table class="table table-hover table-responsive">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Name</th>
+                  <th scope="col">Phone</th>
+                  <th scope="col">Email</th>
+                  <th scope="col">Interested in Listing IDs</th>
+                </tr>
+              </thead>
+              <tbody>
+                <%listings.forEach(function(listing) { %>
+                    <tr>
+                      <th scope="row"><%= listing.id %></th>
+                      <td><%= listing.address %></td>
+                      <td><%= listing.city %></td>
+                      <td><%= listing.state %></td>
+                      <td><%= listing.id %></td>
+                    </tr>
+                <% }) %>
+              </tbody>
+            </table>
+        </div>
+        <!-- END Contact Content Tab -->
+
+    </div>
+</section>
