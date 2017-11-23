@@ -22,7 +22,7 @@ router.post('/', function(req, res) {
         city: req.body.City,
         state: req.body.State,
         numBedrooms: req.body.numBedrooms,
-        UserId: req.cookies.UserState // hardcoded for testing purposes
+        UserId: req.cookies.UserState
     };
 
     models.Listing.create(listing).then(function(listing) {
