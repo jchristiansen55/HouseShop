@@ -15,8 +15,6 @@ router.get('/', function(req, res, next) {
 router.post('/', function(req, res) {
 
     var cipher = crypto.createCipher('aes-256-ctr', key).update(req.body.password, 'utf-8', 'hex');
-    console.log('password: ' + req.body.password);
-    console.log('cipher: ' + cipher);
     var user = {
         firstName: req.body.firstName,
         lastName: req.body.lastName,
