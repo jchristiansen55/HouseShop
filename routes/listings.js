@@ -17,12 +17,16 @@ var models = require('../models');
 router.post('/', function(req, res) {
     console.log("### UserState: " + req.cookies.UserState);
     var listing = {
+        UserId: req.cookies.UserState,
         address: req.body.Address,
         thumbnail: 'assets/' + req.files.imageFile.name,
         city: req.body.City,
         state: req.body.State,
         numBedrooms: req.body.numBedrooms,
-        UserId: req.cookies.UserState
+        numBathrooms: req.body.numBathrooms,
+        squareFootage: req.body.squareFootage,
+        price: req.body.price,
+        description: req.body.description
     };
 
     models.Listing.create(listing).then(function(listing) {
