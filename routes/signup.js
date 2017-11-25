@@ -3,6 +3,8 @@ var router = express.Router();
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var models = require('../models');
+var crypto = require('crypto');
+var key = process.env.key;
 
 /* GET signup page. */
 router.get('/', function(req, res, next) {
@@ -11,10 +13,14 @@ router.get('/', function(req, res, next) {
 
 /* POST new user. */
 router.post('/', function(req, res) {
+
+    var cipher = crypto.createCipher('aes-256-ctr', key).update(req.body.password, 'utf-8', 'hex');
+    console.log('password: ' + req.body.password);
+    console.log('cipher: ' + cipher);
     var user = {
         firstName: req.body.firstName,
         lastName: req.body.lastName,
-        password: req.body.password,
+        password: cipher,
         email: req.body.email
     };
 
