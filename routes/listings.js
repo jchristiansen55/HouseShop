@@ -24,7 +24,7 @@ router.post('/', function(req, res) {
         state: req.body.State,
         numBedrooms: req.body.numBedrooms,
         numBathrooms: req.body.numBathrooms,
-        squareFootage: req.body.squareFootage,
+        squareFeet: req.body.squareFeet,
         price: req.body.price,
         description: req.body.description
     };
