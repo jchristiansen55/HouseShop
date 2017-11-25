@@ -16,7 +16,13 @@
 		<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet">
 
 		<!-- custom stylesheet -->
-		<link rel="stylesheet" href="/stylesheets/main.css"> 
+		<link rel="stylesheet" 
+        href="
+            <% if (locals.fa17g09_env_prefix) { %>
+                /
+                <%= fa17g09_env_prefix %>
+            <% } %>
+            /stylesheets/main.css"> 
 
 		<!-- FONT AWESOME ICONS -->
 		<script src="https://use.fontawesome.com/c8878a39bb.js"></script>
@@ -25,8 +31,10 @@
 		<!--[if lt IE 8]>
 			<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
 		<![endif]-->
-
-		<div class="container-fluid layout-header">
+        <% var isSearchPage = "fixed-container"; %>
+        <% var title = title; %>
+        <% if (title != "Search") { isSearchPage = ""; } %>
+		<div class="container-fluid <%= isSearchPage %> ">
 			<!-- DISCLAIMER TOP BAR -->
 			<div class="alert alert-primary row" role="alert">
 				Disclaimer: This website is a school project.
@@ -65,7 +73,7 @@
 								<a class="nav-link" href="/dashboard">Agent</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="#">Contact</a>
+								<a class="nav-link" href="/messageBoard">Contact</a>
 							</li>
 							<li class="nav-item">
 								<!-- <a class="nav-link" href="#">Sign In</a> -->

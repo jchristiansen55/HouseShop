@@ -42,33 +42,66 @@
     <!-- END Sorting Options  -->
 
 </section>
+<!-- END Filters -->
 
 <section class="row search-results">
     <div>
         <p>Found <%= listings.length %> results</p>
     </div>
 </section>
+<!-- END Number of Search Results  -->
 
 <section class="row">
     <div class="col-lg-6 col-xs-12 container-map container-left">
         <div class="google-map" id="map"></div>
-        <script>
-          function initMap() {
-            var uluru = {lat: -25.363, lng: 131.044};
-            var map = new google.maps.Map(document.getElementById('map'), {
-              zoom: 4,
-              center: uluru
-            });
-            var marker = new google.maps.Marker({
-              position: uluru,
-              map: map
-            });
-          }
+        <script>            
+            // Initialize Map as a callback from google maps api
+            function initMap() {
+                // Map options
+                var options = {
+                    zoom: 13,
+                    center: {lat: 37.7749, lng: -122.4194}
+                };
+
+                // New Map
+                var map = new google.maps.Map(document.getElementById('map'), options);
+
+                // New Geocoder
+                geocoder = new google.maps.Geocoder();
+
+                // Get listings
+                var listings = <%- JSON.stringify(listings) %>;
+                
+                // Geocode each listing by passings its address
+                listings.forEach(function(listing) {
+                    // console.log(listing.address);
+                    geoCodeAddress(geocoder, map, listing.address);
+                });
+            }
+
+            // Takes address, geocode and add marker to that address
+            function geoCodeAddress(geocoder, map, address) {
+                geocoder.geocode({'address': address}, function(results, status) {
+                    if (status === google.maps.GeocoderStatus.OK) {
+                        map.setCenter(results[0].geometry.location);
+                        
+                        // Add marker
+                        var marker = new google.maps.Marker({
+                            map: map,
+                            position: results[0].geometry.location
+                        });
+                    } else {
+                        alert('Geocode was not successful for the following reason: ' + status);
+                    }
+                });           
+            }
         </script>
-        <script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC5S02BZHrqQkQbvEUFVWedNU4ojll4Z5M&callback=initMap">
+
+        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDmesu9CCVsAtFvsAJUJxj-a31UtUyINmk&callback=initMap">
         </script>
     </div>
+    <!-- END Left Container: Map -->
+
     <div class="col-lg-6 col-xs-12 results container-right">
         <div class="results">
             <%listings.forEach(function(listing) { %>
@@ -110,4 +143,7 @@
             <% }) %>
         </div>
     </div>
+    <!-- END Right Container: Listings Thumbnails -->
+
 </section>
+<!-- END Content: Map + Listings -->
