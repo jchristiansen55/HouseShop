@@ -29,6 +29,7 @@ html {
 body {
     margin: 0 0 100px; /* bottom = footer height */
     font-family: 'Lato', sans-serif;
+    overflow-x: hidden;
 }
 
 footer {
@@ -47,6 +48,11 @@ p {
     margin-top: 16px;
 }
 
+.container-wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
 .image-logo {
     width: 40px;
 }
@@ -56,9 +62,17 @@ p {
     border-bottom-left-radius: .25rem;
 }
 
+.btn-group {
+    padding: 5px 50px 5px 5px;
+}
+
 .filter button {
     margin: 0 1%;
     border-radius: .25rem;
+}
+
+.display-none {
+    display: none;
 }
 
 .div-centered {
@@ -73,8 +87,12 @@ p {
     text-align: center;
 }
 
+.navbar-nav {
+    flex-wrap: inherit;
+}
+
 .nav a, .btn-log-in {
-    font-size: 1.1rem;
+    font-size: 1rem;
     font-weight: 300;
     letter-spacing: 0.08rem;
 }
@@ -87,6 +105,7 @@ p {
 
 .navbar-toggler {
     padding: .25rem;
+    margin-right: 15px;
 }
 
 .col-lg-4 p {
@@ -166,6 +185,11 @@ p {
     z-index: 25;
 }
 
+.columns-view {
+    flex: 1;
+    display: flex;
+}
+
 /* SEARCH */
 .listing-address, .listing-features {
     text-shadow: 2px 2px 8px #343a40;
@@ -188,8 +212,9 @@ p {
 }
 
 /* SEARCH: MAP*/
-.container-left, .container-right {
+.column-left, .column-right {
     padding: 0;
+    top: 185.77px;
 }
 
 .container-map {
@@ -200,19 +225,16 @@ p {
     /*display: block;*/
     /*z-index: 10;*/
     position: fixed;
-    top: 200px;
     bottom: 0;
     max-height: 2000px;
-    width: calc(100% - 637px);
 }
 
-.container-right {
+.column-right {
     position: absolute;
-    top: 60px;
     right: 0;
     box-shadow: -1px 0 3px 0 rgba(0,0,0,.2);
-    width: 637px;
-    z-index: -1;
+    /*z-index: -1;*/
+    background-color: #fefefe;
 }
 
 .google-map {
@@ -223,6 +245,7 @@ p {
  /* SEARCH: THUMBNAIL */
  .card {
     margin-bottom: 1.25rem;
+    /*box-shadow: -1px 0 3px 0 rgba(0,0,0,.2);*/
  }
 
 .wrapper-card-img {
@@ -243,10 +266,13 @@ p {
 
 /*  LISTING  */
 .filter {
-    padding: 1%;
-    background-color: blue;
-    /*background-color: #343a40;*/
+    padding: 8px;
+    /*background-color: red;*/
+    background-color: #343a40;
     position: fixed;
+    top: 121.77px;
+    width: 100%;
+    z-index: 100;
 }
 
 .listing-images {
@@ -317,4 +343,37 @@ th {
 
 .message-reply-btn {
     margin: 20% 0;
+}
+
+
+/**************
+  RESPONSIVE
+***************/
+
+@media screen and (max-width: 767px) {
+    .filter {
+        top: 159.77px;
+    }
+    
+    .column-left, .column-right {
+        top: 223.77px;
+    }
+
+}
+
+@media screen and (max-width: 742px) {    
+    .column-left, .column-right {
+        top: 271.77px;
+    }
+
+}
+
+@media screen and (max-width: 650px) {
+    .sort-selection {
+        width: 70%;
+    }
+
+    .sort-btn {
+        width: 30%;
+    }
 }
