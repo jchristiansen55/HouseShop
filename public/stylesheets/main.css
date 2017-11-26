@@ -295,6 +295,12 @@ p {
 
 .listing-info {
     text-align: justify;
+    padding-bottom: 2%;
+    padding-top: 2%;
+}
+
+.listing-info-address {
+    margin-bottom: 0.7rem;
 }
 
 .listing-info h3 {
@@ -309,6 +315,14 @@ p {
 
 .carousel-item img {
     width: 100%;
+}
+
+.carousel, .contact {
+    margin-bottom: 5%;
+}
+
+.was-validated .form-control:valid~.invalid-feedback {
+    display: none;
 }
 
 /* DASHBOARD */
