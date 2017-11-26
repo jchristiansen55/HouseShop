@@ -10,11 +10,10 @@
             </h1> 
         </div>
         <div class="col-lg-6 col-md-6 listing-info-detail">
-            <h1>$875,000<%= listing.price %> </h1>   
+            <h1>$<%= listing.price %> </h1>   
             <h3>
                 <%= listing.numBedrooms %> beds | 
-                <%= listing.numBedrooms %> baths 
-                <!-- will have this field numBathrooms later? -->
+                <%= listing.numBathrooms %> baths 
             </h3>                      
         </div> 
     </div>
@@ -112,7 +111,7 @@
                     Listing Description
                 </h2>
                 <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam auctor augue nibh, non facilisis massa malesuada sed. Nullam imperdiet mauris urna, in iaculis arcu iaculis nec. Curabitur sit amet commodo lacus, fringilla mollis sem.
+                    <%= listing.description %>
                 </p>
             </div>
         </div>
