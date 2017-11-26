@@ -7,15 +7,17 @@ router.use(fileUpload());
 
 /* GET listings page. */
 router.get('/', function(req, res, next) {
-    console.log("### user id: " + req.cookies.UserState);
-  res.render('listings');
+    res.render('listings' , {
+        title: 'Listings'
+    });
+
 });
 
 var models = require('../models');
 
 /* POST new listing. */
 router.post('/', function(req, res) {
-    console.log("### UserState: " + req.cookies.UserState);
+
     var listing = {
         UserId: req.cookies.UserState,
         address: req.body.Address,
@@ -30,7 +32,7 @@ router.post('/', function(req, res) {
     };
 
     models.Listing.create(listing).then(function(listing) {
-	       var imageFile = req.files.imageFile;
+           var imageFile = req.files.imageFile;
 
            var media = models.Media.create({
                 ListingId: listing.id,
@@ -39,13 +41,13 @@ router.post('/', function(req, res) {
 
 // =======
     // models.Listing.create({ address: req.body.Address, thumbnail: 'assets/' + req.files.imageFile.name, city: req.body.City,  state: req.body.State,  numBedrooms: req.body.numBedrooms}).then(function() {
-	       // var imageFile = req.files.imageFile;
+           // var imageFile = req.files.imageFile;
 // >>>>>>> horizontal_prototype_listing_page
-	       imageFile.mv(__dirname + '/../public/assets/' + req.files.imageFile.name, function(err) {
-    	          if (err){
-      		              return res.status(500).send(err);
-		          }
-	       });
+           imageFile.mv(__dirname + '/../public/assets/' + req.files.imageFile.name, function(err) {
+                  if (err){
+                          return res.status(500).send(err);
+                  }
+           });
 
 
            var imageFile2 = req.files.imageFile2;

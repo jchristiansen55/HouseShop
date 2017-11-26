@@ -15,7 +15,7 @@ router.post('/', function(req, res, next) {
 
     models.Listing.findAll(buildListingsQuery(queryBuilderArguments)).then(function(listings) {
         res.render('search', { // render the Search/Browse page
-            title: 'Browse Listings',
+            title: 'Search',
             listings: listings,
             previousSearchString: req.body.city,
             previousSortOption: req.body.sortOption
@@ -42,7 +42,7 @@ router.get('/', function(req, res, next) {
     models.Listing.findAll()
     .then(function(listings) {
         res.render('search', { // render the Search/Browse page
-            title: 'Browse Listings',
+            title: 'Search',
             listings: listings
         });
     });

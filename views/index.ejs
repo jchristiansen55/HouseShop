@@ -1,5 +1,5 @@
 <!-- HERO SECTION -->
-<section class="header">
+<section>
    <div class="container about">
         <div class="row">
             <div class="col-lg-4"></div>
@@ -13,7 +13,7 @@
 
     <div class="container">
         <div class="row">
-            <div class="searchbar div-centered col-lg-7">
+            <div class="searchbar div-centered col-lg-7" id="searchbar">
                 <form action="<%= fa17g09_env_prefix %>/search" method="post" class="form-inline">
                     <div class="input-group col-12">
                         <input type="query" name="city" id="search" class="form-control" placeholder="Enter address, zip code, or city ..." aria-label="Search for..." />
@@ -45,23 +45,53 @@
         </div>
         <div class="col-lg-2"></div>
     </div>
-    <div class="row">
+ <!--    <div class="row">
         <form action="<%= fa17g09_env_prefix %>/search" method="get" class="form-inline div-centered">
             <button name="city" type="submit" value="Search" class="form-control btn btn-primary btn-lg">
                 Show All Listings
             </button>
         </form>
-        
-    </div>
+    </div> -->
     <div class="row">
-        <div class="results">
         <%listings.forEach(function(listing) { %>
-            <a href="listing/result?listing=<%= listing.id %>">
-                <div class="thumbnail">
-                    <img src=<%= listing.thumbnail %> class="img-responsive" />
+            <div class="col-lg-4"> 
+                <div class="card" >
+                    <a href="<%= fa17g09_env_prefix %>/listing/result?listing=<%= listing.id %>">
+                        <div class="wrapper-card-img">
+                            <div class="card-img" style="background-image: url(<%= fa17g09_env_prefix %>/<%= listing.thumbnail %>);"></div>                            
+                        </div>
+                    </a>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col">
+                                <h4 class="card-title">
+                                    <%= listing.address %> <br>
+                                    <%= listing.city %>, <%= listing.state %>
+                                </h4>         
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <h5 class="card-title">$875,000 <%= listing.price %> </h5>
+                                <h6>
+                                    <%= listing.numBedrooms %>
+                                    <i class="fa fa-bed" aria-hidden="true"></i>
+                                    | 
+                                    5 <%= listing.numBathrooms %>
+                                    <i class="fa fa-bath" aria-hidden="true"></i>
+                                </h6>   
+                            </div>
+                            <div class="col">
+                                <button type="submit" class="btn btn-primary">
+                                    Add To List 
+                                    <i class="fa fa-plus-circle" aria-hidden="true"></i>
+                                </button>
+                            </div>
+                        </div>                          
+                    </div>
                 </div>
-            </a>
-        <% }) %>    
-        </div>
+            </div>
+        <% }) %>
     </div>
+
 </section>
