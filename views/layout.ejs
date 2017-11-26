@@ -17,12 +17,7 @@
 
 		<!-- custom stylesheet -->
 		<link rel="stylesheet" 
-        href="
-            <% if (locals.fa17g09_env_prefix) { %>
-                /
-                <%= fa17g09_env_prefix %>
-            <% } %>
-            /stylesheets/main.css"> 
+        href="<% if (locals.fa17g09_env_prefix) { %>/.profile<%= fa17g09_env_prefix %><% } %>/stylesheets/main.css"> 
 
 		<!-- FONT AWESOME ICONS -->
 		<script src="https://use.fontawesome.com/c8878a39bb.js"></script>
