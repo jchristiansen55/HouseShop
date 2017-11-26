@@ -56,7 +56,7 @@
         <%listings.forEach(function(listing) { %>
             <div class="col-lg-4"> 
                 <div class="card" >
-                    <a href="listing/result?listing=<%= listing.id %>">
+                    <a href="<%= fa17g09_env_prefix %>/listing/result?listing=<%= listing.id %>">
                         <div class="wrapper-card-img">
                             <div class="card-img" style="background-image: url(<%= fa17g09_env_prefix %>/<%= listing.thumbnail %>);"></div>                            
                         </div>
