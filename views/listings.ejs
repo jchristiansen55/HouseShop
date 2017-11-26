@@ -1,18 +1,37 @@
-<form ref='uploadForm' id='uploadForm' encType="multipart/form-data"  action="<%= fa17g09_env_prefix %>/listings" method="post">
-  <fieldset>
+  <form ref='uploadForm' id='uploadForm' encType="multipart/form-data"  action="<%= fa17g09_env_prefix %>/listings" method="post">
+  
     <legend>Create a new listing</legend>
+  <div class="listingForm-size"
     <label>
       Address:
-      <input type="string" name="Address" />
-      <br/>City:
-      <input type="string" name="City" />
-      <br/>State:
-      <input type="string" name="State" />
-      <br/>Number of Bedrooms:
-      <input type="string" name="numBedrooms" /><br/>
-	Picture: <input type="file" name="imageFile" /><br/>
-    Picture2: <input type="file" name="imageFile2" /><br/>
-      <input type="submit" value="Create listing" />
+        <input type="string" name="Address" class="form-control input-sm" placeholder="Address">
+                                    
+  
+      <p/>City:
+      <input type="string" name="City" class="form-control input-sm" placeholder="City">
+      <p/>State:
+     <input type="string" name="Sate" class="form-control input-sm" placeholder="State">
+      <p/>Number of Bedrooms:
+      <input type="string" name="Numofbedrooms" class="form-control input-sm" placeholder="Number of Bedrooms">
+      <p/>Number of Baths:
+      <input type="string" name="Numofbaths" class="form-control input-sm" placeholder="Number of Bathrooms">
+         <p/>Price:
+      <input type="string" name="Price" class="form-control input-sm" placeholder="Price">
+
+	       <!-- Picture: <input type="file" name="imageFile" /><br/>   -->
+          <!-- Picture2: <input type="file" name="imageFile2" /><br/> -->
+          <br> Choose a primary picture</br>
+        <label class="custom-file">
+          <input type="file" id="file1" class="custom-file-input">
+           <span class="custom-file-control"></span>
+            </label>
+          <br> Choose a secondary picture</br>
+            <label class="custom-file">
+              <input type="file" id="file2" class="custom-file-input">
+                <span class="custom-file-control"></span>
+                  </label>
+            <br></br>
+      <input type="submit" value="Create Listing" class="btn btn-info btn-block "> 
     </label>
-  </fieldset>
+ </div>
 </form>
