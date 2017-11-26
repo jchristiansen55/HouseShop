@@ -10,19 +10,25 @@ router.get('/', function(req, res, next) {
     res.render('listings' , {
         title: 'Listings'
     });
+
 });
 
 var models = require('../models');
 
 /* POST new listing. */
 router.post('/', function(req, res) {
-    console.log("post listings");
+
     var listing = {
+        UserId: req.cookies.UserState,
         address: req.body.Address,
         thumbnail: 'assets/' + req.files.imageFile.name,
         city: req.body.City,
         state: req.body.State,
-        numBedrooms: req.body.numBedrooms
+        numBedrooms: req.body.numBedrooms,
+        numBathrooms: req.body.numBathrooms,
+        squareFeet: req.body.squareFeet,
+        price: req.body.price,
+        description: req.body.description
     };
 
     models.Listing.create(listing).then(function(listing) {
