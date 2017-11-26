@@ -15,7 +15,8 @@ router.post('/', function(req, res) {
         firstName: req.body.firstName,
         lastName: req.body.lastName,
         password: req.body.password,
-        email: req.body.email
+        email: req.body.email,
+        userType: req.body.userType
     };
 
     models.User.create(user).then(function(newUser) {
