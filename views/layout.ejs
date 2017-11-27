@@ -21,6 +21,76 @@
 		<!-- FONT AWESOME ICONS -->
 		<script src="https://use.fontawesome.com/c8878a39bb.js"></script>
 	</head>
+	 <script type="text/javascript">
+        $('.form').find('input, textarea').on('keyup blur focus', function (e) {
+  
+  var $this = $(this),
+      label = $this.prev('label');
+
+      if (e.type === 'keyup') {
+            if ($this.val() === '') {
+          label.removeClass('active highlight');
+        } else {
+          label.addClass('active highlight');
+        }
+    } else if (e.type === 'blur') {
+        if( $this.val() === '' ) {
+            label.removeClass('active highlight'); 
+            } else {
+            label.removeClass('highlight');   
+            }   
+    } else if (e.type === 'focus') {
+      
+      if( $this.val() === '' ) {
+            label.removeClass('highlight'); 
+            } 
+      else if( $this.val() !== '' ) {
+            label.addClass('highlight');
+            }
+    }
+
+});
+
+$('.tab a').on('click', function (e) {
+  
+  e.preventDefault();
+  
+  $(this).parent().addClass('active');
+  $(this).parent().siblings().removeClass('active');
+  
+  target = $(this).attr('href');
+
+  $('.tab-content > div').not(target).hide();
+  
+  $(target).fadeIn(600);
+  
+});
+    </script>
+    <script type="text/javascript">
+    function myFunction()
+        {
+            document.getElementById("uploadTabhide").style.visibility = 'hidden';
+            document.getElementById("loginTabhide").style.visibility = 'visible';
+            document.getElementById("loginTabhide").style.display = 'block';
+            document.getElementById("uploadTabhide").style.display = 'none';
+
+          
+               
+            document.getElementById("newUser").style.visibility = 'hidden';
+            document.getElementById("oldUser").style.visibility = 'visible';
+        }
+         function myFunction2()
+        {
+            document.getElementById("loginTabhide").style.visibility = 'hidden';
+            document.getElementById("uploadTabhide").style.visibility = 'visible';
+                document.getElementById("uploadTabhide").style.display = 'block';
+                 document.getElementById("loginTabhide").style.display = 'none';
+        
+  
+            document.getElementById("oldUser").style.visibility = 'hidden';
+            document.getElementById("newUser").style.visibility = 'visible';
+        }
+    </script>
 	<body>
 		<!--[if lt IE 8]>
 			<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
@@ -80,118 +150,147 @@
 		<!-- END HEADER CONTAINER -->
 
 		<!-- MAIN CONTENT -->
-		<div id= "main" class="main container-fluid">
-			<%- body %>
-			 <!-- Modal -->
-	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-				 <h2 class="modal-title" id="myModalLabel">Welcome to HouseShop</h2>
+        <div id= "main" class="main container-fluid home">    
+            <%- body %>    
+             <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                 <h2 class="modal-title" id="myModalLabel">Welcome to HouseShop</h2>
 
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
-					</button>
-				 </div>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                    </button>
+                 </div>
 
-				<div class="modal-body">
-					<div role="tabpanel">
+                <div class="modal-body">
+                    <div role="tabpanel">
 
-						<!-- Nav tabs -->
-						<ul class="nav nav-tabs" role="tablist">
-							<li role="presentation" class="active"><a href="#uploadTab" aria-controls="uploadTab" role="tab" data-toggle="tab">Sign Up</a>
-							</li>
+                        <!-- <div class="form">
+<ul class="tab-group">
+        <li class="tab testing"><a href="#signup">Sign Up</a></li>
+        <li class="tab"><a href="#login">Log In</a></li>
+      </ul>
+  </div> -->
+  
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li role="presentation" class="active">
+                                <!-- <a href="#uploadTab" aria-controls="uploadTab" role="tab" data-toggle="tab">
+                                </a>    
+                                 -->
+                            </li>
 
-							<li role="presentation"><a href="#SignUp" aria-controls="SignUp" role="tab" data-toggle="tab">Sign In</a>
-							</li>
-						</ul>
-									<div class="row">
-									<div class="col-xs-6 col-sm-6 col-md-6">
-									</div>
-									</div>
-						<!-- Tab panes -->
-						<div class="tab-content">
-							<div role="tabpanel" class="tab-pane active" id="uploadTab">
-							<form role="form">
-								<div class="row">
-									<div class="col-xs-6 col-sm-6 col-md-6">
-										<div class="form-group">
-										   <input type="text" name="first_name" id="first_name" class="form-control input-sm" placeholder="First Name">
-										</div>
-									</div>
-									<div class="col-xs-6 col-sm-6 col-md-6">
-										<div class="form-group">
-											<input type="text" name="last_name" id="last_name" class="form-control input-sm" placeholder="Last Name">
-										</div>
-									</div>
-								</div>
-								<div class="form-group">
-									<input type="email" name="email" id="email" class="form-control input-sm" placeholder="Email Address">
-								</div>
-								<div class="form-group">
-									<input type="Phone" name="Phone" id="Phone" class="form-control input-sm" placeholder="Phone Number">
-								</div>
+                            <li role="presentation">
+                             <!-- <a href="#SignUp" aria-controls="SignUp" role="tab" data-toggle="tab">Sign In</a>  -->
+                                <!-- <button type="button" class="btn btn-secondary" href="#SignUp" aria-controls="SignUp" role="tab" data-toggle="tab">Login</button>  -->
+                                <!-- <button type="button" class="btn btn-light" href="#SignUp" aria-controls="SignUp" role="tab" data-toggle="tab">Login</button> -->
+                            </li>
+                        </ul>
+                                    <div class="row">
+                                    <div class="col-xs-6 col-sm-6 col-md-6">
+                                    </div>
+                                    </div>
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <div role="tabpanel" class="tab-pane " id="uploadTab">
+                            <form role="form">
+                                <div class="row">
+                                    <div class="col-xs-6 col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                           <input type="text" name="first_name" id="first_name" class="form-control input-sm" placeholder="First Name">
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-6 col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <input type="text" name="last_name" id="last_name" class="form-control input-sm" placeholder="Last Name">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <input type="email" name="email" id="email" class="form-control input-sm" placeholder="Email Address">
+                                </div>
+                                <div class="form-group">
+                                    <input type="Phone" name="Phone" id="Phone" class="form-control input-sm" placeholder="Phone Number">
+                                </div>
 
-								<div class="row">
-									<div class="col-xs-6 col-sm-6 col-md-6">
-										<div class="form-group">
-											<input type="password" name="password" id="password" class="form-control input-sm" placeholder="Password">
-										</div>
-									</div>
-									<div class="col-xs-6 col-sm-6 col-md-6">
-										<div class="form-group">
-											<input type="password" name="password_confirmation" id="password_confirmation" class="form-control input-sm" placeholder="Confirm Password">
-										</div>
-									</div>
-									<div class="center-terms">
-									<input id="checkBox" type="checkbox"  <p>I agree to the terms </p>
-									</div>
+                                <div class="row">
+                                    <div class="col-xs-6 col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <input type="password" name="password" id="password" class="form-control input-sm" placeholder="Password">
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-6 col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <input type="password" name="password_confirmation" id="password_confirmation" class="form-control input-sm" placeholder="Confirm Password">
+                                        </div>
+                                    </div>
+                                    <div class="center-terms">
+                                    <input id="checkBox" type="checkbox"  <br>I agree to the terms</br>  
+                                    </div>
+                                    <div class="center-terms2">
+                                        <p></p>
+                                         <input id="checkBox" type="checkbox"  <br>I am a listing agent</br>  
+                                    </div>
+                                </div>
+                                 <div class="col-xs-6 col-sm-6 col-md-6 center-sign_up_in">
+                                    <p></p>
+                                <input type="submit" value="Sign Up" class="btn btn-info btn-block "> 
+                                </div>
 
-								</div>
+                            </form>
 
+                            </div>
 
-								 <div class="col-xs-6 col-sm-6 col-md-6 center-sign_up_in">
-								<input type="submit" value="Sign Up" class="btn btn-info btn-block ">
-								</div>
+                            <div role="tabpanel" class="tab-pane active" id="SignUp">
+                             <form role="form">
+                                <div class="row">
+                                    <div class="col-xs-6 col-sm-6 col-md-6">      
+                                        <div class="form-group">
+                                <input type="text" name="User Name" id="user_name" class="form-control input-sm" placeholder="User Name">
+                                        </div>
+                                    </div>
+                                </div>
+                                    <div class="row">
+                                    <div class="col-xs-6 col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <input type="password" name="password" id="password" class="form-control input-sm" placeholder="Password">
+                                         <button class="astext">Forgot Password?</button>
+                                     </div>
+                                    </div>
+                                 </div>
+                                 <div class="col-xs-6 col-sm-6 col-md-6 center-sign_up_in">
+                                <input type="submit" value="Login" class="btn btn-info btn-block"> 
+                                </div>
+                            </form>
+                             </div>
+                        </div>
+                    </div>
+                </div>
 
-							</form>
+                <div class="modal-footer">
+                    <div class ="center-footer">
+                        <div id="newUser">
+                                 <br>New User?</br>
+                             </div>
 
-							</div>
+             <button type="button" style= " display:block; margin-left:38.5%; " class="btn btn-primary" id='uploadTabhide' href="#uploadTab" aria-controls="uploadTab" role="tab" data-toggle="tab" onclick="myFunction()">Sign Up</button>
+                  
+                                <div id="oldUser" style="visibility:hidden;  margin-top:-8%; ">
+                                    <span>Already have an account? </span>
+                                </div>
+                                <div class="modal-footer2">
+             <button type="button" class="btn btn-primary" id ='loginTabhide' href="#SignUp" aria-controls="SignUp" role="tab" data-toggle="tab" onclick="myFunction2()" style="visibility:hidden; margin-left:40%; padding:8px 15px; display:none;" >Login</button>
+                   </div>
+                    <p></p>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                </div>
 
-							<div role="tabpanel" class="tab-pane" id="SignUp">
-							 <form role="form">
-								<div class="row">
-									<div class="col-xs-6 col-sm-6 col-md-6">
-										<div class="form-group">
-								<input type="text" name="User Name" id="user_name" class="form-control input-sm" placeholder="User Name">
-										</div>
-									</div>
-								</div>
-									<div class="row">
-									<div class="col-xs-6 col-sm-6 col-md-6">
-										<div class="form-group">
-											<input type="password" name="password" id="password" class="form-control input-sm" placeholder="Password">
-										 <button class="astext">Forgot Password?</button>
-									 </div>
-									</div>
-								 </div>
-								 <div class="col-xs-6 col-sm-6 col-md-6 center-sign_up_in">
-								<input type="submit" value="Login" class="btn btn-info btn-block">
-								</div>
-							</form>
-							 </div>
-						</div>
-					</div>
-				</div>
-				<div class="modal-footer ">
-					<div class ="center-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-		</div>
-		<!-- END MAIN CONTENT -->
+            </div>
+        </div>
+    </div>
+    
+        </div>
 
 		<!-- FOOTER -->
 		<div class="container">
