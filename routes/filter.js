@@ -24,7 +24,7 @@ router.post('/', function(req, res, next) {
     })
     .then(function(listings) {
         res.render('search', { // render the Search/Browse page
-            title: 'Filtered Listings',
+            title: 'Search',
             listings: listings
         });
     });
