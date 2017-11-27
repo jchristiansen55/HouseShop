@@ -73,6 +73,31 @@ $('.tab a').on('click', function (e) {
   
 });
     </script>
+    <script type="text/javascript">
+    function myFunction()
+        {
+            document.getElementById("uploadTabhide").style.visibility = 'hidden';
+            document.getElementById("loginTabhide").style.visibility = 'visible';
+            document.getElementById("loginTabhide").style.display = 'block';
+            document.getElementById("uploadTabhide").style.display = 'none';
+
+          
+               
+            document.getElementById("newUser").style.visibility = 'hidden';
+            document.getElementById("oldUser").style.visibility = 'visible';
+        }
+         function myFunction2()
+        {
+            document.getElementById("loginTabhide").style.visibility = 'hidden';
+            document.getElementById("uploadTabhide").style.visibility = 'visible';
+                document.getElementById("uploadTabhide").style.display = 'block';
+                 document.getElementById("loginTabhide").style.display = 'none';
+        
+  
+            document.getElementById("oldUser").style.visibility = 'hidden';
+            document.getElementById("newUser").style.visibility = 'visible';
+        }
+    </script>
     <body>
         <!--[if lt IE 8]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
@@ -139,8 +164,8 @@ $('.tab a').on('click', function (e) {
                             </li>
 
                             <li role="presentation">
-                                <!-- <a href="#SignUp" aria-controls="SignUp" role="tab" data-toggle="tab">Sign In</a> -->
-                                 <!-- <button type="button" class="btn btn-secondary" href="#SignUp" aria-controls="SignUp" role="tab" data-toggle="tab">Login</button> -->
+                             <!-- <a href="#SignUp" aria-controls="SignUp" role="tab" data-toggle="tab">Sign In</a>  -->
+                                <!-- <button type="button" class="btn btn-secondary" href="#SignUp" aria-controls="SignUp" role="tab" data-toggle="tab">Login</button>  -->
                                 <!-- <button type="button" class="btn btn-light" href="#SignUp" aria-controls="SignUp" role="tab" data-toggle="tab">Login</button> -->
                             </li>
                         </ul>
@@ -227,12 +252,22 @@ $('.tab a').on('click', function (e) {
 
                 <div class="modal-footer">
                     <div class ="center-footer">
-                                 <br>New User? </br>
-                    <button type="button" class="btn btn-primary" href="#uploadTab" aria-controls="uploadTab" role="tab" data-toggle="tab"> Sign Up</button>
+                        <div id="newUser">
+                                 <br>New User?</br>
+                             </div>
+
+             <button type="button" style= " display:block; margin-left:38.5%; " class="btn btn-primary" id='uploadTabhide' href="#uploadTab" aria-controls="uploadTab" role="tab" data-toggle="tab" onclick="myFunction()">Sign Up</button>
+                  
+                                <div id="oldUser" style="visibility:hidden;  margin-top:-8%; ">
+                                    <span>Already have an account? </span>
+                                </div>
+                                <div class="modal-footer2">
+             <button type="button" class="btn btn-primary" id ='loginTabhide' href="#SignUp" aria-controls="SignUp" role="tab" data-toggle="tab" onclick="myFunction2()" style="visibility:hidden; margin-left:40%; padding:8px 15px; display:none;" >Login</button>
+                   </div>
                     <p></p>
-                    <button type="button" class="btn btn-default" data-dismiss="modal" href="#SignUp" aria-controls="SignUp" role="tab" data-toggle="tab">Cancel</button>
-                    
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
                 </div>
+
             </div>
         </div>
     </div>

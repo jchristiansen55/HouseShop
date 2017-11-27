@@ -133,10 +133,14 @@ p {
     text-decoration: underline; 
 }
 .center-footer {
+    text-align:center;
     margin-top:-7%;
-    margin-right:-15%;
-       width:75%;
-       display:block;  
+    margin-right:13%;
+       width:75%;   
+}
+.center-footer2 {
+    text-align:center;
+    margin-top:-50%;  
 }
 
 .modal-size {
