@@ -13,7 +13,6 @@ router.get('/:listing?', function(req, res, next) {
         .then(function(media) {
             models.User.findOne({where: {id: listing.UserId}})
             .then(function(user) {
-                console.log("## user email : " + user.email);
                 res.render('listing', { // render the Listing page
                     title: 'Listing - GET', // remove 'GET'
                     listing: listing,

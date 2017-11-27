@@ -338,6 +338,11 @@ th {
     width: 100%;
 }
 
+.nav-tabs {
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+}
+
 .nav-tabs .nav-item {
     padding: 0;
 }
