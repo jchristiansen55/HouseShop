@@ -1,0 +1,92 @@
+<!-- <h1><%= title %></h1> -->
+<section class="container listing-info">
+    <div class="row">
+        <!-- later on, should not have listings, should only have 1 listing, passed by id -->
+        <div class="col-lg-6 col-md-6">
+            <h1><%= listing.address %> </h1> 
+            <h1>
+                <%= listing.city %>, <%= listing.state %>
+                <!-- <%= listing.zipcode %>  -->
+            </h1> 
+        </div>
+        <div class="col-lg-6 col-md-6">
+            <h1>$875,000<%= listing.price %> </h1>   
+            <h3>
+                <%= listing.numBedrooms %> beds | 
+                <%= listing.numBedrooms %> baths 
+                <!-- will have this field numBathrooms later? -->
+            </h3>                      
+        </div> 
+    </div>
+</section>
+
+<section class="container listing-images form-contact-agent">
+    <div class="row">
+        <!-- Image slider -->
+        <div id="carouselExampleIndicators" class="carousel slide col-lg-8 col-md-8 col-sm-12 col-12" data-ride="carousel" data-interval=false>
+            <div class="carousel-inner">
+                <% for(var i=0; i < media.length; i++) { %>
+                    <% var isActive = "active"; %>
+                    <% if (i != 0) { isActive = ""; } %>
+                    <div class="carousel-item <%= isActive %> ">
+                        <img class="img-responsive" src="../<%= media[i].imageFilePath %>" alt="<%= i %> slide">
+                    </div>
+                <% } %>
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>  
+        <!-- END Image slider -->
+
+        <!-- contact form -->
+        <div class="contact col-lg-4 col-md-4 col-sm-12 col-12">
+            <form>
+                <div class="form-group">
+                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Name">
+                </div>
+                <div class="form-group">
+                    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Email">
+                </div>
+                <div class="form-group">
+                    <input type="tel" class="form-control" id="exampleFormControlInput1" placeholder="Phone Number">
+                </div>
+                <div class="form-group">
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3">Hello, I am interested in the listing at <%= listing.address %>, <%= listing.city %>, <%= listing.state %>. 
+                        </textarea>
+                </div>
+                <div class="row">
+                    <div class="form-group col">
+                        <button type="button" class="btn btn-link">Cancel</button>
+                    </div>  
+                    <div class="form-group col">
+                        <button type="submit" class="btn btn-primary" style="width: 100%">Contact</button>
+                    </div>                                  
+                </div>
+            </form>
+        </div>
+        <!-- END contact form -->
+    </div>  
+</section>
+
+
+
+<section class="container">
+    <div class="row listing-info">
+            <div class="col-lg-8">
+                <h2>
+                    Listing Description
+                </h2>
+                <p>
+                    San Francisco State University (commonly referred to as San Francisco State, SF State and SFSU) is a public research university located in San Francisco, California, United States. As part of the 23-campus California State University system, the university offers 118 different Bachelor's degrees, 94 Master's degrees, 5 Doctoral degrees (including two Doctor of Education degrees, a Doctor of Physical Therapy, a Ph.D in Education and a Doctor of Physical Therapy Science), along with 26 teaching credentials among six academic colleges.
+                </p>
+            </div>
+        </div>
+    </div>    
+</section>
+

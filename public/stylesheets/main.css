@@ -1,3 +1,84 @@
+@import "compass/css3";
+
+$body-bg: #c1bdba;
+$form-bg: #13232f;
+$white: #ffffff;
+
+$main: #1ab188;
+$main-light: lighten($main,5%);
+$main-dark: darken($main,5%);
+
+$gray-light: #a0b3b0;
+$gray: #ddd;
+
+$thin: 300;
+$normal: 400;
+$bold: 600;
+$br: 4px;
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+html {
+    overflow-y: scroll; 
+}
+
+a {
+  text-decoration:none;
+  color:$main;
+  transition:.5s ease;
+  &:hover {
+    color:$main-dark;
+  }
+}
+
+.form {
+  background:rgba($form-bg,.9);
+  padding: 40px;
+  max-width:600px;
+  margin:40px auto;
+  border-radius:$br;
+  box-shadow:0 4px 10px 4px rgba($form-bg,.3);
+}
+
+/*.tab-group {
+  list-style:none;
+  padding:0;
+  margin:0 0 40px 0;
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  li a {
+    display:block;
+    text-decoration:none;
+    padding:15px;
+    background:rgba($gray-light,.25);
+    color:$gray-light;
+    font-size:20px;
+    float:left;
+    width:50%;
+    text-align:center;
+    cursor:pointer;
+    transition:.5s ease;
+    &:hover {
+      background:$main-dark;
+      color:$white;
+    }
+  }
+  .active a {
+    background:$main;
+    color:$white;
+  }
+}
+
+.tab-content > div:last-child {
+  display:none;
+}
+*/
+
 html {
     position: relative;
     min-height: 100%;
@@ -24,6 +105,10 @@ p {
     margin-top: 16px;
 }
 
+.image-logo {
+    width: 40px;
+}
+
 .btn-group>.btn:last-child:not(:first-child), .btn-group>.dropdown-toggle:not(:first-child) {
     border-top-left-radius: .25rem;
     border-bottom-left-radius: .25rem;
@@ -38,8 +123,28 @@ p {
     margin: 0 auto;
 }
 
+.text-centered {
+    text-align: center;
+}
+
 .row {
     text-align: center;
+}
+
+.nav a, .btn-log-in {
+    font-size: 1.1rem;
+    font-weight: 300;
+    letter-spacing: 0.08rem;
+}
+.btn-log-in {
+
+}
+.nav-item {
+    padding: 0 0.5rem;
+}
+
+.navbar-toggler {
+    padding: .25rem;
 }
 
 .col-lg-4 p {
@@ -59,6 +164,37 @@ p {
     padding: 0;
 }
 
+/* SIGN IN/UP MODAL FORMS*/
+.centered-form{
+    margin-top: 10px;
+}
+.center-sign_up_in{
+    margin-left:25%;
+}
+.center-terms{
+    margin-left:4%;
+}
+.astext {
+    background:none;
+    border:none;
+    margin:0;
+    margin-left:-50%;
+    padding:0;
+    text-decoration: underline; 
+}
+.center-footer {
+    margin-right:42.6%;
+}
+.modal-size {
+    width:50%;
+    margin-left:-40%;
+}
+.divider {
+    width:.5px;
+    height:auto;
+    display:inline-block;
+}
+
 /* not 'about', should be called header? */
 .about { 
     padding-top: 5%;
@@ -70,13 +206,33 @@ p {
     padding-bottom: 5%;
 }
 
+/* SEARCH */
+.listing-address, .listing-features {
+    text-shadow: 2px 2px 8px #343a40;
+}
+
+.listing-address {
+    position: absolute;
+    left: 3rem;
+    top: 1rem;
+}
+
+.listing-features {
+    position: absolute;
+    right: 3rem;
+    top: 2rem;
+}
+
+.listing-features i {
+    padding: 0.4rem;
+}
 /*  LISTING  */
 .filter {
     padding: 1%;
     background-color: #343a40;
 }
 
-.thumbnail img { width: 300px; }
+.thumbnail img { width: 25rem; }
 
 .thumbnail {
     position: relative; 
@@ -90,6 +246,46 @@ p {
     bottom: 0;
     right: 0;
     color: #fefefe;
-    background-color: rgba(108, 122, 137, 0.5);
+    /*background-color: rgba(108, 122, 137, 0.5);*/
 }
 
+.caption p, h4 {
+    margin: 0;
+    padding-top: 0.5rem;
+}
+
+.listing-images {
+    width: 100%;
+}
+
+.listing-images .container {
+    margin: 0;
+    padding: 0;
+}
+
+.listing-image-container {
+    margin: 0;
+    /*display: flex !important;*/
+}
+
+.listing-image-container img {
+    padding: 0;
+}
+
+.listing-info {
+    text-align: justify;
+}
+
+.listing-info h3 {
+    font-size: 1.2rem;
+}
+
+/* Listing: Image slider */
+.carousel-item {
+    max-height: 400px;
+    max-width: 100%;
+}
+
+.carousel-item img {
+    width: 100%;
+}
