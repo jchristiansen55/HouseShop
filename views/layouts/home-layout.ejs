@@ -149,7 +149,7 @@ $('.tab a').on('click', function (e) {
                         <!-- Tab panes -->
                         <div class="tab-content">
                             <div role="tabpanel" class="tab-pane active" id="uploadTab">
-                            <form action="<%= fa17g09_env_prefix %>/signup" method="post" role="form">
+                            <form action="<% if (locals.fa17g09_env_prefix) { %>/<%= fa17g09_env_prefix %><%}%>/signup" method="post" role="form">
                                 <div class="row">
                                     <div class="col-xs-6 col-sm-6 col-md-6">
                                         <div class="form-group">
@@ -196,7 +196,7 @@ $('.tab a').on('click', function (e) {
                             </div>
 
                             <div role="tabpanel" class="tab-pane" id="SignUp">
-                             <form action="<%= fa17g09_env_prefix %>/login" method="post" role="form">
+                             <form action="<% if (locals.fa17g09_env_prefix) { %>/<%= fa17g09_env_prefix %><%}%>/login" method="post" role="form">
                                 <div class="row">
                                     <div class="col-xs-6 col-sm-6 col-md-6">
                                         <div class="form-group">
