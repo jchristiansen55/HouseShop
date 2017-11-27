@@ -2,19 +2,18 @@
 <section class="container listing-info">
     <div class="row">
         <!-- later on, should not have listings, should only have 1 listing, passed by id -->
-        <div class="col-lg-6 col-md-6">
+        <div class="col-lg-6 col-md-6 listing-info-address">
             <h1><%= listing.address %> </h1> 
             <h1>
                 <%= listing.city %>, <%= listing.state %>
                 <!-- <%= listing.zipcode %>  -->
             </h1> 
         </div>
-        <div class="col-lg-6 col-md-6">
-            <h1>$875,000<%= listing.price %> </h1>   
+        <div class="col-lg-6 col-md-6 listing-info-detail">
+            <h1>$<%= listing.price %> </h1>   
             <h3>
                 <%= listing.numBedrooms %> beds | 
-                <%= listing.numBedrooms %> baths 
-                <!-- will have this field numBathrooms later? -->
+                <%= listing.numBathrooms %> baths 
             </h3>                      
         </div> 
     </div>
@@ -23,7 +22,7 @@
 <section class="container listing-images form-contact-agent">
     <div class="row">
         <!-- Image slider -->
-        <div id="carouselExampleIndicators" class="carousel slide col-lg-8 col-md-8 col-sm-12 col-12" data-ride="carousel" data-interval=false>
+        <div id="carouselExampleIndicators" class="carousel slide col-lg-8 col-md-12 col-sm-12 col-12" data-ride="carousel" data-interval=false>
             <div class="carousel-inner">
                 <% for(var i=0; i < media.length; i++) { %>
                     <% var isActive = "active"; %>
@@ -45,20 +44,32 @@
         <!-- END Image slider -->
 
         <!-- contact form -->
-        <div class="contact col-lg-4 col-md-4 col-sm-12 col-12">
-            <form>
+        <div class="contact col-lg-4 col-md-8 col-sm-12 col-12 div-centered">
+            <form id="needs-validation" novalidate>
                 <div class="form-group">
-                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Name">
+                    <input type="text" class="form-control" id="validationCustom01" placeholder="Name" required>
+                    <div class="invalid-feedback">
+                        Please provide your name.
+                    </div>
                 </div>
                 <div class="form-group">
-                    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Email">
+                    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Email" required>
+                    <div class="invalid-feedback">
+                        Please provide your email.
+                    </div>
                 </div>
                 <div class="form-group">
-                    <input type="tel" class="form-control" id="exampleFormControlInput1" placeholder="Phone Number">
+                    <input type="tel" class="form-control" id="exampleFormControlInput1" placeholder="Phone Number" required>
+                    <div class="invalid-feedback">
+                        Please provide your phone number.
+                    </div>
                 </div>
                 <div class="form-group">
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3">Hello, I am interested in the listing at <%= listing.address %>, <%= listing.city %>, <%= listing.state %>. 
-                        </textarea>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" required>Hello, I am interested in the listing at <%= listing.address %>, <%= listing.city %>, <%= listing.state %>. 
+                    </textarea>
+                    <div class="invalid-feedback">
+                        Please provide a message to the listing agent.
+                    </div>
                 </div>
                 <div class="row">
                     <div class="form-group col">
@@ -69,6 +80,23 @@
                     </div>                                  
                 </div>
             </form>
+            <script>
+                // Example starter JavaScript for disabling form submissions if there are invalid fields
+                (function() {
+                  'use strict';
+
+                    window.addEventListener('load', function() {
+                        var form = document.getElementById('needs-validation');
+                        form.addEventListener('submit', function(event) {
+                            if (form.checkValidity() === false) {
+                                event.preventDefault();
+                                event.stopPropagation();
+                            }
+                            form.classList.add('was-validated');
+                        }, false);
+                    }, false);
+                })();
+            </script>
         </div>
         <!-- END contact form -->
     </div>  
@@ -83,7 +111,7 @@
                     Listing Description
                 </h2>
                 <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam auctor augue nibh, non facilisis massa malesuada sed. Nullam imperdiet mauris urna, in iaculis arcu iaculis nec. Curabitur sit amet commodo lacus, fringilla mollis sem.
+                    <%= listing.description %>
                 </p>
             </div>
         </div>

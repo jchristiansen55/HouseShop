@@ -1,5 +1,7 @@
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
+var crypto = require('crypto');
+var key = process.env.key;
 
 module.exports = function(app, models){
 
@@ -13,7 +15,9 @@ module.exports = function(app, models){
     passwordField: 'password',
     session: false
     }, function(email, password, done, err) {
-        models.User.findOne({ where: {email: email, password: password}}).then(user => {
+        var cipher = crypto.createCipher('aes-256-ctr', key).update(password, 'utf-8', 'hex');
+  
+        models.User.findOne({ where: {email: email, password: cipher}}).then(user => {
             if (err) { 
                 return done(err); 
             }

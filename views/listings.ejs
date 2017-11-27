@@ -1,37 +1,34 @@
-  <form ref='uploadForm' id='uploadForm' encType="multipart/form-data"  action="<%= fa17g09_env_prefix %>/listings" method="post">
-  
+<form ref='uploadForm' id='uploadForm' encType="multipart/form-data"  action="<% if (locals.fa17g09_env_prefix) { %>/<%= fa17g09_env_prefix %><%}%>/listings" method="post">
+  <fieldset>
     <legend>Create a new listing</legend>
   <div class="listingForm-size"
     <label>
       Address:
         <input type="string" name="Address" class="form-control input-sm" placeholder="Address">
-                                    
-  
       <p/>City:
-      <input type="string" name="City" class="form-control input-sm" placeholder="City">
+      <input type="string" name="city" class="form-control input-sm" placeholder="City">
       <p/>State:
-     <input type="string" name="Sate" class="form-control input-sm" placeholder="State">
+     <input type="string" name="state" class="form-control input-sm" placeholder="State">
       <p/>Number of Bedrooms:
-      <input type="string" name="Numofbedrooms" class="form-control input-sm" placeholder="Number of Bedrooms">
+      <input type="string" name="numBedrooms" class="form-control input-sm" placeholder="Number of Bedrooms">
       <p/>Number of Baths:
-      <input type="string" name="Numofbaths" class="form-control input-sm" placeholder="Number of Bathrooms">
-         <p/>Price:
-      <input type="string" name="Price" class="form-control input-sm" placeholder="Price">
+      <input type="string" name="numBathrooms" class="form-control input-sm" placeholder="Number of Bathrooms">
          <p/>ZipCode:
-      <input type="string" name="ZipCode" class="form-control input-sm" placeholder="Zip Code">
+      <input type="string" name="zipcode" class="form-control input-sm" placeholder="Zip Code">
+         <p/>Square Footage:
+      <input type="string" name="squareFeet" class="form-control input-sm" placeholder="Square Footage">
+         <p/>Price:
+      <input type="string" name="price" class="form-control input-sm" placeholder="Price">
          <p/>Description:
-      <input type="string" name="Description" class="form-control input-sm" placeholder="Description">
-
-	       <!-- Picture: <input type="file" name="imageFile" /><br/>   -->
-          <!-- Picture2: <input type="file" name="imageFile2" /><br/> -->
+      <input type="string" name="description" class="form-control input-sm" placeholder="Description">
           <br> Choose a primary picture</br>
         <label class="custom-file">
-          <input type="file" id="file1" class="custom-file-input">
+          <input type="file" id="file1" name="imageFile" class="custom-file-input">
            <span class="custom-file-control"></span>
             </label>
           <br> Choose a secondary picture</br>
             <label class="custom-file">
-              <input type="file" id="file2" class="custom-file-input">
+              <input type="file" id="file2" name="imageFile2" class="custom-file-input">
                 <span class="custom-file-control"></span>
                   </label>
             <br></br>

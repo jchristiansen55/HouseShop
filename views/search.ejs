@@ -1,81 +1,127 @@
 <section class="filter row">
-    <div class="btn-group div-centered">
+    <div class="btn-group">
         <form action="filter" method="post" class="form-inline">
-                <select name="taskOption">
-                        <%  var rooms = 13; %>
-                        <% for (var i = 0; i < rooms; i++){ %>
-                            <option value=<%= i %>> <%= i %>+ Beds</option>
-                        <% } %>
-                </select>
-            <input type="submit" class="btn btn-primary" value="Apply Filter">
+            <div class="row">
+                <div class="col">
+                    <select class="custom-select" name="taskOption">
+                            <%  var rooms = 13; %>
+                            <% for (var i = 0; i < rooms; i++){ %>
+                                <option value=<%= i %>> <%= i %>+ Beds</option>
+                            <% } %>
+                    </select>
+                </div>
+                <div class="col">
+                    <input type="submit" class="btn btn-primary col" value="Apply Filter">
+                </div> 
+            </div>         
         </form>
     </div>
     <!-- END Filter Options  -->
 
-    <div class="btn-group div-centered">
-        Sort results by:
+    <div class="btn-group">
+        <!-- Sort results by: -->
         <!-- note the extra slash before the prefix -->
         <form action="<% if (locals.fa17g09_env_prefix) { %>/<%= fa17g09_env_prefix %><%}%>/search" method="post" class="form-inline">
-                <select name="sortOption">
-                    <%
-                    var optionsMap = new Map();
-                    optionsMap.set("price ASC", "Price (low to high)");
-                    optionsMap.set("price DESC", "Price (high to low)");
-                    optionsMap.set("numBedrooms DESC", "Number of Bedrooms (descending)");
-                    optionsMap.set("numBedrooms ASC", "Number of Bedrooms (ascending)");
-                    optionsMap.set("squareFeet DESC", "SqFt (descending)");
-                    optionsMap.set("squareFeet ASC", "SqFt (ascending)");
-                    for (var [key, value] of optionsMap) {
-                        var selected = "";
-                        if (locals.previousSortOption) {
-                            if  (locals.previousSortOption == key){
-                                selected = 'selected="selected"';
+            <div class="row">
+                <div class="col sort-selection">
+                    <select class="custom-select" name="sortOption">
+                        <%
+                        var optionsMap = new Map();
+                        optionsMap.set("price ASC", "Price (low to high)");
+                        optionsMap.set("price DESC", "Price (high to low)");
+                        optionsMap.set("numBedrooms DESC", "Number of Bedrooms (descending)");
+                        optionsMap.set("numBedrooms ASC", "Number of Bedrooms (ascending)");
+                        optionsMap.set("squareFeet DESC", "SqFt (descending)");
+                        optionsMap.set("squareFeet ASC", "SqFt (ascending)");
+                        for (var [key, value] of optionsMap) {
+                            var selected = "";
+                            if (locals.previousSortOption) {
+                                if  (locals.previousSortOption == key){
+                                    selected = 'selected="selected"';
+                                }
                             }
-                        }
-                        %><option value="<%= key %>" <%= selected %>><%= value %></option>
-                    <%}%>
-                </select>
-                <input name="city" type="hidden" value="<% if (locals.previousSearchString) { %><%=previousSearchString %><%}%>"/>
-            <input type="submit" value="Sort" class="btn btn-primary">
+                        %>
+                            <option value="<%= key %>" <%= selected %>><%= value %></option>
+                        <%}%>
+                    </select>
+                    <input name="city" type="hidden" value="<% if (locals.previousSearchString) { %><%=previousSearchString %><%}%>"/>
+                </div>
+                <div class="col sort-btn">
+                    <input type="submit" value="Sort" class="btn btn-primary">
+                </div>
+            </div>
         </form>
     </div>
     <!-- END Sorting Options  -->
 
 </section>
-
-<section class="row search-results">
-    <div>
-        <p>Found <%= listings.length %> results</p>
-    </div>
-</section>
+<!-- END Filters -->
 
 <section class="row">
-    <div class="col-lg-6 col-xs-12 container-map container-left">
+    <div class="col-lg-6 col-xs-12 container-map column-left">
         <div class="google-map" id="map"></div>
-        <script>
-          function initMap() {
-            var uluru = {lat: -25.363, lng: 131.044};
-            var map = new google.maps.Map(document.getElementById('map'), {
-              zoom: 4,
-              center: uluru
-            });
-            var marker = new google.maps.Marker({
-              position: uluru,
-              map: map
-            });
-          }
+        <script>            
+            // Initialize Map as a callback from google maps api
+            function initMap() {
+                // Map options
+                var options = {
+                    zoom: 13,
+                    center: {lat: 37.7749, lng: -122.4194}
+                };
+
+                // New Map
+                var map = new google.maps.Map(document.getElementById('map'), options);
+
+                // New Geocoder
+                geocoder = new google.maps.Geocoder();
+
+                // Get listings
+                var listings = <%- JSON.stringify(listings) %>;
+                
+                // Geocode each listing by passings its address
+                listings.forEach(function(listing) {
+                    // console.log(listing.address);
+                    geoCodeAddress(geocoder, map, listing.address, listing.city);
+                });
+            }
+
+            // Takes address, geocode and add marker to that address
+            function geoCodeAddress(geocoder, map, address, city) {
+                var fullAddress = address + city;
+                geocoder.geocode({'address': fullAddress}, function(results, status) {
+                    if (status === google.maps.GeocoderStatus.OK) {
+                        map.setCenter(results[0].geometry.location);
+                        
+                        // Add marker
+                        var marker = new google.maps.Marker({
+                            map: map,
+                            position: results[0].geometry.location
+                        });
+                    } else {
+                        alert('Geocode was not successful for the following reason: ' + status);
+                    }
+                });
+            }
         </script>
-        <script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC5S02BZHrqQkQbvEUFVWedNU4ojll4Z5M&callback=initMap">
+
+        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDmesu9CCVsAtFvsAJUJxj-a31UtUyINmk&callback=initMap">
         </script>
     </div>
-    <div class="col-lg-6 col-xs-12 results container-right">
+    <!-- END Left Container: Map -->
+
+    <div class="col-lg-6 col-md-6 col-xs-12 results column-right">
+        <section class="search-results" style="z-index: 50">
+            <div>
+                <p>Found <%= listings.length %> results</p>
+            </div>
+        </section>
+        <!-- END Number of Search Results  -->
         <div class="results">
             <%listings.forEach(function(listing) { %>
                 <div class="card" >
                     <a href="listing/result?listing=<%= listing.id %>">
                         <div class="wrapper-card-img">
-                            <div class="card-img" style="background-image: url(<%= listing.thumbnail %>);"></div>                            
+                            <div class="card-img" style="background-image: url(<%= listing.thumbnail %>);"></div>
                         </div>
                     </a>
                     <div class="card-body">
@@ -84,30 +130,33 @@
                                 <h4 class="card-title">
                                     <%= listing.address %> <br>
                                     <%= listing.city %>, <%= listing.state %>
-                                </h4>                                  
+                                </h4>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col">
-                                <h5 class="card-title">$875,000 <%= listing.price %> </h5>
+                                <h5 class="card-title">$<%= listing.price %> </h5>
                                 <h6>
                                     <%= listing.numBedrooms %>
                                     <i class="fa fa-bed" aria-hidden="true"></i>
                                     | 
-                                    5 <%= listing.numBathrooms %>
+                                    <%= listing.numBathrooms %>
                                     <i class="fa fa-bath" aria-hidden="true"></i>
                                 </h6>   
                             </div>
                             <div class="col">
                                 <button type="submit" class="btn btn-primary">
-                                    Add To List 
+                                    Save To List 
                                     <i class="fa fa-plus-circle" aria-hidden="true"></i>
                                 </button>
                             </div>
-                        </div>                          
+                        </div>
                     </div>
                 </div>
             <% }) %>
         </div>
     </div>
+    <!-- END Right Container: Listings Thumbnails -->
+
 </section>
+<!-- END Content: Map + Listings -->
