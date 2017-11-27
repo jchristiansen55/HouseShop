@@ -61,7 +61,7 @@ router.post('/', function(req, res) {
                   if (err){
                               return res.status(500).send(err);
                   } else {
-                          res.redirect('/listings');
+                          res.redirect('listings');
                   }
            });
     });
