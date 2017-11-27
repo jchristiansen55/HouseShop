@@ -18,7 +18,7 @@ router.post('/', function(req, res) {
     var user = {
         firstName: req.body.firstName,
         lastName: req.body.lastName,
-        userType: req.body.userType
+        userType: req.body.userType,
         password: cipher,
         email: req.body.email
     };
