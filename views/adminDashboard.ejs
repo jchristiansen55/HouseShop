@@ -1,6 +1,6 @@
 <div class="container">
     <h2>Admin Dashboard Remove User</h2>
-    <form action="/adminDashboard/removeUser" method="post">
+    <form action="<% if (locals.fa17g09_env_prefix) { %>/<%= fa17g09_env_prefix %><%}%>/adminDashboard/removeUser" method="post">
       <div class="form-group">
         <label for="comment">User Email:</label>
         <input type="text" class="form-control" name="userEmail">
@@ -24,7 +24,7 @@
 
 <div class="container">
     <h2>Admin Dashboard Remove Listing</h2>
-    <form action="/adminDashboard/removeListing" method="post">
+    <form action="<% if (locals.fa17g09_env_prefix) { %>/<%= fa17g09_env_prefix %><%}%>/adminDashboard/removeListing" method="post">
       <div class="form-group">
         <label for="comment">Listing Id:</label>
         <input type="text" class="form-control" name="listingId">
