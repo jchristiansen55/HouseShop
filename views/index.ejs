@@ -16,13 +16,13 @@
             <div class="searchbar div-centered col-lg-7" id="searchbar">
                 <form action="<%= fa17g09_env_prefix %>/search" method="post" class="form-inline">
                     <div class="input-group col-12">
-                        <input type="query" name="city" id="search" class="form-control" placeholder="Enter address, zip code, or city ..." aria-label="Search for..." />
+                        <input maxlength="40" type="query" name="city" id="search" class="form-control" placeholder="Enter address, zip code, or city ..." aria-label="Search for..." />
                         <span class="input-group-btn">
                             <button class="btn btn-primary" type="submit">
                                 <i class="fa fa-search" aria-hidden="true"></i>
                             </button>
                         </span>
-                    </div>      
+                    </div>
                 </form>
             </div>
         </div>
@@ -54,11 +54,11 @@
     </div> -->
     <div class="row">
         <%listings.forEach(function(listing) { %>
-            <div class="col-lg-4"> 
+            <div class="col-lg-4">
                 <div class="card" >
                     <a href="<%= fa17g09_env_prefix %>/listing/result?listing=<%= listing.id %>">
                         <div class="wrapper-card-img">
-                            <div class="card-img" style="background-image: url(<%= fa17g09_env_prefix %>/<%= listing.thumbnail %>);"></div>                            
+                            <div class="card-img" style="background-image: url(<%= fa17g09_env_prefix %>/<%= listing.thumbnail %>);"></div>
                         </div>
                     </a>
                     <div class="card-body">
@@ -67,7 +67,7 @@
                                 <h4 class="card-title">
                                     <%= listing.address %> <br>
                                     <%= listing.city %>, <%= listing.state %>
-                                </h4>         
+                                </h4>
                             </div>
                         </div>
                         <div class="row">
@@ -76,18 +76,18 @@
                                 <h6>
                                     <%= listing.numBedrooms %>
                                     <i class="fa fa-bed" aria-hidden="true"></i>
-                                    | 
+                                    |
                                     <%= listing.numBathrooms %>
                                     <i class="fa fa-bath" aria-hidden="true"></i>
-                                </h6>   
+                                </h6>
                             </div>
                             <div class="col">
                                 <button type="submit" class="btn btn-primary">
-                                    Add To List 
+                                    Add To List
                                     <i class="fa fa-plus-circle" aria-hidden="true"></i>
                                 </button>
                             </div>
-                        </div>                          
+                        </div>
                     </div>
                 </div>
             </div>
