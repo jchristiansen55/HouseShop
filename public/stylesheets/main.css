@@ -325,6 +325,12 @@ p {
     display: none;
 }
 
+/* CREATE LISTINGS */
+
+fieldset {
+    border: none;
+}
+
 /* DASHBOARD */
 th {
     text-align: center;
