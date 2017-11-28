@@ -24,7 +24,7 @@ router.post('/', function(req, res) {
     };
 
     models.User.create(user).then(function(newUser) {
-        res.redirect('/signup');
+        res.redirect('signup');
     });
 
 });
