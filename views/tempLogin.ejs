@@ -14,7 +14,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-7 div-centered">
-                <form action="<%= fa17g09_env_prefix %>/login" method="post" class="form-inline">
+                <form action="<% if (locals.fa17g09_env_prefix) { %>/<%= fa17g09_env_prefix %><%}%>/login" method="post" class="form-inline">
                     <div class="container">
                         <label><b>Email</b></label>
                         <input type="text" placeholder="Enter Email" name="email" required>

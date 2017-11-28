@@ -1,7 +1,7 @@
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var crypto = require('crypto');
-var key = process.env.key;
+var key = process.env.key.toString();
 
 module.exports = function(app, models){
 
