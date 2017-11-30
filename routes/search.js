@@ -22,7 +22,13 @@ router.post('/', function(req, res, next) {
 
     var errors = req.validationErrors();
     if (errors) {
-       res.send(errors);
+     
+
+        res.cookie('errors', errors[0]);
+
+         res.redirect('/');
+
+        res.send(errors);
     }
     else {
         var queryBuilderArguments = {searchString : req.body.city};

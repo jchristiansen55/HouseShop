@@ -5,6 +5,11 @@
             <div class="col-lg-4"></div>
             <div class="col-lg-4">
                 <h2><center>Feeling at home?</center></h2>
+                <% if(errors){ %>
+                <div class="alert alert-danger" role="alert">
+                 <strong> <%=errors.msg%> </strong>
+                </div>
+                <% } %>
                 <center>Your ideal home awaits, just enter your zip code!</center>
             </div>
             <div class="col-lg-4"></div>
@@ -33,6 +38,8 @@
 <div class ="divider">
     <hr align="left" width="100%">
 </div>
+
+
 
 <!-- ABOUT SECTION -->
 <section class="container">
