@@ -26,7 +26,7 @@ router.post('/', function(req, res, next) {
 
         res.cookie('errors', errors[0]);
 
-         res.redirect('/');
+        res.redirect('back');
 
         res.send(errors);
     }
@@ -41,7 +41,8 @@ router.post('/', function(req, res, next) {
                 title: 'Search',
                 listings: listings,
                 previousSearchString: req.body.city,
-                previousSortOption: req.body.sortOption
+                previousSortOption: req.body.sortOption,
+                errors: req.body.errors
             });
 
             // START HOW TO GET AND USE ASSOCIATED MODELS
@@ -56,7 +57,7 @@ router.post('/', function(req, res, next) {
             });
         });
         // END HOW TO GET AND USE ASSOCIATED MODELS
-
+        res.cookie('errors', '');
         });
     }
 });
@@ -67,9 +68,11 @@ router.get('/', function(req, res, next) {
     .then(function(listings) {
         res.render('search', { // render the Search/Browse page
             title: 'Search',
-            listings: listings
+            listings: listings,
+            errors: req.cookies.errors
         });
     });
+    res.cookie('errors', '');
 });
 
 module.exports = router;

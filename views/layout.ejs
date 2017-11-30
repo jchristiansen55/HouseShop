@@ -58,12 +58,21 @@
                                     </span>
                                 </div>
                             </form>
+
                         </div>
+                            <% if(errors){ %>
+                            <br>
+                                <div class="alert alert-danger" role="alert">
+                                    <strong> <%=errors.msg%> </strong>
+                                </div>
+                            <% } %>
+
                         <div class="collapse navbar-collapse nav-end col-lg-5 col-md-6 col-sm-12" id="navbarCollapse">
                             <ul class="nav navbar-nav justify-content-end">
                                 <li class="nav-item">
                                     <a class="nav-link" href="<% if (locals.fa17g09_env_prefix) { %>/<%= fa17g09_env_prefix %><%}%>/about.html">About</a>
                                 </li>
+
                                 <li class="nav-item">
                                     <a class="nav-link" href="<% if (locals.fa17g09_env_prefix) { %>/<%= fa17g09_env_prefix %><%}%>/dashboard">Agent</a>
                                 </li>
@@ -79,7 +88,9 @@
                     </nav>
                 </div>
                 <!-- END NAV BAR -->
+
             </div>
+
             <!-- END HEADER CONTAINER -->
 
             <!-- MAIN CONTENT -->
