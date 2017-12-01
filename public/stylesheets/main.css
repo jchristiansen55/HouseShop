@@ -121,6 +121,10 @@ p {
     margin-bottom: 0;
 }
 
+.alert-danger {
+    position:absolute;
+}
+
 .home {
     padding: 0;
 }

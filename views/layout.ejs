@@ -33,14 +33,22 @@
             <% if (title != "Search") { isSearchPage = ""; } %>
             <div class="container-fluid <%= isSearchPage %>">
                 <!-- DISCLAIMER TOP BAR -->
+                <div>
+                <% if(errors){ %>
+                            <br>
+                                <div class="alert alert-danger row" role="alert">
+                                    <strong> <%=errors.msg%> </strong>
+                                </div>
+                            <% } %>
+                </div>
                 <div class="alert alert-primary row" role="alert">
-                    Disclaimer: This website is a school project.
+                    Disclaimer: This website is a school project. 
                 </div>
                 <!-- END DISCLAIMER -->
 
                 <!-- NAV BAR -->
                 <div class="row">
-                    <nav class="navbar navbar-expand-md navbar-dark bg-dark col-lg-12">
+                    <nav class="navbar navbar-expand-md navbar-dark bg-dark col-lg-12"> 
                         <a class="navbar-brand col-lg-1 col-md-1 col-sm-1 col-1" href="<% if (locals.fa17g09_env_prefix) { %>/<%= fa17g09_env_prefix %><%}%>">
                             <img src="<% if (locals.fa17g09_env_prefix) { %>/<%= fa17g09_env_prefix %><%}%>/assets/logo-houseshop.svg" class="image-logo">
                         </a>
@@ -60,13 +68,6 @@
                             </form>
 
                         </div>
-                            <% if(errors){ %>
-                            <br>
-                                <div class="alert alert-danger" role="alert">
-                                    <strong> <%=errors.msg%> </strong>
-                                </div>
-                            <% } %>
-
                         <div class="collapse navbar-collapse nav-end col-lg-5 col-md-6 col-sm-12" id="navbarCollapse">
                             <ul class="nav navbar-nav justify-content-end">
                                 <li class="nav-item">
