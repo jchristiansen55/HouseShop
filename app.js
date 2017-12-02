@@ -21,6 +21,7 @@ var sendMsg = require('./routes/sendMsg');
 var sendMessages = require('./routes/sendMessages');
 var getMessages = require('./routes/getMessages');
 var login = require('./routes/login');
+var logout = require('./routes/logout');
 var signup = require('./routes/signup');
 var models = require('./models');
 var user  = require('./models/user.js');
@@ -94,6 +95,7 @@ app.use('/sendMessages', sendMessages);
 app.use('/getMessages', getMessages);
 
 app.use('/login', login);
+app.use('/logout', logout);
 app.use('/signup', signup);
 app.use('/adminDashboard', adminDashboard);
 

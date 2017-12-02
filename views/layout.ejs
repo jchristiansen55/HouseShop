@@ -74,8 +74,16 @@
                                     <a class="nav-link" href="/messageBoard">Contact</a>
                                 </li>
                                 <li class="nav-item">
-                                    <!-- <a class="nav-link" href="#">Sign In</a> -->
-                                    <button type="button" class="btn btn-primary btn-lg btn-log-in" data-toggle="modal" data-target="#myModal">Sign In</button>
+
+                                    <!-- SIGN IN/LOG IN -->
+                                    <% if (UserState > 0) { %>
+                                        <form action="/logout" method="post">
+                                            <input  type="submit" class="btn btn-primary btn-lg btn-log-in" name="Log Out" value="Log Out" />
+                                        </form>
+                                    <% } else { %>
+                                        <button type="button" class="btn btn-primary btn-lg btn-log-in" data-toggle="modal" data-target="#myModal" > Sign In </button>
+                                    <% } %>
+                                    <!-- END SIGNIN/LOG IN -->
                                 </li>
                             </ul>
                         </div>

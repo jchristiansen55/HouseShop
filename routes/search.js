@@ -20,14 +20,19 @@ router.post('/', function(req, res, next) {
     req.sanitize('city')
         .blacklist('!@#$%^*;+');
 
+    models.Listing.findAll(buildListingsQuery(queryBuilderArguments)).then(function(listings) {
+        res.render('search', { // render the Search/Browse page
+            title: 'Search',
+            listings: listings,
+            previousSearchString: req.body.city,
+            previousSortOption: req.body.sortOption,
+            UserState: req.cookies.UserState,
+            User: req.body.User
+});
     var errors = req.validationErrors();
     if (errors) {
-     
-
         res.cookie('errors', errors[0]);
-
         res.redirect('back');
-
         res.send(errors);
     }
     else {
@@ -69,6 +74,10 @@ router.get('/', function(req, res, next) {
         res.render('search', { // render the Search/Browse page
             title: 'Search',
             listings: listings,
+            previousSearchString: req.body.city,
+            previousSortOption: req.body.sortOption,
+            UserState: req.cookies.UserState,
+            User: req.body.User
             errors: req.cookies.errors
         });
     });
