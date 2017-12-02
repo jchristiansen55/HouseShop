@@ -74,7 +74,7 @@
 
                                     <!-- SIGN IN/LOG IN -->
                                     <% if (UserState > 0) { %>
-                                        <form action="/logout" method="post">
+                                        <form action="<% if (locals.fa17g09_env_prefix) { %>/<%= fa17g09_env_prefix %><%}%>/logout" method="post">
                                             <input  type="submit" class="btn btn-primary btn-lg btn-log-in" name="Log Out" value="Log Out" />
                                         </form>
                                     <% } else { %>

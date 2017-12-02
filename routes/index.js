@@ -7,12 +7,11 @@ var User = require('../models/user');
 /* GET home page. */
 router.get('/' + fa17g09_env_prefix, function(req, res, next) {
 
-  var cookiename = 'cookieName';
-//    if (req.cookies.UserState === 'undefined') {
-//        console.log("If statement entered");
-//        res.cookie('UserState', '0');
-//        res.cookie('User', '');
-//    }
+    if (typeof req.cookies.UserState === 'undefined') {
+        console.log("If statement entered");
+        res.cookie('UserState', '0');
+        res.cookie('User', '');
+    }
     console.log("UserState: " + req.cookies.UserState);
     console.log("User object: " + req.cookies.User);
     models.Listing.findAll().then(function(listings) {
