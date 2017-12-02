@@ -33,14 +33,6 @@
             <% if (title != "Search") { isSearchPage = ""; } %>
             <div class="container-fluid <%= isSearchPage %>">
                 <!-- DISCLAIMER TOP BAR -->
-                <div>
-                <% if(errors){ %>
-                            <br>
-                                <div class="alert alert-danger row" role="alert">
-                                    <strong> <%=errors.msg%> </strong>
-                                </div>
-                            <% } %>
-                </div>
                 <div class="alert alert-primary row" role="alert">
                     Disclaimer: This website is a school project. 
                 </div>
@@ -66,7 +58,8 @@
                                     </span>
                                 </div>
                             </form>
-
+                            <!-- END Search Bar -->
+                            
                         </div>
                         <div class="collapse navbar-collapse nav-end col-lg-5 col-md-6 col-sm-12" id="navbarCollapse">
                             <ul class="nav navbar-nav justify-content-end">
