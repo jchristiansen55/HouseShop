@@ -26,7 +26,7 @@ router.post('/', function(req, res, next) {
 
         res.cookie('errors', errors[0]);
 
-        res.redirect('back');
+        res.redirect("/");
 
         res.send(errors);
     }
