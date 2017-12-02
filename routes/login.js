@@ -7,10 +7,10 @@ var fa17g09_env_prefix = require('../prefix');
 router.post('/', passport.authenticate('local', { failureRedirect: 'about.html'}),
 
     function(req, res){
-		console.log(req.user.id);
+		console.log(req.user);
 
+        res.cookie('User', req.user);
         res.cookie('UserState', req.user.id);
-        res.cookie('UserType', req.user.userType);
 		res.redirect('/' + fa17g09_env_prefix);
 		});
 
