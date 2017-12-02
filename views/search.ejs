@@ -112,6 +112,7 @@
     <div class="col-lg-6 col-md-6 col-xs-12 results column-right">
         <section class="search-results" style="z-index: 50">
             <div>
+            <% if (errors) { listings.length = 0; } %>
                 <p>Showing <%= listings.length %> homes for sale.</p>
             </div>
             <!-- <% if(title == "Search"){ %> -->
@@ -132,6 +133,7 @@
         </section>
         <!-- END Number of Search Results  -->
         <div class="results">
+        <% if (!errors) { %>
             <%listings.forEach(function(listing) { %>
                 <div class="card" >
                     <a href="listing/result?listing=<%= listing.id %>">
@@ -159,6 +161,7 @@
                     </div>
                 </div>
             <% }) %>
+        <% } %>
         </div>
     </div>
     <!-- END Right Container: Listings Thumbnails -->
