@@ -73,14 +73,14 @@
                                 <li class="nav-item">
 
                                     <!-- SIGN IN/LOG IN -->
-                                    <% if (typeof UserState === "undefined") { UserState = 0 } %>
-                                    <% var signInLogOut = "Sign In"; %>
-                                    <% var signInLogOutRoute = "#myModal"  %>
                                     <% if (UserState > 0) { %>
-                                        <% signInLogOut = "Log Out"; %>
-                                        <% signInLogOutRoute = "/logout"; %>
+                                        <form action="/logout" method="post">
+                                            <input  type="submit" class="btn btn-primary btn-lg btn-log-in" name="Log Out" value="Log Out" />
+                                        </form>
+                                    <% } else { %>
+                                        <button type="button" class="btn btn-primary btn-lg btn-log-in" data-toggle="modal" data-target="#myModal" > Sign In </button>
                                     <% } %>
-                                    <button type="button" class="btn btn-primary btn-lg btn-log-in" data-toggle="modal" data-target= <%- signInLogOutRoute %> > <%- signInLogOut %> </button>
+                                    <!-- END SIGNIN/LOG IN -->
                                 </li>
                             </ul>
                         </div>

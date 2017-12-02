@@ -45,7 +45,11 @@ router.get('/', function(req, res, next) {
     .then(function(listings) {
         res.render('search', { // render the Search/Browse page
             title: 'Search',
-            listings: listings
+            listings: listings,
+            previousSearchString: req.body.city,
+            previousSortOption: req.body.sortOption,
+            UserState: req.cookies.UserState,
+            User: req.body.User
         });
     });
 });
