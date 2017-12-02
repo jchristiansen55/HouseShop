@@ -77,12 +77,13 @@
 
                 // Get listings
                 var listings = <%- JSON.stringify(listings) %>;
-                
-                // Geocode each listing by passings its address
-                listings.forEach(function(listing) {
-                    // console.log(listing.address);
-                    geoCodeAddress(geocoder, map, listing.address, listing.city);
-                });
+                if (!errors) {
+                    // Geocode each listing by passings its address
+                    listings.forEach(function(listing) {
+                        // console.log(listing.address);
+                        geoCodeAddress(geocoder, map, listing.address, listing.city);
+                    });
+                }
             }
 
             // Takes address, geocode and add marker to that address
