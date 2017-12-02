@@ -96,8 +96,15 @@ $('.tab a').on('click', function (e) {
                         <a class="nav-link" href="/messageBoard">Contact</a>
                     </li>
                     <li class="nav-item">
-                        <!-- <a class="nav-link" href="#">Sign In</a> -->
-                        <button type="button" class="btn btn-primary btn-lg btn-log-in" data-toggle="modal" data-target="#myModal">Sign In</button>
+                        <!-- SIGN IN/LOG IN -->
+                        <% var signInLogOut = "Sign In"; %>
+                        <% var signInLogOutRoute = "#myModal"  %>
+                        <% if (typeof UserState === "undefined") { UserState = 0 } %>
+                        <% if (UserState > 0) { %>
+                            <% signInLogOut = "Log Out"; %>
+                            <% signInLogOutRoute = "/logout"; %>
+                        <% } %>
+                        <button type="button" class="btn btn-primary btn-lg btn-log-in" data-toggle="modal" data-target= <%- signInLogOutRoute %> > <%- signInLogOut %> </button>
                     </li>
                 </ul>
             </div>

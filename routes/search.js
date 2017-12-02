@@ -18,8 +18,10 @@ router.post('/', function(req, res, next) {
             title: 'Search',
             listings: listings,
             previousSearchString: req.body.city,
-            previousSortOption: req.body.sortOption
-        });
+            previousSortOption: req.body.sortOption,
+            UserState: req.cookies.UserState,
+            User: req.body.User
+});
 
         // START HOW TO GET AND USE ASSOCIATED MODELS
         console.log(models.Listing.prototype);

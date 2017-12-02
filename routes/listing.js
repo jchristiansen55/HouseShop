@@ -17,7 +17,9 @@ router.get('/:listing?', function(req, res, next) {
                     title: 'Listing - GET', // remove 'GET'
                     listing: listing,
                     media: media,
-                    user: user // listing agent
+                    user: user, // listing agent
+                    UserState: req.cookies.UserState,
+                    User: req.cookies.User
                 });
             });
         });
