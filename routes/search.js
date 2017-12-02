@@ -1,17 +1,24 @@
 var express = require('express');
 var router = express.Router();
 var models = require('../models');
+var expressValidator = require('express-validator');
 
 const Op = models.sequelize.Op;
+
+router.use(expressValidator());
 
 /* POST search page
    '/' is NOT Home page
 */ 
 router.post('/', function(req, res, next) {
-    var queryBuilderArguments = {searchString : req.body.city};
-    if(req.body.sortOption) {
-        queryBuilderArguments.orderMode = req.body.sortOption;
+
+    if (req.body.city < 0) {
+        req.checkBody('city', 'Error: You entered a negative number').isInt({min: 0});
     }
+    req.checkBody('city', 'Search string too long').isLength({max: 40})
+        .notEmpty(req.body.city).withMessage('Search field empty. Please enter an address, zip code, city, or state')
+    req.sanitize('city')
+        .blacklist('!@#$%^*;+');
 
     models.Listing.findAll(buildListingsQuery(queryBuilderArguments)).then(function(listings) {
         res.render('search', { // render the Search/Browse page
@@ -22,11 +29,31 @@ router.post('/', function(req, res, next) {
             UserState: req.cookies.UserState,
             User: req.body.User
 });
+    var errors = req.validationErrors();
+    if (errors) {
+        res.cookie('errors', errors[0]);
+        res.redirect('back');
+        res.send(errors);
+    }
+    else {
+        var queryBuilderArguments = {searchString : req.body.city};
+        if(req.body.sortOption) {
+            queryBuilderArguments.orderMode = req.body.sortOption;
+        }
 
-        // START HOW TO GET AND USE ASSOCIATED MODELS
-        console.log(models.Listing.prototype);
+        models.Listing.findAll(buildListingsQuery(queryBuilderArguments)).then(function(listings) {
+            res.render('search', { // render the Search/Browse page
+                title: 'Search',
+                listings: listings,
+                previousSearchString: req.body.city,
+                previousSortOption: req.body.sortOption,
+                errors: req.body.errors
+            });
 
-        listings.forEach(function(listing) {
+            // START HOW TO GET AND USE ASSOCIATED MODELS
+            console.log(models.Listing.prototype);
+
+            listings.forEach(function(listing) {
             console.log("listing.address: " + listing.address);
             listing.getMedia().then(function(media){
                 media.forEach(function(medium) {
@@ -35,8 +62,9 @@ router.post('/', function(req, res, next) {
             });
         });
         // END HOW TO GET AND USE ASSOCIATED MODELS
-
-    });
+        res.cookie('errors', '');
+        });
+    }
 });
 
 router.get('/', function(req, res, next) {
@@ -50,8 +78,10 @@ router.get('/', function(req, res, next) {
             previousSortOption: req.body.sortOption,
             UserState: req.cookies.UserState,
             User: req.body.User
+            errors: req.cookies.errors
         });
     });
+    res.cookie('errors', '');
 });
 
 module.exports = router;

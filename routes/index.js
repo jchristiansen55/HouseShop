@@ -8,13 +8,6 @@ var User = require('../models/user');
 router.get('/' + fa17g09_env_prefix, function(req, res, next) {
 
   var cookiename = 'cookieName';
-//    if (req.cookies.UserState === 'undefined') {
-//        console.log("If statement entered");
-//        res.cookie('UserState', '0');
-//        res.cookie('User', '');
-//    }
-    console.log("UserState: " + req.cookies.UserState);
-    console.log("User object: " + req.cookies.User);
     models.Listing.findAll().then(function(listings) {
         res.render('index', {
             title: 'Home Page',
@@ -22,8 +15,10 @@ router.get('/' + fa17g09_env_prefix, function(req, res, next) {
             layout: './layouts/home-layout', // Set custom layout for single render
             User: req.cookies.User,
             UserState: req.cookies.UserState
+            errors: req.cookies.errors
         });
     });
+    res.cookie('errors', '');
 });
 
 module.exports = router;

@@ -19,8 +19,8 @@
         <div class="row">
             <div class="searchbar div-centered col-lg-7" id="searchbar">
                 <form action="<%= fa17g09_env_prefix %>/search" method="post" class="form-inline">
-                    <div class="input-group col-12">
-                        <input maxlength="40" type="query" name="city" id="search" class="form-control" placeholder="Enter address, zip code, or city ..." aria-label="Search for..." />
+                    <div class="input-group searchbar-input">
+                        <input type="query" name="city" id="search" class="form-control" placeholder="Enter address, zip code, or city ..." aria-label="Search for..." />
                         <span class="input-group-btn">
                             <button class="btn btn-primary" type="submit">
                                 <i class="fa fa-search" aria-hidden="true"></i>
@@ -28,6 +28,22 @@
                         </span>
                     </div>
                 </form>
+                <!-- END Search Bar -->
+
+                <% if(errors){ %>
+                    <div class="alert alert-warning alert-dismissible fade show row search-alert" role="alert">
+                        <div class="col-10 search-alert-detail">
+                            <strong><%=errors.msg%>!</strong>                            
+                        </div>
+                        <div class="col-2 search-alert-detail">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    </div>
+                <% } %>
+                <!-- END Error Alert Message -->
+
             </div>
         </div>
     </div>
@@ -37,6 +53,8 @@
 <div class ="divider">
     <hr align="left" width="100%">
 </div>
+
+
 
 <!-- ABOUT SECTION -->
 <section class="container">
@@ -66,31 +84,21 @@
                         </div>
                     </a>
                     <div class="card-body">
-                        <div class="row">
-                            <div class="col">
-                                <h4 class="card-title">
-                                    <%= listing.address %> <br>
-                                    <%= listing.city %>, <%= listing.state %>
-                                </h4>
-                            </div>
+                        <div class="">
+                            <h5 class="card-title">
+                                <%= listing.address %> <br>
+                                <%= listing.city %>, <%= listing.state %>
+                            </h5>
                         </div>
-                        <div class="row">
-                            <div class="col">
-                                <h5 class="card-title">$<%= listing.price %> </h5>
-                                <h6>
-                                    <%= listing.numBedrooms %>
-                                    <i class="fa fa-bed" aria-hidden="true"></i>
-                                    |
-                                    <%= listing.numBathrooms %>
-                                    <i class="fa fa-bath" aria-hidden="true"></i>
-                                </h6>
-                            </div>
-                            <div class="col">
-                                <button type="submit" class="btn btn-primary">
-                                    Add To List
-                                    <i class="fa fa-plus-circle" aria-hidden="true"></i>
-                                </button>
-                            </div>
+                        <div class="">
+                            <h4 class="card-title">$<%= listing.price %> </h4>
+                            <h5>
+                                <i class="fa fa-bed" aria-hidden="true"></i>
+                                <%= listing.numBedrooms %> bds
+                                | 
+                                <i class="fa fa-bath" aria-hidden="true"></i>
+                                <%= listing.numBathrooms %> ba
+                            </h5>   
                         </div>
                     </div>
                 </div>
