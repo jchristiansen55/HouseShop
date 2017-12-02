@@ -68,10 +68,13 @@ function inputValidationErrors(req) {
         errors.push("Phone number not entered or unsupported character(s) in phone number.");
     }
 
-    if(!req.body.password || !validator.isAscii(req.body.password)) {
-        errors.push("Password not entered or unsupported character(s) in password.");
+    if(!req.body.password || !req.body.confirmPassword || !validator.isAscii(req.body.password) || !validator.isAscii(req.body.confirmPassword)) {
+        errors.push("Passwords not entered or unsupported character(s) in password.");
     }
 
+    if(req.body.password != req.body.confirmPassword) {
+        errors.push("Passwords do not match");
+    }
     // at this point we've verified that values are present and just want to verify field length:
 
     var lengthError = " is too long, has to be under 40 characters";
@@ -88,8 +91,8 @@ function inputValidationErrors(req) {
         errors.push("Last name" + lengthError);
     }
 
-    if(req.body.Phone.length > 40) {
-        errors.push("Phone number" + lengthError);
+    if(req.body.Phone.length > 40 || req.body.Phone.length < 9) {
+        errors.push("Please enter a valid phone number");
     }
 
     if(req.body.password.length > 40) {
