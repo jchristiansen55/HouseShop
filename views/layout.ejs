@@ -34,13 +34,13 @@
             <div class="container-fluid <%= isSearchPage %>">
                 <!-- DISCLAIMER TOP BAR -->
                 <div class="alert alert-primary row" role="alert">
-                    Disclaimer: This website is a school project.
+                    SFSU Software Engineering Project, Fall 2017. For Demonstration Only.
                 </div>
                 <!-- END DISCLAIMER -->
 
                 <!-- NAV BAR -->
                 <div class="row">
-                    <nav class="navbar navbar-expand-md navbar-dark bg-dark col-lg-12">
+                    <nav class="navbar navbar-expand-md navbar-dark bg-dark col-lg-12"> 
                         <a class="navbar-brand col-lg-1 col-md-1 col-sm-1 col-1" href="<% if (locals.fa17g09_env_prefix) { %>/<%= fa17g09_env_prefix %><%}%>">
                             <img src="<% if (locals.fa17g09_env_prefix) { %>/<%= fa17g09_env_prefix %><%}%>/assets/logo-houseshop.svg" class="image-logo">
                         </a>
@@ -50,7 +50,7 @@
                         <div class="searchbar col-lg-6 col-md-5 col-sm-12">
                             <form action="<% if (locals.fa17g09_env_prefix) { %>/<%= fa17g09_env_prefix %><%}%>/search" method="post" class="form-inline">
                                 <div class="input-group" style="width:100%">
-                                    <input maxlength="40" name="city" type="query" class="form-control" id="search" placeholder="Enter address, zip code, or city ..." autocomplete="off" value="<% if (locals.previousSearchString) { %><%=previousSearchString %><%}%>" />
+                                    <input name="city" type="query" class="form-control" id="search" placeholder="Enter address, zip code, or city ..." autocomplete="off" value="<% if (locals.previousSearchString) { %><%=previousSearchString %><%}%>" />
                                     <span class="input-group-btn">
                                         <button class="btn btn-primary" type="submit">
                                                 <i class="fa fa-search" aria-hidden="true"></i>
@@ -58,12 +58,15 @@
                                     </span>
                                 </div>
                             </form>
+                            <!-- END Search Bar -->
+
                         </div>
                         <div class="collapse navbar-collapse nav-end col-lg-5 col-md-6 col-sm-12" id="navbarCollapse">
                             <ul class="nav navbar-nav justify-content-end">
                                 <li class="nav-item">
                                     <a class="nav-link" href="<% if (locals.fa17g09_env_prefix) { %>/<%= fa17g09_env_prefix %><%}%>/about.html">About</a>
                                 </li>
+
                                 <li class="nav-item">
                                     <a class="nav-link" href="<% if (locals.fa17g09_env_prefix) { %>/<%= fa17g09_env_prefix %><%}%>/dashboard">Agent</a>
                                 </li>
@@ -79,7 +82,9 @@
                     </nav>
                 </div>
                 <!-- END NAV BAR -->
+
             </div>
+
             <!-- END HEADER CONTAINER -->
 
             <!-- MAIN CONTENT -->
