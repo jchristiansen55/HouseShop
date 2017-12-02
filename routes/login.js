@@ -11,7 +11,7 @@ router.post('/', passport.authenticate('local', { failureRedirect: 'about.html'}
 
         res.cookie('User', req.user);
         res.cookie('UserState', req.user.id);
-		res.redirect('back');
+		res.redirect('/' + fa17g09_env_prefix);
 		});
 
 router.get('/',
