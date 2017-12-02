@@ -7,7 +7,6 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var flash        = require('req-flash');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
@@ -26,7 +25,6 @@ var signup = require('./routes/signup');
 var models = require('./models');
 var user  = require('./models/user.js');
 var adminDashboard = require('./routes/adminDashboard');
-
 var app = express();
 var passport = require('passport');
 
@@ -77,8 +75,6 @@ app.use(cookieSession({
     maxAge: 300000000
   }
 }));
-
-app.use(flash());
 
 app.use('/', index);
 app.use('/users', users);
