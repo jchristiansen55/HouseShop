@@ -1,11 +1,8 @@
 var express = require('express');
 var router = express.Router();
 var models = require('../models');
-var expressValidator = require('express-validator');
 
 const Op = models.sequelize.Op;
-
-router.use(expressValidator());
 
 /* POST search page
    '/' is NOT Home page
@@ -29,26 +26,26 @@ router.post('/', function(req, res, next) {
         res.redirect("/");
 
         res.send(errors);
+      
+    var queryBuilderArguments = {searchString : req.body.city};
+    if(req.body.sortOption) {
+        queryBuilderArguments.orderMode = req.body.sortOption;
     }
-    else {
-        var queryBuilderArguments = {searchString : req.body.city};
-        if(req.body.sortOption) {
-            queryBuilderArguments.orderMode = req.body.sortOption;
-        }
 
-        models.Listing.findAll(buildListingsQuery(queryBuilderArguments)).then(function(listings) {
-            res.render('search', { // render the Search/Browse page
-                title: 'Search',
-                listings: listings,
-                previousSearchString: req.body.city,
-                previousSortOption: req.body.sortOption,
-                errors: req.body.errors
-            });
+    models.Listing.findAll(buildListingsQuery(queryBuilderArguments)).then(function(listings) {
+        res.render('search', { // render the Search/Browse page
+            title: 'Search',
+            listings: listings,
+            previousSearchString: req.body.city,
+            previousSortOption: req.body.sortOption,
+            UserState: req.cookies.UserState,
+            User: req.body.User
+});
 
-            // START HOW TO GET AND USE ASSOCIATED MODELS
-            console.log(models.Listing.prototype);
+        // START HOW TO GET AND USE ASSOCIATED MODELS
+        console.log(models.Listing.prototype);
 
-            listings.forEach(function(listing) {
+        listings.forEach(function(listing) {
             console.log("listing.address: " + listing.address);
             listing.getMedia().then(function(media){
                 media.forEach(function(medium) {
@@ -57,9 +54,8 @@ router.post('/', function(req, res, next) {
             });
         });
         // END HOW TO GET AND USE ASSOCIATED MODELS
-        res.cookie('errors', '');
-        });
-    }
+
+    });
 });
 
 router.get('/', function(req, res, next) {
@@ -69,10 +65,12 @@ router.get('/', function(req, res, next) {
         res.render('search', { // render the Search/Browse page
             title: 'Search',
             listings: listings,
-            errors: req.cookies.errors
+            previousSearchString: req.body.city,
+            previousSortOption: req.body.sortOption,
+            UserState: req.cookies.UserState,
+            User: req.body.User
         });
     });
-    res.cookie('errors', '');
 });
 
 module.exports = router;

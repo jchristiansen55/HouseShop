@@ -23,12 +23,58 @@
         <!-- FONT AWESOME ICONS -->
         <script src="https://use.fontawesome.com/c8878a39bb.js"></script>
     </head>
+
+    <!-- <script type="text/javascript">
+        $('.form').find('input, textarea').on('keyup blur focus', function (e) {
+
+  var $this = $(this),
+      label = $this.prev('label');
+
+      if (e.type === 'keyup') {
+            if ($this.val() === '') {
+          label.removeClass('active highlight');
+        } else {
+          label.addClass('active highlight');
+        }
+    } else if (e.type === 'blur') {
+        if( $this.val() === '' ) {
+            label.removeClass('active highlight');
+            } else {
+            label.removeClass('highlight');
+            }
+    } else if (e.type === 'focus') {
+
+      if( $this.val() === '' ) {
+            label.removeClass('highlight');
+            }
+      else if( $this.val() !== '' ) {
+            label.addClass('highlight');
+            }
+    }
+
+});
+
+$('.tab a').on('click', function (e) {
+
+  e.preventDefault();
+
+  $(this).parent().addClass('active');
+  $(this).parent().siblings().removeClass('active');
+
+  target = $(this).attr('href');
+
+  $('.tab-content > div').not(target).hide();
+  console.log("click on tab a");
+  $(target).fadeIn(600);
+
+});
+    </script> -->
     <body>
         <!--[if lt IE 8]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
         <div class="alert alert-primary" role="alert">
-            SFSU Software Engineering Project, Fall 2017. For Demonstration Only.
+            Disclaimer: This website is a school project.
         </div>
         <!-- NAV BAR -->
         <nav class="navbar navbar-expand-md navbar-dark bg-dark">
@@ -50,8 +96,15 @@
                         <a class="nav-link" href="/messageBoard">Contact</a>
                     </li>
                     <li class="nav-item">
-                        <!-- <a class="nav-link" href="#">Sign In</a> -->
-                        <button type="button" class="btn btn-primary btn-lg btn-log-in" data-toggle="modal" data-target="#myModal">Sign In</button>
+                        <!-- SIGN IN/LOG IN -->
+                        <% if (UserState > 0) { %>
+                            <form action="<% if (locals.fa17g09_env_prefix) { %>/<%= fa17g09_env_prefix %><%}%>/logout" method="post">
+                                <input  type="submit" class="btn btn-primary btn-lg btn-log-in" name="Log Out" value="Log Out" />
+                            </form>
+                        <% } else { %>
+                            <button type="button" class="btn btn-primary btn-lg btn-log-in" data-toggle="modal" data-target="#myModal" > Sign In </button>
+                        <% } %>
+                        <!-- END SIGNIN/LOG IN -->
                     </li>
                 </ul>
             </div>

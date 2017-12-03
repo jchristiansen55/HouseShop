@@ -7,7 +7,6 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var flash        = require('req-flash');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
@@ -21,12 +20,12 @@ var sendMsg = require('./routes/sendMsg');
 var sendMessages = require('./routes/sendMessages');
 var getMessages = require('./routes/getMessages');
 var login = require('./routes/login');
+var logout = require('./routes/logout');
 var signup = require('./routes/signup');
 var models = require('./models');
 var user  = require('./models/user.js');
 var adminDashboard = require('./routes/adminDashboard');
 var errorPage = require('./routes/error');
-
 var app = express();
 var passport = require('passport');
 
@@ -78,8 +77,6 @@ app.use(cookieSession({
   }
 }));
 
-app.use(flash());
-
 app.use('/', index);
 app.use('/users', users);
 app.use('/search', search);
@@ -95,6 +92,7 @@ app.use('/sendMessages', sendMessages);
 app.use('/getMessages', getMessages);
 
 app.use('/login', login);
+app.use('/logout', logout);
 app.use('/signup', signup);
 app.use('/adminDashboard', adminDashboard);
 app.use('./errorPage', errorPage);
