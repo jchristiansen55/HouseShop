@@ -9,9 +9,9 @@ router.post('/', function(req, res){
         } else
             rest.status(500);
 */
-        res.cookie('User', '');
-        res.cookie('UserState', '0');
-		res.redirect('/' + fa17g09_env_prefix);
+        res.clearCookie('UserState');
+        res.clearCookie('User');
+        res.redirect('/' + fa17g09_env_prefix);
 });
 
 module.exports = router;
