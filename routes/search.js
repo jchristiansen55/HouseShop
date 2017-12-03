@@ -8,25 +8,6 @@ const Op = models.sequelize.Op;
    '/' is NOT Home page
 */ 
 router.post('/', function(req, res, next) {
-
-    if (req.body.city < 0) {
-        req.checkBody('city', 'Error: You entered a negative number').isInt({min: 0});
-    }
-    req.checkBody('city', 'Search string too long').isLength({max: 40})
-        .notEmpty(req.body.city).withMessage('Search field empty. Please enter an address, zip code, city, or state')
-    req.sanitize('city')
-        .blacklist('!@#$%^*;+');
-
-    var errors = req.validationErrors();
-    if (errors) {
-     
-
-        res.cookie('errors', errors[0]);
-
-        res.redirect("/");
-
-        res.send(errors);
-      
     var queryBuilderArguments = {searchString : req.body.city};
     if(req.body.sortOption) {
         queryBuilderArguments.orderMode = req.body.sortOption;

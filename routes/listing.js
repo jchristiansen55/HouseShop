@@ -22,7 +22,7 @@ router.get('/:listing?', function(req, res, next) {
                     listing: listing,
                     media: media,
                     user: user, // listing agent
-                    errors: []
+                    errors: [],
                     UserState: req.cookies.UserState,
                     User: req.cookies.User
                 });
@@ -40,7 +40,6 @@ router.post('/', function(req, res, next) {
         if (inputErrors.length <= 0) {
 
             var listingid = prevReq;
-
             var userId;
             var receiverId;
 
@@ -77,7 +76,9 @@ router.post('/', function(req, res, next) {
                             listing: listing,
                             media: media,
                             user: user, // listing agent
-                            errors: []
+                            errors: [],
+                            UserState: res.cookies.UserState,
+                            User: res.cookies.User
                         });
                     });
                 });
@@ -85,18 +86,15 @@ router.post('/', function(req, res, next) {
 
         } else {
 
-            redirectToView(res, inputErrors); 
+            ronsole.log(inputErrors);
+            res.render('listing', {
+                errors: inputErrors,
+                UserState: res.cookies.UserState,
+                User: res.cookies.User
+            });
         }
     
 });
-
-function redirectToView(res, inputErrors) {
-
-    console.log(inputErrors);
-    res.render('listing', {
-        errors: inputErrors
-    });
-}
 
 function inputValidationErrors(req) {
     var errors = [];
