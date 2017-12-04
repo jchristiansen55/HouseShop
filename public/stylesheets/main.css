@@ -117,8 +117,16 @@ p {
     justify-content: flex-end !important; 
 }
 
-.alert {
+.disclaimer {
     margin-bottom: 0;
+    text-align: center;
+    background-color: #3c434a;
+    color: #d2d2d2;
+    border-radius: 0;
+}
+
+.disclaimer p {
+    margin: 0 auto;
 }
 
 .alert-danger {
@@ -263,6 +271,10 @@ p {
     position: absolute;
     left: 3rem;
     top: 1rem;
+}
+
+.listing-detail {
+    margin: 0;
 }
 
 .listing-features {
