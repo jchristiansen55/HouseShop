@@ -1,5 +1,5 @@
-<!DOCTYPE html>
-<html class="no-js" lang="en">
+    <!DOCTYPE html>
+    <html class="no-js" lang="en">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -51,135 +51,119 @@
                     </li>
                     <li class="nav-item">
                         <!-- SIGN IN/LOG IN -->
-                        <% if (UserState > 0) { %>
+                        <% if (UserState != 0) { %>
                             <form action="<% if (locals.fa17g09_env_prefix) { %>/<%= fa17g09_env_prefix %><%}%>/logout" method="post">
                                 <input  type="submit" class="btn btn-primary btn-lg btn-log-in" name="Log Out" value="Log Out" />
                             </form>
-                        <% } else { %>
+                            <% } else { %>
                             <button type="button" class="btn btn-primary btn-lg btn-log-in" data-toggle="modal" data-target="#myModal" > Sign In </button>
-                        <% } %>
-                        <!-- END SIGNIN/LOG IN -->
-                    </li>
-                </ul>
-            </div>
-        </nav>
-        <!-- END NAV BAR -->
+                            <% } %>
+                            <!-- END SIGNIN/LOG IN -->
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            <!-- END NAV BAR -->
 
-        <!-- MAIN CONTENT -->
-        <div id= "main" class="main container-fluid home">
-            <%- body %>
-            
-            <!-- Modal -->
-            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h2 class="modal-title" id="myModalLabel">Welcome to HouseShop</h2>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                         </div>
+            <!-- MAIN CONTENT -->
+            <div id= "main" class="main container-fluid home">
+                <%- body %>
+                
+                <!-- Modal -->
+                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h2 class="modal-title" id="myModalLabel">Welcome to HouseShop</h2>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
 
-                        <div class="modal-body">
-                            <div role="tabpanel">
-                                <!-- Nav tabs -->
-                                <ul class="nav nav-tabs row" role="tablist">
-                                    <li role="presentation" class="active col"><a href="#Signup" aria-controls="Signup" role="tab" data-toggle="tab">SIGN UP</a>
-                                    </li>
+                            <h2 class="modal-title center-titlesLogin" id="myModalLabel">Login</h2>
+                            <!-- Login -->
+                            <form action="<% if (locals.fa17g09_env_prefix) { %>/<%= fa17g09_env_prefix %><%}%>/login" method="post" role="form">
+                                <div class="row">
 
-                                    <li role="presentation" class="col"><a href="#Login" aria-controls="Login" role="tab" data-toggle="tab">LOG IN</a>
-                                    </li>
-                                </ul>
-                                
-                                <!-- Tab Content -->
-                                <div class="tab-content">
-                                    <!-- Sign Up -->
-                                    <div role="tabpanel" class="tab-pane active" id="Signup">
-                                        <form action="<% if (locals.fa17g09_env_prefix) { %>/<%= fa17g09_env_prefix %><%}%>/signup" method="post" role="form">
-                                            <div class="row">
-                                                <div class="col-xs-6 col-sm-6 col-md-6">
-                                                    <div class="form-group">
-                                                       <input type="text" name="firstName" id="first_name" class="form-control input-sm" placeholder="First Name">
-                                                    </div>
-                                                </div>
-                                                <div class="col-xs-6 col-sm-6 col-md-6">
-                                                    <div class="form-group">
-                                                        <input type="text" name="lastName" id="last_name" class="form-control input-sm" placeholder="Last Name">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <input type="email" name="email" id="email" class="form-control input-sm" placeholder="Email Address">
-                                            </div>
-                                            <div class="form-group">
-                                                <input type="Phone" name="Phone" id="Phone" class="form-control input-sm" placeholder="Phone Number">
-                                            </div>
+                                    <div class="form-group center-sign_up_in">
+                                        <input type="text" name="email" id="user_name" class="form-control input-sm" placeholder="Email">
 
-                                            <div class="row">
-                                                <div class="col-xs-6 col-sm-6 col-md-6">
-                                                    <div class="form-group">
-                                                        <input type="password" name="password" id="password" class="form-control input-sm" placeholder="Password">
-                                                    </div>
-                                                </div>
-                                                <div class="col-xs-6 col-sm-6 col-md-6">
-                                                    <div class="form-group">
-                                                        <input type="password" name="password_confirmation" id="password_confirmation" class="form-control input-sm" placeholder="Confirm Password">
-                                                    </div>
-                                                </div>
-                                                <div class="col form-check">
-                                                    <label class="form-check-label">
-                                                        <input type="checkbox" class="form-check-input">
-                                                        I agree to the terms.
-                                                    </label>
-                                                </div>
-                                                <div class="col form-check">
-                                                    <label class="form-check-label">
-                                                        <input type="checkbox" class="form-check-input" name="listingAgent">
-                                                        I am a listing agent.
-                                                    </label>
-                                                </div>
-                                            </div>
-                                            <div class="col-xs-6 col-sm-6 col-md-6 div-centered">
-                                                <input type="submit" value="Sign Up" class="btn btn-info btn-block ">
-                                            </div>
-                                        </form>
-                                    </div>
-                                    <!-- END Sign Up -->
-
-                                    <!-- Login -->
-                                    <div role="tabpanel" class="tab-pane" id="Login">
-                                        <form action="<% if (locals.fa17g09_env_prefix) { %>/<%= fa17g09_env_prefix %><%}%>/login" method="post" role="form">
-                                            <div class="row">
-                                                <div class="col-xs-6 col-sm-6 col-md-6">
-                                                    <div class="form-group">
-                                                        <input type="text" name="email" id="user_name" class="form-control input-sm" placeholder="Email">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-xs-6 col-sm-6 col-md-6">
-                                                    <div class="form-group">
-                                                        <input type="password" name="password" id="password" class="form-control input-sm" placeholder="Password">
-                                                        <button class="astext">Forgot Password?</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-xs-6 col-sm-6 col-md-6 div-centered">
-                                                <input type="submit" value="Login" class="btn btn-info btn-block">
-                                            </div>
-                                        </form>
                                     </div>
                                 </div>
-                                <!-- END Login  -->
+                                <div class="row">
+                                    <div class="form-group center-sign_up_in">
+                                        <input type="password" name="password" id="password" class="form-control input-sm" placeholder="Password">
+                                        <button class="astext" style="color:blue;">Forgot Password?</button>
+                                    </div>
+                                </div>
+                                <div class="col-xs-6 col-sm-6 col-md-6 div-centered">
+                                    <input type="submit" value="Login" class="btn btn-info btn-block">
+                                </div>
+                            </form>
+                            <br></br>
 
+                            <!-- END Login  -->
+                            <hr style="width: 100%; color: black; height: 1px; " />
+                            <!-- Forms for signup -->
+                            <h2 class="modal-title center-titlesSignUp" id="myModalLabel">Sign Up</h2>
+                            <form action="<% if (locals.fa17g09_env_prefix) { %>/<%= fa17g09_env_prefix %><%}%>/signup" method="post" role="form">
+                                <div class="row">
+                                    <div class="col-xs-6 col-sm-6 col-md-6 ">
+                                        <div class="form-group widthOfFields2">
+                                         <input type="text" name="firstName" id="first_name" class="form-control input-sm" placeholder="First Name">
+                                     </div>
+                                 </div>
+                                 <div class="col-xs-6 col-sm-6 col-md-6">
+                                    <div class="form-group widthOfFields2">
+                                        <input type="text" name="lastName" id="last_name" class="form-control input-sm" placeholder="Last Name">
+                                    </div>
+                                </div>
                             </div>
-                            <!-- END tabpanel -->
+                            <div class="form-group widthOfFields3">
+                                <input type="email" name="email" id="email" class="form-control input-sm" placeholder="Email Address">
+                            </div>
+                            <div class="form-group widthOfFields3">
+                                <input type="Phone" name="Phone" id="Phone" class="form-control input-sm" placeholder="Phone Number">
+                            </div>
 
-                        </div>
+                            <div class="row">
+                                <div class="col-xs-6 col-sm-6 col-md-6">
+                                    <div class="form-group widthOfFields2">
+                                        <input type="password" name="password" id="password" class="form-control input-sm" placeholder="Password">
+                                    </div>
+                                </div>
+                                <div class="col-xs-6 col-sm-6 col-md-6">
+                                    <div class="form-group widthOfFields2">
+                                        <input type="password" name="password_confirmation" id="password_confirmation" class="form-control input-sm" placeholder="Confirm Password">
+                                    </div>
+                                </div>
+                                <!-- Check Boxs -->
+                                <div class = "checkBoxAdjust2">
+                                    <label class="form-check-label" >
+                                        <input type="checkbox" class="form-check-input checkBoxAdjust">
+                                        <a href="https://sfsuse.com/fa17g09">I agree to the terms</a>
+                                    </label>
+                                </div>
+
+                                <div class="col form-check">
+                                    <label class="form-check-label">
+                                        <input type="checkbox" class="form-check-input checkb" name="listingAgent">
+                                        I am a listing agent.
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-xs-6 col-sm-6 col-md-6 div-centered">
+                                <input type="submit" value="Sign Up" class="btn btn-info btn-block ">
+                            </div>
+                        </form>
+                        <br></br>
+                        <!-- END Sign Up -->
+
+
                         <!-- END Modal Body -->
 
                         <div class="modal-footer ">
-                            <div class ="center-footer">
+                            <div class ="toTheLeft-footer">
                                 <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
                             </div>
                         </div>
@@ -219,4 +203,4 @@
         </script>
         <script src="https://www.google-analytics.com/analytics.js" async defer></script>
     </body>
-</html>
+    </html>

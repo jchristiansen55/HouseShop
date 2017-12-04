@@ -24,7 +24,7 @@ router.post('/', function(req, res, next) {
     console.log("Errors object: " + errors);
     if (errors) {
         res.cookie('errors', errors[0]);
-        res.redirect('back');
+        res.redirect('search');
         res.send(errors);
     }
     else {

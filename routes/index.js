@@ -6,9 +6,6 @@ var User = require('../models/user');
 
 /* GET home page. */
 router.get('/' + fa17g09_env_prefix, function(req, res, next) {
-
-    console.log("Cookies: v");
-    console.log(req.cookies);
     var userState = req.cookies.UserState;
     if (userState == undefined) {
         res.cookie('UserState', '0'); // UserState of 0 for guest users
