@@ -5,42 +5,26 @@ var LocalStrategy = require('passport-local').Strategy;
 var models = require('../models');
 var crypto = require('crypto');
 var key = process.env.key.toString();
-var validator = require('validator');
 
 /* GET signup page. */
 router.get('/', function(req, res, next) {
-  redirectToView(res, []); // no errors
+  res.render('signup');
 });
 
 /* POST new user. */
 router.post('/', function(req, res) {
 
-    var inputErrors = inputValidationErrors(req);
-
-    if (inputErrors.length > 0) {
-        redirectToView(res, inputErrors);
-        return;
-    }
-
-    var type;
-
-    if (req.body.listingAgent) {
-        type = "listingAgent";
-    } else {
-        type = "client";
-    }
-
     var cipher = crypto.createCipher('aes-256-ctr', key).update(req.body.password, 'utf-8', 'hex');
     var user = {
         firstName: req.body.firstName,
         lastName: req.body.lastName,
-        userType: type,
+        userType: req.body.userType,
         password: cipher,
         email: req.body.email
     };
 
     models.User.create(user).then(function(newUser) {
-        redirectToView(res, []); // no errors
+        res.redirect('signup');
     });
 
 });
