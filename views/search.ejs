@@ -6,12 +6,15 @@
                     <select class="custom-select" name="taskOption">
                             <%  var rooms = 13; %>
                             <% for (var i = 0; i < rooms; i++){ %>
-                                <option value=<%= i %>> <%= i %>+ Beds</option>
+                                <option value=<%= i %>>
+                                 <%= i %>+ Beds
+                                <!--  <input type="submit" class="btn" value="<%= i %>">
+                                </option> -->
                             <% } %>
                     </select>
                 </div>
                 <div class="col">
-                    <input type="submit" class="btn btn-primary col" value="Apply Filter">
+                    <!-- <input type="submit" class="btn btn-primary col" value="Apply Filter"> -->
                 </div> 
             </div>         
         </form>
@@ -147,8 +150,8 @@
                                 <%= listing.city %>, <%= listing.state %>
                             </h5>
                         </div>
-                        <div class="row">
-                            <h4 class="card-title-col">$<%= listing.price %> </h4>
+                        <div class="row listing-detail">
+                            <h4 class="card-title col">$<%= listing.price %> </h4>
                             <h5 class="col">
                                 <i class="fa fa-bed" aria-hidden="true"></i>
                                 <%= listing.numBedrooms %> bds
