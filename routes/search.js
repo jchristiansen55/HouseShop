@@ -21,6 +21,7 @@ router.post('/', function(req, res, next) {
         .blacklist('!@#$%^*;+');
 
     var errors = req.validationErrors();
+    console.log("Errors object: " + errors);
     if (errors) {
         res.cookie('errors', errors[0]);
         res.redirect('back');
@@ -39,8 +40,8 @@ router.post('/', function(req, res, next) {
                 previousSearchString: req.body.city,
                 previousSortOption: req.body.sortOption,
                 UserState: req.cookies.UserState,
-                User: req.body.User,
-                errors: req.body.errors
+                User: req.cookies.User,
+                errors: req.cookies.errors
             });
 
             // START HOW TO GET AND USE ASSOCIATED MODELS
@@ -73,6 +74,7 @@ router.get('/', function(req, res, next) {
             errors: req.cookies.errors
         });
     });
+    res.cookie('errors', '');
 });
 
 module.exports = router;

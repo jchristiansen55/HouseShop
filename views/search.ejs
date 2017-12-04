@@ -77,12 +77,13 @@
 
                 // Get listings
                 var listings = <%- JSON.stringify(listings) %>;
-                
-                // Geocode each listing by passings its address
-                listings.forEach(function(listing) {
-                    // console.log(listing.address);
-                    geoCodeAddress(geocoder, map, listing.address, listing.city);
-                });
+                if (errors !== "false") {
+                    // Geocode each listing by passings its address
+                    listings.forEach(function(listing) {
+                        // console.log(listing.address);
+                        geoCodeAddress(geocoder, map, listing.address, listing.city);
+                    });
+                }
             }
 
             // Takes address, geocode and add marker to that address
@@ -93,10 +94,13 @@
                         map.setCenter(results[0].geometry.location);
                         
                         // Add marker
-                        var marker = new google.maps.Marker({
-                            map: map,
-                            position: results[0].geometry.location
-                        });
+                        var errors = errors;
+                        if (errors != 'false') {
+                            var marker = new google.maps.Marker({
+                                map: map,
+                                position: results[0].geometry.location
+                            });
+                        }
                     } else {
                         alert('Geocode was not successful for the following reason: ' + status);
                     }
@@ -112,9 +116,11 @@
     <div class="col-lg-6 col-md-6 col-xs-12 results column-right">
         <section class="search-results" style="z-index: 50">
             <div>
+                <!-- unacceptable hack for error handling -->
+                console.log(typeof errors);
+                <% if (errors) {listings.length = 0;} %>
                 <p>Showing <%= listings.length %> homes for sale</p>
             </div>
-            <!-- <% // if(title == "Search"){ %> -->
                   <% if(errors){ %>
                       <div class="alert alert-warning alert-dismissible fade show row search-alert" role="alert">
                           <div class="col-10 search-alert-detail">

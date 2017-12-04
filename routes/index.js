@@ -21,7 +21,7 @@ router.get('/' + fa17g09_env_prefix, function(req, res, next) {
             layout: './layouts/home-layout', // Set custom layout for single render
             User: req.cookies.User,
             UserState: req.cookies.UserState,
-            errors: req.body.errors
+            errors: req.cookies.errors
         });
     });
     res.cookie('errors', '');
