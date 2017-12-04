@@ -77,13 +77,12 @@
 
                 // Get listings
                 var listings = <%- JSON.stringify(listings) %>;
-                if (errors !== "false") {
-                    // Geocode each listing by passings its address
-                    listings.forEach(function(listing) {
-                        // console.log(listing.address);
-                        geoCodeAddress(geocoder, map, listing.address, listing.city);
-                    });
-                }
+
+                // Geocode each listing by passings its address
+                listings.forEach(function(listing) {
+                    // console.log(listing.address);
+                    geoCodeAddress(geocoder, map, listing.address, listing.city);
+                });
             }
 
             // Takes address, geocode and add marker to that address
@@ -94,13 +93,11 @@
                         map.setCenter(results[0].geometry.location);
                         
                         // Add marker
-                        var errors = errors;
-                        if (errors != 'false') {
-                            var marker = new google.maps.Marker({
-                                map: map,
-                                position: results[0].geometry.location
-                            });
-                        }
+                        var marker = new google.maps.Marker({
+                            map: map,
+                            position: results[0].geometry.location
+                        });
+                        
                     } else {
                         alert('Geocode was not successful for the following reason: ' + status);
                     }
@@ -117,7 +114,6 @@
         <section class="search-results" style="z-index: 50">
             <div>
                 <!-- unacceptable hack for error handling -->
-                console.log(typeof errors);
                 <% if (errors) {listings.length = 0;} %>
                 <p>Showing <%= listings.length %> homes for sale</p>
             </div>
@@ -133,7 +129,6 @@
                           </div>
                       </div>
                   <% } %>
-              <!-- <%// } %> -->
               <!-- END Error Alert Message -->
         </section>
         <!-- END Number of Search Results  -->
