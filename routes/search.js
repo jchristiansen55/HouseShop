@@ -22,12 +22,8 @@ router.post('/', function(req, res, next) {
 
     var errors = req.validationErrors();
     if (errors) {
-     
-
         res.cookie('errors', errors[0]);
-
         res.redirect('back');
-
         res.send(errors);
     }
     else {

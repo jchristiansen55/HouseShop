@@ -50,7 +50,7 @@
                         <div class="searchbar col-lg-6 col-md-5 col-sm-12">
                             <form action="<% if (locals.fa17g09_env_prefix) { %>/<%= fa17g09_env_prefix %><%}%>/search" method="post" class="form-inline">
                                 <div class="input-group" style="width:100%">
-                                    <input maxlength="40" name="city" type="query" class="form-control" id="search" placeholder="Enter address, zip code, or city ..." autocomplete="off" value="<% if (locals.previousSearchString) { %><%=previousSearchString %><%}%>" />
+                                    <input name="city" type="query" class="form-control" id="search" placeholder="Enter address, zip code, or city ..." autocomplete="off" value="<% if (locals.previousSearchString) { %><%=previousSearchString %><%}%>" />
                                     <span class="input-group-btn">
                                         <button class="btn btn-primary" type="submit">
                                                 <i class="fa fa-search" aria-hidden="true"></i>
