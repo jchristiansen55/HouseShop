@@ -133,11 +133,23 @@ p {
 .centered-form{
     margin-top: 10px;
 }
-.center-sign_up_in{
-    margin-left:25%;
+.checkBoxAdjust{
+    margin-left:-4%;
+    margin-top:1.5%;
 }
-.center-terms{
-    margin-left:4%;
+.checkBoxAdjust2{
+    margin-left:10%;
+}
+.center-sign_up_in{
+  
+    width:50%;
+    margin-left:25%;
+
+}
+.center-titlesSignUp{
+    margin-left:39.5%;
+}.center-titlesLogin{
+    margin-left:42%;
 }
 .astext {
     background:none;
@@ -147,8 +159,19 @@ p {
     padding:0;
     text-decoration: underline; 
 }
-.center-footer {
-    margin-right:42.6%;
+.widthOfFields{
+    width:80%;
+}
+.widthOfFields2{
+    width:90%;
+    margin-left:5%;
+}
+.widthOfFields3{
+    width:95%;
+    margin-left:2.5%;
+}
+.toTheLeft-footer {
+    margin-right:75%;
 }
 .modal-size {
     width:50%;
