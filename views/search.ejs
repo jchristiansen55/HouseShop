@@ -77,7 +77,7 @@
 
                 // Get listings
                 var listings = <%- JSON.stringify(listings) %>;
-                
+
                 // Geocode each listing by passings its address
                 listings.forEach(function(listing) {
                     // console.log(listing.address);
@@ -97,6 +97,7 @@
                             map: map,
                             position: results[0].geometry.location
                         });
+                        
                     } else {
                         alert('Geocode was not successful for the following reason: ' + status);
                     }
@@ -112,8 +113,23 @@
     <div class="col-lg-6 col-md-6 col-xs-12 results column-right">
         <section class="search-results" style="z-index: 50">
             <div>
-                <p>Found <%= listings.length %> results</p>
+                <!-- unacceptable hack for error handling -->
+                <% if (errors) {listings.length = 0;} %>
+                <p>Showing <%= listings.length %> homes for sale</p>
             </div>
+                  <% if(errors){ %>
+                      <div class="alert alert-warning alert-dismissible fade show row search-alert" role="alert">
+                          <div class="col-10 search-alert-detail">
+                              <strong><%=errors.msg%>!</strong>                            
+                          </div>
+                          <div class="col-2 search-alert-detail">
+                              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                              </button>
+                          </div>
+                      </div>
+                  <% } %>
+              <!-- END Error Alert Message -->
         </section>
         <!-- END Number of Search Results  -->
         <div class="results">
@@ -125,31 +141,27 @@
                         </div>
                     </a>
                     <div class="card-body">
-                        <div class="row">
-                            <div class="col">
-                                <h4 class="card-title">
-                                    <%= listing.address %> <br>
-                                    <%= listing.city %>, <%= listing.state %>
-                                </h4>
-                            </div>
+                        <div class="">
+                            <h5 class="card-title">
+                                <%= listing.address %> <br>
+                                <%= listing.city %>, <%= listing.state %>
+                            </h5>
                         </div>
                         <div class="row">
-                            <div class="col">
-                                <h5 class="card-title">$<%= listing.price %> </h5>
-                                <h6>
-                                    <%= listing.numBedrooms %>
-                                    <i class="fa fa-bed" aria-hidden="true"></i>
-                                    | 
-                                    <%= listing.numBathrooms %>
-                                    <i class="fa fa-bath" aria-hidden="true"></i>
-                                </h6>   
-                            </div>
-                            <div class="col">
-                                <button type="submit" class="btn btn-primary">
-                                    Save To List 
-                                    <i class="fa fa-plus-circle" aria-hidden="true"></i>
-                                </button>
-                            </div>
+                            <h4 class="card-title-col">$<%= listing.price %> </h4>
+                            <h5 class="col">
+                                <i class="fa fa-bed" aria-hidden="true"></i>
+                                <%= listing.numBedrooms %> bds
+                                | 
+                                <i class="fa fa-bath" aria-hidden="true"></i>
+                                <%= listing.numBathrooms %> ba
+                            </h5>   
+                        </div>
+                        <div class="col">
+                            <button type="submit" class="btn btn-primary">
+                                Save To List 
+                                <i class="fa fa-plus-circle" aria-hidden="true"></i>
+                            </button>
                         </div>
                     </div>
                 </div>
