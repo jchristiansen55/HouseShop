@@ -18,9 +18,11 @@ router.get('/' + fa17g09_env_prefix, function(req, res, next) {
             listings: listings,
             layout: './layouts/home-layout', // Set custom layout for single render
             User: req.cookies.User,
-            UserState: req.cookies.UserState
+            UserState: req.cookies.UserState,
+            errors: req.body.errors
         });
     });
+    res.cookie('errors', '');
 });
 
 module.exports = router;
