@@ -4,7 +4,7 @@ var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var models = require('../models');
 var crypto = require('crypto');
-var key = process.env.key.toString();
+var key = "dkjfskjdf";
 
 /* GET signup page. */
 router.get('/', function(req, res, next) {
