@@ -74,13 +74,13 @@
                                 <li class="nav-item">
 
                                     <!-- SIGN IN/LOG IN -->
-                                    <!-- if here -->
+                                    <% if (UserState != 0) { %>  
                                         <form action="<% if (locals.fa17g09_env_prefix) { %>/<%= fa17g09_env_prefix %><%}%>/logout" method="post">
                                             <input  type="submit" class="btn btn-primary btn-lg btn-log-in" name="Log Out" value="Log Out" />
                                         </form>
-                                        <!--  }else { here -->
+                                    <% } else { %>
                                         <button type="button" class="btn btn-primary btn-lg btn-log-in" data-toggle="modal" data-target="#myModal" > Sign In </button>
-                                        <!-- end if here -->
+                                    <% } %>
                                     <!-- END SIGNIN/LOG IN -->
                                 </li>
                             </ul>

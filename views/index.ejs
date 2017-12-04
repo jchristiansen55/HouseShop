@@ -5,9 +5,9 @@
             <div class="col-lg-4"></div>
             <div class="col-lg-4">
                 <% var welcomePhrase = "Feeling at home?"; %>
-                <!-- <% if (UserState > 0) { %> -->
-                <!--    <% welcomePhrase = "Welcome " + User.firstName; %> -->
-                <!-- <% } %> -->
+                <% if (UserState > 0) { %>
+                    <% welcomePhrase = "Welcome " + User.firstName; %>
+                <% } %>
                 <h2><center> <%- welcomePhrase %> </center></h2>
                 <center>Your ideal home awaits, just enter your zip code!</center>
             </div>
