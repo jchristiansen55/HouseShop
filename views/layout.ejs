@@ -74,7 +74,7 @@
                             <li class="nav-item">
 
                                 <!-- SIGN IN/LOG IN -->
-                                <% if (UserState != 0) { %>  
+                                <% if (locals.UserState != 0) { %>
                                     <form action="<% if (locals.fa17g09_env_prefix) { %>/<%= fa17g09_env_prefix %><%}%>/logout" method="post">
                                         <input  type="submit" class="btn btn-primary btn-lg btn-log-in" name="Log Out" value="Log Out" />
                                     </form>
@@ -127,7 +127,7 @@
 
                         <!-- END Login  -->
                         <hr style="width: 100%; color: black; height: 1px; " />
-                        
+
                         <!-- Forms for signup -->
                         <h2 class="modal-title center-titlesSignUp" id="myModalLabel">Sign Up</h2>
                         <form action="<% if (locals.fa17g09_env_prefix) { %>/<%= fa17g09_env_prefix %><%}%>/signup" method="post" role="form">
@@ -196,8 +196,8 @@
                 </div>
                 <!-- END modal-dialog -->
             </div>
-            <!-- END #myModal -->   
-                
+            <!-- END #myModal -->
+
 
         </div>
         <!-- END MAIN CONTENT -->
