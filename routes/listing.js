@@ -23,8 +23,8 @@ router.get('/:listing?', function(req, res, next) {
                     media: media,
                     user: user, // listing agent
                     errors: [],
-                    UserState: req.cookies.UserState,
-                    User: req.cookies.User
+                    UserState: req.cookies.UserState
+                    // User: req.cookies.User
                 });
             });
         });
@@ -77,8 +77,8 @@ router.post('/', function(req, res, next) {
                             media: media,
                             user: user, // listing agent
                             errors: [],
-                            UserState: res.cookies.UserState,
-                            User: res.cookies.User
+                            UserState: req.cookies.UserState,
+                            // User: res.cookies.User
                         });
                     });
                 });
@@ -86,11 +86,11 @@ router.post('/', function(req, res, next) {
 
         } else {
 
-            ronsole.log(inputErrors);
+            console.log(inputErrors);
             res.render('listing', {
                 errors: inputErrors,
-                UserState: res.cookies.UserState,
-                User: res.cookies.User
+                UserState: req.cookies.UserState
+                // User: res.cookies.User
             });
         }
     

@@ -7,10 +7,9 @@ var User = require('../models/user');
 /* GET home page. */
 router.get('/' + fa17g09_env_prefix, function(req, res, next) {
     var userState = req.cookies.UserState;
-    if (userState == undefined) {
+    if (userState === undefined) {
         console.log("If statement entered");
         res.cookie('UserState', '0');
-        res.cookie('User', '');
     }
 
     models.Listing.findAll().then(function(listings) {
