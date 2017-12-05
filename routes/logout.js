@@ -11,6 +11,7 @@ router.post('/', function(req, res){
 */
         res.clearCookie('UserState');
         res.clearCookie('User');
+        res.cookie('UserState', '');
         res.redirect('/' + fa17g09_env_prefix);
 });
 
