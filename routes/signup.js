@@ -8,7 +8,9 @@ var key = "dkjfskjdf";
 
 /* GET signup page. */
 router.get('/', function(req, res, next) {
-  res.render('signup');
+  res.render('signup', {
+    UserState: req.cookies.UserState
+  });
 });
 
 /* POST new user. */
@@ -33,7 +35,8 @@ module.exports = router;
 
 function redirectToView(res, inputErrors) {
     res.render('signup', {
-        errors: inputErrors
+        errors: inputErrors,
+        UserState: req.cookies.UserState
     });
 }
 
