@@ -8,7 +8,6 @@ var User = require('../models/user');
 router.get('/' + fa17g09_env_prefix, function(req, res, next) {
     var userState = req.cookies.UserState;
     if (userState === undefined) {
-        console.log("If statement entered");
         res.cookie('UserState', '0');
     }
 
