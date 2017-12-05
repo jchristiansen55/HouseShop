@@ -8,7 +8,7 @@ var User = require('../models/user');
 router.get('/' + fa17g09_env_prefix, function(req, res, next) {
     var userState = req.cookies.UserState;
     if (userState === undefined) {
-        res.cookie('UserState', '0'); // UserState of 0 for guest users
+        res.cookie('UserState', '0');
     }
 
     models.Listing.findAll().then(function(listings) {
