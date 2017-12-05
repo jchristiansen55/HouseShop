@@ -17,10 +17,14 @@ router.get('/', function(req, res, next) {
 router.post('/', function(req, res) {
 
     var cipher = crypto.createCipher('aes-256-ctr', key).update(req.body.password, 'utf-8', 'hex');
+    var userType = 'client';
+    if (req.body.listingAgent) {
+        userType = 'listingAgent';
+    }
     var user = {
         firstName: req.body.firstName,
         lastName: req.body.lastName,
-        userType: req.body.userType,
+        userType: userType,
         password: cipher,
         email: req.body.email
     };

@@ -11,8 +11,12 @@ router.post('/', passport.authenticate('local', { failureRedirect: 'about.html'}
 
         res.cookie('User', req.user);
         res.cookie('UserState', req.user.id);
-		res.redirect('back');
-		});
+        if (req.user.userType == 'listingAgent') {
+            res.redirect('dashboard');
+        } else {
+		    res.redirect('back');
+        }
+	});
 
 router.get('/',
   function(req, res){

@@ -8,7 +8,9 @@ router.get('/', function(req, res, next) {
     models.Listing.findAll().then(function(listings) {
         res.render('dashboard', {
             title: 'Welcome to Your Dashboard',
-            listings: listings
+            listings: listings,
+            UserState: req.cookies.UserState,
+            User: req.cookies.User
         });
     });
 });
