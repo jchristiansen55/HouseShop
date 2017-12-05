@@ -8,7 +8,9 @@ router.use(fileUpload());
 /* GET listings page. */
 router.get('/', function(req, res, next) {
     res.render('listings' , {
-        title: 'Listings'
+        title: 'Listings',
+        errors: req.cookies.errors,
+        UserState: req.cookies.UserState
     });
 
 });

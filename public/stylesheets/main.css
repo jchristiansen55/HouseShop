@@ -117,8 +117,20 @@ p {
     justify-content: flex-end !important; 
 }
 
-.alert {
+.disclaimer {
     margin-bottom: 0;
+    text-align: center;
+    background-color: #3c434a;
+    color: #d2d2d2;
+    border-radius: 0;
+}
+
+.disclaimer p {
+    margin: 0 auto;
+}
+
+.alert-danger {
+    position:absolute;
 }
 
 .home {
@@ -129,11 +141,23 @@ p {
 .centered-form{
     margin-top: 10px;
 }
-.center-sign_up_in{
-    margin-left:25%;
+.checkBoxAdjust{
+    margin-left:-4%;
+    margin-top:1.5%;
 }
-.center-terms{
-    margin-left:4%;
+.checkBoxAdjust2{
+    margin-left:10%;
+}
+.center-sign_up_in{
+  
+    width:50%;
+    margin-left:25%;
+
+}
+.center-titlesSignUp{
+    margin-left:39.5%;
+}.center-titlesLogin{
+    margin-left:42%;
 }
 .astext {
     background:none;
@@ -143,8 +167,19 @@ p {
     padding:0;
     text-decoration: underline; 
 }
-.center-footer {
-    margin-right:42.6%;
+.widthOfFields{
+    width:80%;
+}
+.widthOfFields2{
+    width:90%;
+    margin-left:5%;
+}
+.widthOfFields3{
+    width:95%;
+    margin-left:2.5%;
+}
+.toTheLeft-footer {
+    margin-right:75%;
 }
 .modal-size {
     width:50%;
@@ -175,8 +210,45 @@ p {
     padding-bottom: 5%;
 }
 
+.form-inline .input-group,.searchbar-input {
+    width: 100%;
+}
+
+.searchbar-input {
+    margin-bottom: 2%;
+}
+
 .search-results{
     z-index: 10;
+}
+
+.search-results div {
+    text-align: left;
+}
+
+.search-results p {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-left: 3%;
+}
+
+.search-alert {
+    margin: 0;
+    padding: 0;
+}
+
+.search-alert-detail {
+    padding: 1.1rem;
+}
+
+.alert-dismissible .close {
+    top: 0;
+    right: 0;
+    padding: 0; 
+}
+
+.h6, h6 {
+    font-size: 1.2rem;
 }
 
 /* SEARCH-LAYOUT */
@@ -201,6 +273,10 @@ p {
     top: 1rem;
 }
 
+.listing-detail {
+    margin: 0;
+}
+
 .listing-features {
     position: absolute;
     right: 3rem;
@@ -218,12 +294,6 @@ p {
 }
 
 .container-map {
- /*   width: 100%;
-    height: 65.85%;
-    position: fixed;
-    /*top: 100px;*/
-    /*display: block;*/
-    /*z-index: 10;*/
     position: fixed;
     bottom: 0;
     max-height: 2000px;
@@ -383,14 +453,12 @@ th {
     .column-left, .column-right {
         top: 223.77px;
     }
-
 }
 
 @media screen and (max-width: 742px) {    
     .column-left, .column-right {
         top: 271.77px;
     }
-
 }
 
 @media screen and (max-width: 650px) {
