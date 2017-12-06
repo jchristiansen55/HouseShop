@@ -7,8 +7,9 @@ var User = require('../models/user');
 /* GET home page. */
 router.get('/' + fa17g09_env_prefix, function(req, res, next) {
     var userState = req.cookies.UserState;
-    if (userState === undefined) {
+    if (!userState) {
         res.cookie('UserState', '0');
+        userState = 0;
     }
 
     models.Listing.findAll().then(function(listings) {
@@ -17,7 +18,7 @@ router.get('/' + fa17g09_env_prefix, function(req, res, next) {
             listings: listings,
             layout: './layouts/home-layout', // Set custom layout for single render
             User: req.cookies.User,
-            UserState: req.cookies.UserState,
+            UserState: userState,
             errors: req.cookies.errors
         });
     });
