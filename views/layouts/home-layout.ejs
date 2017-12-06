@@ -42,9 +42,11 @@
                 <li class="nav-item">
                     <a class="nav-link" href="<% if (locals.fa17g09_env_prefix) { %>/<%= fa17g09_env_prefix %><%}%>/about.html">About</a>
                 </li>
+                <% if(UserState != 0 && User.userType == 'listingAgent') { %>
                 <li class="nav-item">
                     <a class="nav-link" href="<% if (locals.fa17g09_env_prefix) { %>/<%= fa17g09_env_prefix %><%}%>/dashboard">Agent</a>
                 </li>
+                <% } %>
                 <li class="nav-item">
                     <a class="nav-link" href="/messageBoard">Contact</a>
                 </li>
