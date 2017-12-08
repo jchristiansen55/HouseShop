@@ -37,15 +37,15 @@
                   <th scope="col">City</th>
                   <th scope="col">State</th>
                   <th scope="col">Zipcode</th>
-                  <th scope="col"><a href="#" onclick="sortPrice()">Price</a></th>
-                  <th scope="col"><a href="#" onclick="sortBeds()">Beds</a></th>
-                  <th scope="col"><a href="#" onclick="sortBaths()">Baths</a></th>
+                  <th scope="col"><a href="#" onclick="sortBed(tableElement, 5)">Price</a></th>
+                  <th scope="col"><a href="#" onclick="sortBed(tableElement, 6)">Beds</a></th>
+                  <th scope="col"><a href="#" onclick="sortBed(tableElement, 7)">Baths</a></th>
                 </tr>
               </thead>
-              <tbody id="listingItems">
+              <tbody class ="tests" id="listingItems">
                 <%listings.forEach(function(listing) { %>
                     <tr class="listing" id="listing">
-                      <th><%= listing.id %></th>
+                      <td><%= listing.id %></th>
                       <td><%= listing.address %></td>
                       <td><%= listing.city %></td>
                       <td><%= listing.state %></td>
@@ -88,9 +88,10 @@
 
     </div>
 </section>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 <script>
   //sort listings based on price acending order
+
   function sortPrice() {
     var listSection = document.getElementById('tableElement');
     
@@ -115,124 +116,36 @@
           prices.push(children[k].children[jj].id);
       }
     }
-    prices.sort(function(a, b) {return(a - b);});
-
+    prices.sort(function(a, b) {return(b - a);});
+    console.log(prices);
      for (i = 0, len = prices.length; i < len; i++) {
          parent.appendChild(findChild(prices[i], children));
-         console.log(parent)
-         //$(listSection.parent).hide().appendTo(document.body.listSection).fadeIn(200);
+        
      }
 }
 
 //helper function to find child divs of parent class
 function findChild(value, children){
-      for(let i = 0; i < children.length; i++){
-        for(let j = 1; j < children[i].children.length; j++){
-
-          if(children[i].children[j].className == 'priceClass'){
-            if(children[i].children[j].id == value)
-            return children[i]; 
-          
-          }
-        }
+  for(let i = 0; i < children.length; i++){
+    for(let j = 1; j < children[i].children.length; j++){
+      if(children[i].children[j].className == 'priceClass'){
+        if(children[i].children[j].id == value)
+        return children[i]; 
       }
     }
-
-
-function sortBeds() {
-    var listSection = document.getElementById('tableElement');
-    
-    for(let i = 0; i < listSection.children.length; i++){
-      if(listSection.children[i].id == 'listingItems'){
-        var parent = listSection.children[i]; 
-      }
-    }
-
-    var children = [];
-    for (var i = 0; i < parent.childNodes.length; i++) {
-        if (parent.childNodes[i].className == "listing") {
-          children.push(parent.childNodes[i]); 
-        }        
-    }
-    let childrenLength = children.length; 
-    var prices = [], i, len;
-
-    for (let k = 0; k < childrenLength; k++) {
-      for(let jj = 0; jj < children[k].children.length; jj++){
-        if(children[k].children[jj].id != '' && children[k].children[jj].className == 'bedClass')
-          prices.push(children[k].children[jj].id);
-      }
-    }
-    prices.sort(function(a, b) {return(a - b);});
-
-     for (i = 0, len = prices.length; i < len; i++) {
-         parent.appendChild(findChildBeds(prices[i], children));
-         console.log(parent)
-         //$(listSection.parent).hide().appendTo(document.body.listSection).fadeIn(200);
-     }
+  }
 }
 
-
-//helper function to find child divs of parent class
-function findChildBeds(value, children){
-      for(let i = 0; i < children.length; i++){
-        for(let j = 1; j < children[i].children.length; j++){
-
-          if(children[i].children[j].className == 'bedClass'){
-            if(children[i].children[j].id == value)
-            return children[i]; 
-          
+function sortBed(table_id, sortColumn){
+  var tableData = document.getElementById('tableElement').getElementsByClassName('tests').item(0);
+  var rowData = tableData.getElementsByTagName('tr');            
+  for(var i = 0; i < rowData.length - 1; i++){
+      for(var j = 0; j < rowData.length - (i + 1); j++){
+          if(Number(rowData.item(j).getElementsByTagName('td').item(sortColumn).innerHTML.replace(/[^0-9\.]+/g, "")) < Number(rowData.item(j+1).getElementsByTagName('td').item(sortColumn).innerHTML.replace(/[^0-9\.]+/g, ""))){
+              tableData.insertBefore(rowData.item(j+1),rowData.item(j));
           }
-        }
       }
+  }
 }
-
-
-function sortBaths() {
-  var listSection = document.getElementById('tableElement');
-    
-    for(let i = 0; i < listSection.children.length; i++){
-      if(listSection.children[i].id == 'listingItems'){
-        var parent = listSection.children[i]; 
-      }
-    }
-
-    var children = [];
-    for (var i = 0; i < parent.childNodes.length; i++) {
-        if (parent.childNodes[i].className == "listing") {
-          children.push(parent.childNodes[i]); 
-        }        
-    }
-    let childrenLength = children.length; 
-    var prices = [], i, len;
-
-    for (let k = 0; k < childrenLength; k++) {
-      for(let jj = 0; jj < children[k].children.length; jj++){
-        if(children[k].children[jj].id != '' && children[k].children[jj].className == 'bathClass')
-          prices.push(children[k].children[jj].id);
-      }
-    }
-    prices.sort(function(a, b) {return(a - b);});
-
-     for (i = 0, len = prices.length; i < len; i++) {
-         parent.appendChild(findChildBaths(prices[i], children));
-         console.log(parent)
-         //$(listSection.parent).hide().appendTo(document.body.listSection).fadeIn(200);
-     }
-}
-
-//helper function to find child divs of parent class
-function findChildBaths(value, children){
-      for(let i = 0; i < children.length; i++){
-        for(let j = 1; j < children[i].children.length; j++){
-
-          if(children[i].children[j].className == 'bathClass'){
-            if(children[i].children[j].id == value)
-            return children[i]; 
-          
-          }
-        }
-      }
-    }
 </script>
   
