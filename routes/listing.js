@@ -103,8 +103,8 @@ function inputValidationErrors(req) {
         errors.push("Please enter a valid email address.");
     }
 
-    if(!req.body.name || !validator.isAlpha(req.body.name)) {
-        errors.push("First or last name not entered or unsupported character(s) in first name or last name.");
+    if(!req.body.name || req.body.name < 0) {
+        errors.push("Name cannot be a number");
     }
 
     if(!req.body.phone || !validator.isAscii(req.body.phone)) {
@@ -119,6 +119,10 @@ function inputValidationErrors(req) {
 
     if(req.body.name.length > 40) {
         errors.push("First name" + lengthError);
+    }
+
+    if(req.body.phone < 0) {
+        errors.push("Phone number cannot be negative");
     }
 
     if(req.body.phone.length > 40) {
