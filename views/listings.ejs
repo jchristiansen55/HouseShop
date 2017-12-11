@@ -1,6 +1,6 @@
   <form ref='uploadForm'  class="container" id="needs-validation" novalidate id='uploadForm' encType="multipart/form-data"  action="<% if (locals.fa17g09_env_prefix) { %>/<%= fa17g09_env_prefix %><%}%>/listings" method="post">
 
-    <!-- Validation --> 
+    <!-- Validation -->
     <script>
   // Example starter JavaScript for disabling form submissions if there are invalid fields
   (function() {
@@ -47,7 +47,7 @@
          <div class ="titlesForListingsForm2">
           City*
         </div>
-        <input type="string" name="city" id ="city" class="form-control input-sm" placeholder="City" required>
+        <input type="string" name="City" id ="City" class="form-control input-sm" placeholder="City" required>
         <div class="invalid-feedback">
           Please provide the city
         </div>
@@ -61,7 +61,7 @@
         State*
       </div>
 
-      <select class="form-control" id="state" name="state" required>
+      <select class="form-control" id="State" name="State" required>
         <option value="">Choose state</option>
         <option value="AK">Alaska</option>
         <option value="AL">Alabama</option>
@@ -143,7 +143,7 @@
   <label class="mr-sm-2" for="inlineFormCustomSelectPref">Number of Bedrooms*</label>
 </div>
 <div class ="listingGroups4">
-  <select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="bedrooms" name="bedrooms" required>
+  <select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="numBedrooms" name="numBedrooms" required>
     <option value="">Choose Number</option>
     <option value="1">1</option>
     <option value="2">2</option>
@@ -161,7 +161,7 @@
   <div class="invalid-feedback">
     Please select the number of bedrooms
   </div>
-</div>  
+</div>
 </div>
 
 <div class="col-xs-6 col-sm-6 col-md-6">
@@ -169,7 +169,7 @@
   <label class="mr-sm-2" for="inlineFormCustomSelectPref">Number of Bathrooms*</label>
 </div>
 <div class ="listingGroups4">
-  <select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="bathrooms" name="bathrooms" required>
+  <select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="numBathrooms" name="numBathrooms" required>
    <option value="">Choose Number</option>
    <option value="1">1</option>
    <option value="2">2</option>
@@ -194,7 +194,7 @@
 <div class="col-xs-6 col-sm-6 col-md-6">
  <div class="form-group listingGroups3">
   <div class="titlesForListingsForm3">
-    Square Footage * 
+    Square Footage *
   </div>
   <input type="string" name="squareFeet" class="form-control input-sm" placeholder="Square Footage" required>
   <div class="invalid-feedback">
@@ -212,7 +212,7 @@
   <div class="invalid-feedback">
     Please input a price
   </div>
-</div>   
+</div>
 </div>
 
 <!-- Dividing Line -->
@@ -222,7 +222,7 @@
   Description (Optional):
 </div>
 <div class="form-group listingGroups">
-  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+  <textarea class="form-control" id="description" name="description" rows="3"></textarea>
 </div>
 
 
@@ -240,7 +240,7 @@
 </div>
 
 <div class= "titlesForListingsForm7">
-  Choose a secondary picture (Optional) 
+  Choose a secondary picture (Optional)
 </div>
 <div class="form-group listingGroups">
   <label class="custom-file">
@@ -254,7 +254,6 @@
 
 <div class="form-group classol">
   <button type="submit" class="btn btn-primary" style="width: 100%">Create Listing</button>
-</div> 
+</div>
 </div>
 </form>
-
