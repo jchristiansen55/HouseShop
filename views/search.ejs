@@ -18,8 +18,9 @@
                         <% } %>
                     </select>
                 </div>
-            </div>  
-            <noscript><input type="submit" value="Submit"></noscript>       
+            </div>
+            <input name="city" type="hidden" value="<% if (locals.previousSearchString) { %><%=previousSearchString %><%}%>"/>
+            <noscript><input type="submit" value="Submit"></noscript>
         </form>
     </div>
     <!-- END Filter Options  -->
@@ -63,7 +64,7 @@
 <section class="row">
     <div class="col-lg-6 col-xs-12 container-map column-left">
         <div class="google-map" id="map"></div>
-        <script>            
+        <script>
             // Initialize Map as a callback from google maps api
             function initMap() {
                 // Map options
@@ -94,13 +95,13 @@
                 geocoder.geocode({'address': fullAddress}, function(results, status) {
                     if (status === google.maps.GeocoderStatus.OK) {
                         map.setCenter(results[0].geometry.location);
-                        
+
                         // Add marker
                         var marker = new google.maps.Marker({
                             map: map,
                             position: results[0].geometry.location
                         });
-                        
+
                     } else {
                         alert('Geocode was not successful for the following reason: ' + status);
                     }
@@ -123,7 +124,7 @@
                   <% if(errors){ %>
                       <div class="alert alert-warning alert-dismissible fade show row search-alert" role="alert">
                           <div class="col-10 search-alert-detail">
-                              <strong><%=errors.msg%>!</strong>                            
+                              <strong><%=errors.msg%>!</strong>
                           </div>
                           <div class="col-2 search-alert-detail">
                               <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -155,10 +156,10 @@
                             <h5 class="col">
                                 <i class="fa fa-bed" aria-hidden="true"></i>
                                 <%= listing.numBedrooms %> bds
-                                | 
+                                |
                                 <i class="fa fa-bath" aria-hidden="true"></i>
                                 <%= listing.numBathrooms %> ba
-                            </h5>   
+                            </h5>
                         </div>
                     </div>
                 </div>
