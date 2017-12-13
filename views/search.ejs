@@ -2,22 +2,7 @@
     <div class="btn-group">
         <form action="filter" method="post" class="form-inline">
             <div class="row">
-                <div class="col">
-                    <select class="custom-select" name="bedFilterOption" onchange="this.form.submit()">
-                        <%  var rooms = 13; %>
-                        <% for (var i = 0; i < rooms; i++){ %>
-                            <option value=<%= i %>> <%= i %>+ Beds
-                        <% } %>
-                    </select>
-                </div>
-                <div class="col">
-                    <select class="custom-select" name="bathFilterOption" onchange="this.form.submit()">
-                        <%  var bathrooms = 13; %>
-                        <% for (var i = 0; i < bathrooms; i++){ %>
-                            <option value=<%= i %>> <%= i %>+ Baths
-                        <% } %>
-                    </select>
-                </div>
+
             </div>
             <input name="city" type="hidden" value="<% if (locals.previousSearchString) { %><%=previousSearchString %><%}%>"/>
             <noscript><input type="submit" value="Submit"></noscript>
@@ -30,6 +15,37 @@
         <!-- note the extra slash before the prefix -->
         <form action="<% if (locals.fa17g09_env_prefix) { %>/<%= fa17g09_env_prefix %><%}%>/search" method="post" class="form-inline">
             <div class="row">
+                <div class="col">
+                    <select class="custom-select" name="bedFilterOption" onchange="this.form.submit()">
+                        <%  var rooms = 13; %>
+                        <% for (var i = 0; i < rooms; i++){
+                            var selected = "";
+                            if (locals.bedFilterOption) {
+                                if  (locals.bedFilterOption == i){
+                                    selected = 'selected="selected"';
+                                }
+                            }
+                            %>
+                            <option value="<%= i %>" <%= selected %> ><%= i %>+ Beds</option>
+                        <% } %>
+                    </select>
+                </div>
+                <div class="col">
+                    <select class="custom-select" name="bathFilterOption" onchange="this.form.submit()">
+                        <%  var bathrooms = 13; %>
+                        <% for (var i = 0; i < bathrooms; i++){
+                            var selected = "";
+                            if (locals.bathFilterOption) {
+                                if  (locals.bathFilterOption == i){
+                                    selected = 'selected="selected"';
+                                }
+                            }
+                            %>
+                            <option value="<%= i %>" <%= selected %> ><%= i %>+ Baths</option>
+                        <% } %>
+                    </select>
+                </div>
+
                 <div class="col sort-selection">
                     <select class="custom-select" name="sortOption" onchange="this.form.submit()">
                         <%
