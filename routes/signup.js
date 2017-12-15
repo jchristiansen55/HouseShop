@@ -17,10 +17,13 @@ router.get('/', function(req, res, next) {
 router.post('/', function(req, res) {
 
     var cipher = crypto.createCipher('aes-256-ctr', key).update(req.body.password, 'utf-8', 'hex');
-    var userType = 'client';
+    var userType = '';
     if (req.body.listingAgent) {
         userType = 'listingAgent';
+    } else {
+        userType = 'client';
     }
+
     var user = {
         firstName: req.body.firstName,
         lastName: req.body.lastName,
@@ -30,6 +33,7 @@ router.post('/', function(req, res) {
     };
 
     models.User.create(user).then(function(newUser) {
+        console.log("user type: " + userType);
         res.redirect('signup');
     });
 
