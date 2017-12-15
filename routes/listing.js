@@ -23,8 +23,8 @@ router.get('/:listing?', function(req, res, next) {
                     media: media,
                     user: user, // listing agent
                     errors: [],
-                    UserState: req.cookies.UserState
-                    // User: req.cookies.User
+                    UserState: req.cookies.UserState,
+                    User: req.cookies.User
                 });
             });
         });
