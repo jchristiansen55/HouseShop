@@ -12,7 +12,7 @@ var index = require('./routes/index');
 var users = require('./routes/users');
 var search = require('./routes/search');
 var listings = require('./routes/listings');
-var filter = require('./routes/filter');
+// var filter = require('./routes/filter');
 var listing = require('./routes/listing');
 var dashboard = require('./routes/dashboard');
 var messageBoard = require('./routes/messageBoard');
@@ -81,11 +81,11 @@ app.use('/', index);
 app.use('/users', users);
 app.use('/search', search);
 app.use('/listings', listings);
-app.use('/filter', filter);
+// app.use('/filter', filter);
 app.use('/listing', listing);
 app.use('/dashboard', dashboard);
 
-app.use('/messageBoard', messageBoard); 
+app.use('/messageBoard', messageBoard);
 app.use('/sendMsg', sendMsg);
 
 app.use('/sendMessages', sendMessages);
