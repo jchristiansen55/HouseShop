@@ -9,13 +9,13 @@ module.exports = function(sequelize, DataTypes) {
     address: DataTypes.STRING,
     numBedrooms: DataTypes.INTEGER,
     numBathrooms: DataTypes.FLOAT,
-    // squareFeet: DataTypes.INTEGER,
-    // comment out bc error: Unhandled rejection SequelizeDatabaseError: Unknown column ‘squareFeet’ in ‘field list’
+    squareFeet: DataTypes.INTEGER,
     description: DataTypes.STRING
 });
 
     Listing.associate = function(models) {
         Listing.hasMany(models.Media);
+        Listing.belongsTo(models.User);
     }
 
     return Listing;

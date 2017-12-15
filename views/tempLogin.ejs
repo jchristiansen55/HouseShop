@@ -14,14 +14,13 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-7 div-centered">
-                <form action="<%= fa17g09_env_prefix %>/login" method="post" class="form-inline">
+                <form action="<% if (locals.fa17g09_env_prefix) { %>/<%= fa17g09_env_prefix %><%}%>/login" method="post" class="form-inline">
                     <div class="container">
                         <label><b>Email</b></label>
                         <input type="text" placeholder="Enter Email" name="email" required>
 
                         <label><b>Password</b></label>
                         <input type="text" placeholder="Enter Password" name="password" required>
-
                         <button type="submit">Login</button>
                         <input type="checkbox" checked="checked"> Remember me
                     </div>
@@ -43,6 +42,11 @@
 
                         <label><b>Email</b></label>
                         <input type="email" placeholder="Enter Email" name="email" required>
+                        <label><b>User Type</b></label>
+                        <input type="radio" name="userType" value="client" required> Client: You want to buy or sell a home<br>
+                        <input type="radio" name="userType" value="listingAgent" required> Listing Agent<br>
+                        <input type="radio" name="userType" value="admin" required> ONLY SELECT OF YOUR THE ADMIN. --ADMIN<br>
+
 
                         <button type="submit">Sign up</button>
                     </div>

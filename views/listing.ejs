@@ -1,29 +1,28 @@
-<!-- <h1><%= title %></h1> -->
+<% if(locals.errors.length <= 0){ %>
 <section class="container listing-info">
     <div class="row">
         <!-- later on, should not have listings, should only have 1 listing, passed by id -->
-        <div class="col-lg-6 col-md-6">
+        <div class="col-lg-6 col-md-6 listing-info-address">
             <h1><%= listing.address %> </h1> 
             <h1>
                 <%= listing.city %>, <%= listing.state %>
-                <!-- <%= listing.zipcode %>  -->
             </h1> 
         </div>
-        <div class="col-lg-6 col-md-6">
-            <h1>$875,000<%= listing.price %> </h1>   
+        <div class="col-lg-6 col-md-6 listing-info-detail">
+            <h1>$<%= listing.price %> </h1>   
             <h3>
                 <%= listing.numBedrooms %> beds | 
-                <%= listing.numBedrooms %> baths 
-                <!-- will have this field numBathrooms later? -->
+                <%= listing.numBathrooms %> baths 
             </h3>                      
         </div> 
     </div>
 </section>
-
+<% } %>
 <section class="container listing-images form-contact-agent">
+    <% if(locals.errors.length <= 0){ %>
     <div class="row">
         <!-- Image slider -->
-        <div id="carouselExampleIndicators" class="carousel slide col-lg-8 col-md-8 col-sm-12 col-12" data-ride="carousel" data-interval=false>
+        <div id="carouselExampleIndicators" class="carousel slide col-lg-8 col-md-12 col-sm-12 col-12" data-ride="carousel" data-interval=false>
             <div class="carousel-inner">
                 <% for(var i=0; i < media.length; i++) { %>
                     <% var isActive = "active"; %>
@@ -45,20 +44,56 @@
         <!-- END Image slider -->
 
         <!-- contact form -->
-        <div class="contact col-lg-4 col-md-4 col-sm-12 col-12">
-            <form>
+        <div class="contact col-lg-4 col-md-8 col-sm-12 col-12 div-centered">
+                <section class="search-results" style="z-index: 50">
+                        
+                            <% if(errors.length > 0){ %>
+                                <div class="alert alert-warning alert-dismissible fade show row search-alert" role="alert">
+                                    <h1>Signup problem(s): </h1><br/>
+                                    <% for (var i = 0; i < errors.length; i++) { %>
+                                        <h5><%= errors[i] %></h5><br/>
+                                    <% } %>
+                                    <div class="col-2 search-alert-detail">
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            <% } %>
+                    
+                        <!-- END Error Alert Message -->
+                </section>
+                <!-- CONTACT BUTTON -->
+                <% if (locals.UserState != 0) { %>  
+                    <form id="needs-validation" action="<% if (locals.fa17g09_env_prefix) { %>/<%= fa17g09_env_prefix %><%}%>/listing" method="post" novalidate>
+                <% } else { %>
+                    <form id="needs-validation" data-toggle="modal" data-target="#myModal" >
+                                <% } %>              
+                                <!-- END SIGNIN/LOG IN -->
                 <div class="form-group">
-                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Name">
+                    <input type="text" class="form-control" name="name" placeholder="Name" required>
+                    <div class="invalid-feedback">
+                        Please provide your name.
+                    </div>
                 </div>
                 <div class="form-group">
-                    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Email">
+                    <input type="email" class="form-control" name="email" placeholder="Email" required>
+                    <div class="invalid-feedback">
+                        Please provide your email.
+                    </div>
                 </div>
                 <div class="form-group">
-                    <input type="tel" class="form-control" id="exampleFormControlInput1" placeholder="Phone Number">
+                    <input type="tel" class="form-control" name="phone" placeholder="Phone Number" required>
+                    <div class="invalid-feedback">
+                        Please provide your phone number.
+                    </div>
                 </div>
                 <div class="form-group">
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3">Hello, I am interested in the listing at <%= listing.address %>, <%= listing.city %>, <%= listing.state %>. 
-                        </textarea>
+                    <textarea class="form-control" name="msg" rows="3" required>Hello, I am interested in the listing at <%= listing.address %>, <%= listing.city %>, <%= listing.state %>. 
+                    </textarea>
+                    <div class="invalid-feedback">
+                        Please provide a message to the listing agent.
+                    </div>
                 </div>
                 <div class="row">
                     <div class="form-group col">
@@ -69,13 +104,147 @@
                     </div>                                  
                 </div>
             </form>
+            <script>
+                // Example starter JavaScript for disabling form submissions if there are invalid fields
+                (function() {
+                  'use strict';
+
+                    window.addEventListener('load', function() {
+                        var form = document.getElementById('needs-validation');
+                        form.addEventListener('submit', function(event) {
+                            if (form.checkValidity() === false) {
+                                event.preventDefault();
+                                event.stopPropagation();
+                            }
+                            form.classList.add('was-validated');
+                        }, false);
+                    }, false);
+
+                })();
+            </script>
         </div>
         <!-- END contact form -->
     </div>  
 </section>
+<% } %>
 
+<% if(locals.errors.length > 0){ %>
+    <section class="search-results" style="z-index: 50">
+        
+            <% if(errors.length > 0){ %>
+                <div class="alert alert-warning alert-dismissible fade show row search-alert" role="alert">
+                    <% for (var i = 0; i < errors.length; i++) { %>
+                        <%= errors[i] %><br/>
+                    <% } %>
+                </div>
+            <% } %>
+    
+        <!-- END Error Alert Message -->
+</section>
+<% } %>
+            <!-- Modal -->
+            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h2 class="modal-title" id="myModalLabel">Welcome to HouseShop</h2>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
 
+                        <h2 class="modal-title center-titlesLogin" id="myModalLabel">Log In</h2>
+                        <!-- Login -->
+                        <form action="<% if (locals.fa17g09_env_prefix) { %>/<%= fa17g09_env_prefix %><%}%>/login" method="post" role="form">
+                            <div class="row">
+                                <div class="form-group center-sign_up_in">
+                                    <input type="text" name="email" id="user_name" class="form-control input-sm" placeholder="Email">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group center-sign_up_in">
+                                    <input type="password" name="password" id="password" class="form-control input-sm" placeholder="Password">
+                                    <button class="astext" style="color:blue;">Forgot Password?</button>
+                                </div>
+                            </div>
+                            <div class="col-xs-6 col-sm-6 col-md-6 div-centered">
+                                <input type="submit" value="Log In" class="btn btn-info btn-block">
+                            </div>
+                        </form>
+                        <br>
 
+                        <!-- END Login  -->
+                        <hr style="width: 100%; color: black; height: 1px; " />
+
+                        <!-- Forms for signup -->
+                        <h2 class="modal-title center-titlesSignUp" id="myModalLabel">Sign Up</h2>
+                        <form action="<% if (locals.fa17g09_env_prefix) { %>/<%= fa17g09_env_prefix %><%}%>/signup" method="post" role="form">
+                            <div class="row">
+                                <div class="col-xs-6 col-sm-6 col-md-6 ">
+                                    <div class="form-group widthOfFields2">
+                                        <input type="text" name="firstName" id="first_name" class="form-control input-sm" placeholder="First Name">
+                                    </div>
+                                </div>
+                                <div class="col-xs-6 col-sm-6 col-md-6">
+                                    <div class="form-group widthOfFields2">
+                                        <input type="text" name="lastName" id="last_name" class="form-control input-sm" placeholder="Last Name">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group widthOfFields3">
+                                <input type="email" name="email" id="email" class="form-control input-sm" placeholder="Email Address">
+                            </div>
+                            <div class="form-group widthOfFields3">
+                                <input type="Phone" name="Phone" id="Phone" class="form-control input-sm" placeholder="Phone Number">
+                            </div>
+
+                            <div class="row">
+                                <div class="col-xs-6 col-sm-6 col-md-6">
+                                    <div class="form-group widthOfFields2">
+                                        <input type="password" name="password" id="password" class="form-control input-sm" placeholder="Password">
+                                    </div>
+                                </div>
+                                <div class="col-xs-6 col-sm-6 col-md-6">
+                                    <div class="form-group widthOfFields2">
+                                        <input type="password" name="password_confirmation" id="password_confirmation" class="form-control input-sm" placeholder="Confirm Password">
+                                    </div>
+                                </div>
+                                <!-- Check Boxs -->
+                                <div class = "checkBoxAdjust2">
+                                    <label class="form-check-label" >
+                                        <input type="checkbox" class="form-check-input checkBoxAdjust">
+                                        <a href="#">I agree to the terms</a>
+                                    </label>
+                                </div>
+
+                                <div class="col form-check">
+                                    <label class="form-check-label">
+                                        <input type="checkbox" class="form-check-input checkb" name="listingAgent">
+                                        I am a listing agent.
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-xs-6 col-sm-6 col-md-6 div-centered">
+                                <input type="submit" value="Sign Up" class="btn btn-info btn-block ">
+                            </div>
+                        </form>
+                        <br>
+                        <!-- END Sign Up -->
+                        <!-- END Modal Body -->
+
+                        <div class="modal-footer ">
+                            <div class ="toTheLeft-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                            </div>
+                        </div>
+                        <!-- END Modal Footer -->
+
+                    </div>
+                    <!-- END Modal Content -->
+                </div>
+                <!-- END modal-dialog -->
+
+<% if(locals.errors.length <= 0){ %>
 <section class="container">
     <div class="row listing-info">
             <div class="col-lg-8">
@@ -83,10 +252,10 @@
                     Listing Description
                 </h2>
                 <p>
-                    San Francisco State University (commonly referred to as San Francisco State, SF State and SFSU) is a public research university located in San Francisco, California, United States. As part of the 23-campus California State University system, the university offers 118 different Bachelor's degrees, 94 Master's degrees, 5 Doctoral degrees (including two Doctor of Education degrees, a Doctor of Physical Therapy, a Ph.D in Education and a Doctor of Physical Therapy Science), along with 26 teaching credentials among six academic colleges.
+                    <%= listing.description %>
                 </p>
             </div>
         </div>
     </div>    
 </section>
-
+<% } %>

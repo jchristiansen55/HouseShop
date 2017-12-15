@@ -9,14 +9,17 @@ const Op = models.sequelize.Op;
 */
 // TODO: redirect to /search, not /filter
 router.post('/', function(req, res, next) {
-    //res.sendFile(path.join(__dirname + '/index.html'));
     models.Listing.findAll({
         where: {
-            [Op.or]: [
+            [Op.and]: [
                 {
                     numBedrooms: {
-                        [Op.gte]: req.body.taskOption
-                        // [Op.gte]: '%' + req.body.taskOption + '%'
+                        [Op.gte]: req.body.bedFilterOption
+                    }
+                },
+                {
+                    numBathrooms: {
+                        [Op.gte]: req.body.bathFilterOption
                     }
                 }
             ]
@@ -24,8 +27,10 @@ router.post('/', function(req, res, next) {
     })
     .then(function(listings) {
         res.render('search', { // render the Search/Browse page
-            title: 'Filtered Listings',
-            listings: listings
+            title: 'Search',
+            listings: listings,
+            UserState: req.cookies.UserState,
+            errors: req.cookies.errors
         });
     });
 });
