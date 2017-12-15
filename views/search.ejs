@@ -66,6 +66,7 @@
         <script>            
             // Initialize Map as a callback from google maps api
             function initMap() {
+                
                 // Map options
                 var options = {
                     zoom: 13,
@@ -79,7 +80,7 @@
                 geocoder = new google.maps.Geocoder();
 
                 // Get listings
-                var listings = <%- JSON.stringify(listings) %>;
+                var listings = JSON.stringify(listings);
 
                 // Geocode each listing by passings its address
                 listings.forEach(function(listing) {
