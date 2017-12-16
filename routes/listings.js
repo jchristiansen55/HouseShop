@@ -14,7 +14,8 @@ router.get('/', function(req, res, next) {
     res.render('listings' , {
         title: 'Listings',
         errors: req.cookies.errors,
-        UserState: req.cookies.UserState
+        UserState: req.cookies.UserState,
+        User: req.cookies.User
     });
 
 });
