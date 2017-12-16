@@ -63,19 +63,17 @@ router.post('/', function(req, res) {
                imageFilePath: 'assets/' + secondImageName
            });
 
-           if (imageFile2) {
-                imageFile2.mv(__dirname + '/../public/assets/' + secondImageName, function(err) {   
-                    if (err){
-                        return res.status(500).send(err);
-                    }
-                });
-           } else {
-                createThumbnail(__dirname + '/../public/assets/' + firstImageName, __dirname + '/../public/assets/');
-                listing.update({
-                    thumbnail: 'assets/' + path.basename(firstImageName, path.extname(firstImageName)) + '_thumb' + path.extname(firstImageName)
-                }).then(() => {});
-                    res.redirect('listings');
-           }
+           imageFile2.mv(__dirname + '/../public/assets/' + secondImageName, function(err) {
+                  if (err){
+                          return res.status(500).send(err);
+                  } else {
+                          createThumbnail(__dirname + '/../public/assets/' + firstImageName, __dirname + '/../public/assets/');
+                          listing.update({
+                              thumbnail: 'assets/' + path.basename(firstImageName, path.extname(firstImageName)) + '_thumb' + path.extname(firstImageName)
+                          }).then(() => {});
+                          res.redirect('listings');
+                  }
+           });
     });
 });
 
