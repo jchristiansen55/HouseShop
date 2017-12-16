@@ -10,5 +10,28 @@ router.get('/', function(req, res, next) {
       title: "Your Inbox"
     });
 });
+router.get('/', function(req, res, next) {
+  var userId;
+
+    if(req.cookies.UserState == undefined) {
+      req.cookies.UserState = 0;
+      userId = 0;
+    } else {
+      userId = req.cookies.UserState;
+    }  
+    
+    models.Message.findAll({
+      where: {
+        receiver: userId
+      }
+    })
+    .then(function(results) {
+      res.render('messageBoard', {
+        title: "Your Inbox",
+        results: results,
+        UserState: req.cookies.UserState,
+      });
+    });
+});
 
 module.exports = router;
