@@ -5,7 +5,7 @@ var models = require('../models');
 const Op = models.sequelize.Op;
 
 router.get('/', function(req, res, next) {
-    models.Listing.findAll().then(function(listings) {
+    models.Listing.findAll({where: {UserId: req.cookies.UserState}}).then(function(listings) {
         res.render('dashboard', {
             title: 'Welcome to Your Dashboard',
             listings: listings,
