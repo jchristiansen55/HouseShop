@@ -293,7 +293,7 @@ p {
 /* SEARCH: MAP*/
 .column-left, .column-right {
     padding: 0;
-    top: 185.77px;
+    top: 180.77px;
 }
 
 .container-map {
@@ -342,7 +342,7 @@ p {
     padding: 8px;
     background-color: #343a40;
     position: fixed;
-    top: 121.77px;
+    top: 116.77px;
     width: 100%;
     z-index: 10;
 }
@@ -491,7 +491,7 @@ th {
 
 @media screen and (max-width: 767px) {
     .filter {
-        top: 159.77px;
+        top: 154.77px;
     }
     
     .column-left, .column-right {
@@ -501,7 +501,7 @@ th {
 
 @media screen and (max-width: 742px) {    
     .column-left, .column-right {
-        top: 271.77px;
+        top: 218.77px;
     }
 }
 
