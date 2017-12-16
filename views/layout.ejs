@@ -67,14 +67,13 @@
                             </li>
                             <% if(UserState != 0 && User.userType == 'listingAgent') { %>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="<% if (locals.fa17g09_env_prefix) { %>/<%= fa17g09_env_prefix %><%}%>/dashboard">Agent</a>
+                                    <a class="nav-link" href="<% if (locals.fa17g09_env_prefix) { %>/<%= fa17g09_env_prefix %><%}%>/dashboard">Dashboard</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/messageBoard">Inbox</a>
                                 </li>
                             <% } %>
                             <li class="nav-item">
-                                <a class="nav-link" href="/messageBoard">Contact</a>
-                            </li>
-                            <li class="nav-item">
-
                                 <!-- SIGN IN/LOG IN -->
                                 <% if (locals.UserState != 0) { %>
                                     <form action="<% if (locals.fa17g09_env_prefix) { %>/<%= fa17g09_env_prefix %><%}%>/logout" method="post">
