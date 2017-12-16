@@ -5,7 +5,7 @@
             <div class="col-lg-4"></div>
             <div class="col-lg-4">
                 <% var welcomePhrase = "Feeling at home?"; %>
-                <% if (UserState > 0) { %>
+                <% if (UserState > 0 && User) { %>
                     <% welcomePhrase = "Welcome " + User.firstName; %>
                 <% } %>
                 <h2><center> <%- welcomePhrase %> </center></h2>
@@ -20,7 +20,7 @@
             <div class="searchbar div-centered col-lg-7" id="searchbar">
                 <form action="<%= fa17g09_env_prefix %>/search" method="post" class="form-inline">
                     <div class="input-group searchbar-input">
-                        <input type="query" name="city" id="search" class="form-control" placeholder="Enter address, zip code, or city ..." aria-label="Search for..." />
+                        <input type="query" name="city" id="search" class="form-control" placeholder="Enter address, zip code, or city ..." aria-label="Search for..." value="<% if (locals.previousSearchString) { %><%=previousSearchString %><%}%>" />
                         <span class="input-group-btn">
                             <button class="btn btn-primary" type="submit">
                                 <i class="fa fa-search" aria-hidden="true"></i>
@@ -32,7 +32,7 @@
                 <% if (errors) { %>
                     <div class="alert alert-warning alert-dismissible fade show row search-alert" role="alert">
                         <div class="col-10 search-alert-detail">
-                            <strong><%=errors.msg %>!</strong>                            
+                            <strong><%=errors.msg %>!</strong>
                         </div>
                         <div class="col-2 search-alert-detail">
                             <button type="button" class="close" data-dismiss="alert" aria-label="Close">

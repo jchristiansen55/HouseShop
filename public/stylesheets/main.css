@@ -442,7 +442,49 @@ th {
     margin: 20% 0;
 }
 
-
+/**
+ Listing Form 
+**/
+.listingGroups{
+  width:70%;
+    margin-left:15%;
+}
+.listingGroups2{
+  width:60%;
+    margin-left:13%;
+}
+.listingGroups3{
+  width:70%;
+    margin-left:15%;
+}
+.listingGroups4{
+  width:100%;
+    margin-left:-8%;
+}
+.titlesForListingsForm{
+    margin-left:-70%;
+}
+.titlesForListingsForm2{
+    margin-left:-80%;
+}
+.titlesForListingsForm3{
+    margin-left:-40%;
+}
+.titlesForListingsForm4{
+    margin-left:-75%;
+}
+.titlesForListingsForm5{
+    margin-left:-7%;
+    width:70%;
+}
+.titlesForListingsForm6{
+    margin-left:6%;
+    width:70%;
+}
+.titlesForListingsForm7{
+    margin-left:12%;
+    width:70%;
+}
 /**************
   RESPONSIVE
 ***************/

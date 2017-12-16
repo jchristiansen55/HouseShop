@@ -9,7 +9,7 @@ router.use(expressValidator());
 
 /* POST search page
    '/' is NOT Home page
-*/ 
+*/
 router.post('/', function(req, res, next) {
 
     if (req.body.city < 0) {
@@ -28,17 +28,19 @@ router.post('/', function(req, res, next) {
         res.send(errors);
     }
     else {
-        var queryBuilderArguments = {searchString : req.body.city};
-        if(req.body.sortOption) {
-            queryBuilderArguments.orderMode = req.body.sortOption;
-        }
+        // var queryBuilderArguments = {searchString : req.body.city};
+        // if(req.body.sortOption) {
+        //     queryBuilderArguments.orderMode = req.body.sortOption;
+        // }
 
-        models.Listing.findAll(buildListingsQuery(queryBuilderArguments)).then(function(listings) {
+        models.Listing.findAll(buildListingsQuery(req)).then(function(listings) {
             res.render('search', { // render the Search/Browse page
                 title: 'Search',
                 listings: listings,
                 previousSearchString: req.body.city,
                 previousSortOption: req.body.sortOption,
+                bedFilterOption: req.body.bedFilterOption ? req.body.bedFilterOption : 0,
+                bathFilterOption: req.body.bathFilterOption ? req.body.bathFilterOption : 0,
                 UserState: req.cookies.UserState,
                 User: req.cookies.User,
                 errors: req.cookies.errors
@@ -69,6 +71,8 @@ router.get('/', function(req, res, next) {
             listings: listings,
             previousSearchString: req.body.city,
             previousSortOption: req.body.sortOption,
+            bedFilterOption: req.body.bedFilterOption ? req.body.bedFilterOption : 0,
+            bathFilterOption: req.body.bathFilterOption ? req.body.bathFilterOption : 0,
             UserState: req.cookies.UserState,
             User: req.body.User,
             errors: req.cookies.errors
@@ -79,40 +83,55 @@ router.get('/', function(req, res, next) {
 
 module.exports = router;
 
-function buildListingsQuery(queryBuilderArguments) {
+function buildListingsQuery(req) {
     var sequelizeQuery = {
         include: [ models.Media ] // !! This line requests retrieval of the associated model.
 	};
 
-    if (queryBuilderArguments.searchString){
-        sequelizeQuery.where = {
-            [Op.or]: [
-                {
-                    address: {
-                        [Op.like]: '%' + queryBuilderArguments.searchString + '%'
-                    }
-                },
-                {
-    		        city: {
-                        [Op.like]: '%' + queryBuilderArguments.searchString + '%'
-                    }
-                },
-                {
-                    state: {
-                        [Op.like]: '%' + queryBuilderArguments.searchString + '%'
-                    }
-                },
-                {
-                    zipcode: {
-                        [Op.like]: '%' + queryBuilderArguments.searchString + '%'
-                    }
-                }
-            ]
-  		};
+    if (! req.body.city){
+        req.body.city = "";
     }
+    
+    sequelizeQuery.where = {
+        [Op.or]: [
+            {
+                address: {
+                    [Op.like]: '%' + req.body.city + '%'
+                }
+            },
+            {
+		        city: {
+                    [Op.like]: '%' + req.body.city + '%'
+                }
+            },
+            {
+                state: {
+                    [Op.like]: '%' + req.body.city + '%'
+                }
+            },
+            {
+                zipcode: {
+                    [Op.like]: '%' + req.body.city + '%'
+                }
+            }
+        ],
+        [Op.and]: [
+            {
+                numBedrooms: {
+                    [Op.gte]: req.body.bedFilterOption ? req.body.bedFilterOption : 0
+                }
+            },
+            {
+                numBathrooms: {
+                    [Op.gte]: req.body.bathFilterOption ? req.body.bathFilterOption : 0
+                }
+            }
+        ]
+		};
 
-    if (queryBuilderArguments.orderMode){
-        sequelizeQuery.order = models.sequelize.literal(queryBuilderArguments.orderMode);
+
+    if (req.body.sortOption){
+        sequelizeQuery.order = models.sequelize.literal(req.body.sortOption);
     }
 
     return sequelizeQuery;
