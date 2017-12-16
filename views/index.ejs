@@ -20,7 +20,7 @@
             <div class="searchbar div-centered col-lg-7" id="searchbar">
                 <form action="<%= fa17g09_env_prefix %>/search" method="post" class="form-inline">
                     <div class="input-group searchbar-input">
-                        <input type="query" name="city" id="search" class="form-control" placeholder="Enter address, zip code, or city ..." aria-label="Search for..." />
+                        <input type="query" name="city" id="search" class="form-control" placeholder="Enter address, zip code, or city ..." aria-label="Search for..." value="<% if (locals.previousSearchString) { %><%=previousSearchString %><%}%>" />
                         <span class="input-group-btn">
                             <button class="btn btn-primary" type="submit">
                                 <i class="fa fa-search" aria-hidden="true"></i>
