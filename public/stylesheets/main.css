@@ -99,6 +99,10 @@ p {
 .btn-log-in {
 
 }
+
+#navbarCollapse {
+    z-index: 100;
+}
 .nav-item {
     padding: 0 0.5rem;
 }
@@ -123,10 +127,13 @@ p {
     background-color: #3c434a;
     color: #d2d2d2;
     border-radius: 0;
+    padding-left: 0;
+    padding-right: 0;
 }
 
 .disclaimer p {
     margin: 0 auto;
+    font-size: .8rem;
 }
 
 .alert-danger {
@@ -333,12 +340,11 @@ p {
 /*  LISTING  */
 .filter {
     padding: 8px;
-    /*background-color: red;*/
     background-color: #343a40;
     position: fixed;
     top: 121.77px;
     width: 100%;
-    z-index: 100;
+    z-index: 10;
 }
 
 .listing-images {
