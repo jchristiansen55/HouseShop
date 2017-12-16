@@ -7,7 +7,9 @@ const Op = models.sequelize.Op;
 
 router.get('/', function(req, res, next) {
     res.render('messageBoard', {
-      title: "Your Inbox"
+        title: "Your Inbox",
+        UserState: req.cookies.UserState,
+        User: req.cookies.User
     });
 });
 
