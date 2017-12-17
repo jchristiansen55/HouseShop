@@ -1,21 +1,19 @@
 <section class="filter row">
-    <div class="btn-group">
-        <form action="filter" method="post" class="form-inline">
-            <div class="row">
-
-            </div>
-            <input name="city" type="hidden" value="<% if (locals.previousSearchString) { %><%=previousSearchString %><%}%>"/>
-            <noscript><input type="submit" value="Submit"></noscript>
-        </form>
-    </div>
+    <form action="filter" method="post" class="form-inline">
+        <div class="row">
+        </div>
+        <input name="city" type="hidden" value="<% if (locals.previousSearchString) { %><%=previousSearchString %><%}%>"/>
+        <noscript><input type="submit" value="Submit"></noscript>
+    </form>
     <!-- END Filter Options  -->
 
-    <div class="btn-group">
+    <div class="btn-group col">
         <!-- Sort results by: -->
         <!-- note the extra slash before the prefix -->
         <form action="<% if (locals.fa17g09_env_prefix) { %>/<%= fa17g09_env_prefix %><%}%>/search" method="post" class="form-inline">
             <div class="row">
-                <div class="col">
+                <div class="col-3 filter-button">
+                    <h5><i class="fa fa-bed" aria-hidden="true"></i></h5>
                     <select class="custom-select" name="bedFilterOption" onchange="this.form.submit()">
                         <%  var rooms = 13; %>
                         <% for (var i = 0; i < rooms; i++){
@@ -30,7 +28,8 @@
                         <% } %>
                     </select>
                 </div>
-                <div class="col">
+                <div class="col-3 filter-button">
+                    <h5><i class="fa fa-bath" aria-hidden="true"></i></h5>
                     <select class="custom-select" name="bathFilterOption" onchange="this.form.submit()">
                         <%  var bathrooms = 13; %>
                         <% for (var i = 0; i < bathrooms; i++){
@@ -46,7 +45,8 @@
                     </select>
                 </div>
 
-                <div class="col sort-selection">
+                <div class="col-6  filter-button sort-selection">
+                    <h5><i class="fa fa-filter" aria-hidden="true"></i></h5>
                     <select class="custom-select" name="sortOption" onchange="this.form.submit()">
                         <%
                         var optionsMap = new Map();

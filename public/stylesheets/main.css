@@ -63,12 +63,16 @@ p {
 }
 
 .btn-group {
-    padding: 5px 50px 5px 5px;
+    padding-bottom: 5px;
 }
 
 .filter button {
     margin: 0 1%;
     border-radius: .25rem;
+}
+
+.filter-button h5 {
+    color: #fefefe;
 }
 
 .display-none {
@@ -295,7 +299,7 @@ p {
 /* SEARCH: MAP*/
 .column-left, .column-right {
     padding: 0;
-    top: 180.77px;
+    top: 205.77px;
 }
 
 .container-map {
@@ -503,15 +507,11 @@ th {
     .filter {
         top: 154.77px;
     }
-    
-    .column-left, .column-right {
-        top: 223.77px;
-    }
 }
 
-@media screen and (max-width: 742px) {    
+@media screen and (max-width: 767px) {    
     .column-left, .column-right {
-        top: 218.77px;
+        top: 243.77px;
     }
 }
 
