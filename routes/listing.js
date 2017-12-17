@@ -16,6 +16,7 @@ router.get('/:listing?', function(req, res, next) {
         models.Media.findAll({where: {listingid: listingid}})
         .then(function(media) {
             models.User.findOne({where: {id: listing.UserId}})
+            console.log(req.cookies.UserState)
             .then(function(user) {
                 res.render('listing', { // render the Listing page
                     title: 'Listing - GET', // remove 'GET'
@@ -77,7 +78,7 @@ router.post('/', function(req, res, next) {
                             media: media,
                             user: user, // listing agent
                             errors: [],
-                            UserState: req.cookies.UserState,
+                            UserState: req.cookies.UserState
                             // User: res.cookies.User
                         });
                     });
