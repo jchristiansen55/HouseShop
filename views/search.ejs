@@ -76,13 +76,14 @@
 
 </section>
 <!-- END Filters -->
-
+<% if(!errors){ %>
 <section class="row">
     <div class="col-lg-6 col-xs-12 container-map column-left">
         <div class="google-map" id="map"></div>
         <script>
             // Initialize Map as a callback from google maps api
             function initMap() {
+
                 // Map options
                 var options = {
                     zoom: 13,
@@ -98,6 +99,8 @@
                 // Get listings
                 var listings = <%- JSON.stringify(listings) %>;
 
+                if(listings == null) return;
+                if (listings) console.log(listings);
                 // Geocode each listing by passings its address
                 listings.forEach(function(listing) {
                     // console.log(listing.address);
@@ -129,7 +132,7 @@
         </script>
     </div>
     <!-- END Left Container: Map -->
-
+<% } %>
     <div class="col-lg-6 col-md-6 col-xs-12 results column-right">
         <section class="search-results" style="z-index: 50">
             <div>

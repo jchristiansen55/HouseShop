@@ -79,6 +79,9 @@ router.get('/', function(req, res, next) {
             errors: req.cookies.errors
         });
     });
+    console.log("break");
+    console.log(req.body.listings);
+    console.log(req.cookies.errors);
     res.cookie('errors', '');
 });
 
