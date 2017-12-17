@@ -15,18 +15,11 @@ router.get('/', function(req, res, next) {
         } 
     })
     .then(function(messages) {
-        models.User.findAll({
-            where: {
-                id: messages.sender
-            }
-        }).then(function(sender) {
-            res.render('messageBoard', {
-                title: "Your Inbox",
-                messages: messages,
-                UserState: req.cookies.UserState,
-                User: req.cookies.User,
-                sender: sender
-            });
+        res.render('messageBoard', {
+            title: "Your Inbox",
+            messages: messages,
+            UserState: req.cookies.UserState,
+            User: req.cookies.User,
         });
     });
 });
