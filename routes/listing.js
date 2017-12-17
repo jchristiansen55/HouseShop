@@ -10,13 +10,15 @@ var prevReq;
 router.get('/:listing?', function(req, res, next) {
     var listingid = req.query.listing;
     prevReq = listingid;
+
+    console.log("User state is ", req.cookies.UserState);
+    console.log("User is ", req.cookies.User);
     
     models.Listing.findOne({where: {id: listingid}})
     .then(function(listing) {
         models.Media.findAll({where: {listingid: listingid}})
         .then(function(media) {
             models.User.findOne({where: {id: listing.UserId}})
-            console.log(req.cookies.UserState)
             .then(function(user) {
                 res.render('listing', { // render the Listing page
                     title: 'Listing - GET', // remove 'GET'
@@ -24,8 +26,8 @@ router.get('/:listing?', function(req, res, next) {
                     media: media,
                     user: user, // listing agent
                     errors: [],
-                    UserState: req.cookies.UserState,
-                    User: req.cookies.User
+                    User: req.cookies.User,
+                    UserState: req.cookies.UserState
                 });
             });
         });
@@ -78,8 +80,8 @@ router.post('/', function(req, res, next) {
                             media: media,
                             user: user, // listing agent
                             errors: [],
-                            UserState: req.cookies.UserState
-                            // User: res.cookies.User
+                            UserState: req.cookies.UserState,
+                            User: req.cookies.User
                         });
                     });
                 });
@@ -90,8 +92,8 @@ router.post('/', function(req, res, next) {
             console.log(inputErrors);
             res.render('listing', {
                 errors: inputErrors,
-                UserState: req.cookies.UserState
-                // User: res.cookies.User
+                UserState: req.cookies.UserState,
+                User: res.cookies.User
             });
         }
     

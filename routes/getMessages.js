@@ -28,6 +28,7 @@ router.get('/', function(req, res, next) {
     res.render('getMessages', {
       results: results,
       UserState: req.cookies.UserState,
+      User: req.cookies.User
   });
   });
 

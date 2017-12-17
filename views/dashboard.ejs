@@ -66,19 +66,19 @@
                 <tr>
                   <th scope="col">#</th>
                   <th scope="col">Name</th>
-                  <th scope="col">Phone</th>
+                  <th scope="col">Last Name</th>
                   <th scope="col">Email</th>
-                  <th scope="col">Interested in Listing IDs</th>
+                  <th scope="col">User Type</th>
                 </tr>
               </thead>
               <tbody>
-                <%listings.forEach(function(listing) { %>
+                <%totalUsers.forEach(function(user) { %>
                     <tr>
-                      <th scope="row"><%= listing.id %></th>
-                      <td><%= listing.address %></td>
-                      <td><%= listing.city %></td>
-                      <td><%= listing.state %></td>
-                      <td><%= listing.id %></td>
+                      <th scope="row"><%= user.id %></th>
+                      <td><%= user.firstName %></td>
+                      <td><%= user.lastName %></td>
+                      <td><%= user.email %></td>
+                      <td><%= user.userType %></td>
                     </tr>
                 <% }) %>
               </tbody>
