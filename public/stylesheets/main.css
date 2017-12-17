@@ -144,6 +144,12 @@ p {
     position:absolute;
 }
 
+/* ABOUT PAGE */
+.jumbotron {
+    margin-bottom: 5%;
+}
+
+
 /* SIGN IN/UP MODAL FORMS*/
 .centered-form{
     margin-top: 10px;
@@ -259,6 +265,10 @@ p {
 }
 
 /* SEARCH-LAYOUT */
+.content {
+    background-color: #fbfbfb;
+}
+
 .fixed-container {
     position: fixed;
     z-index: 25;
