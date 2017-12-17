@@ -441,6 +441,18 @@ fieldset {
     display: none;
 }
 
+.custom-file {
+    overflow: hidden;
+}
+
+.custom-file-control {
+    white-space: nowrap;
+}
+
+.custom-file-control.selected:lang(en)::after {
+  content: "" !important;
+}
+
 /* DASHBOARD */
 th {
     text-align: center;
