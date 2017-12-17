@@ -12,6 +12,7 @@ router.use(expressValidator());
 */
 router.post('/', function(req, res, next) {
 
+    console.log("USER COOKIE: " + req.cookies.User);
     if (req.body.city < 0) {
         req.checkBody('city', 'Error: You entered a negative number').isInt({min: 0});
     }
@@ -74,7 +75,7 @@ router.get('/', function(req, res, next) {
             bedFilterOption: req.body.bedFilterOption ? req.body.bedFilterOption : 0,
             bathFilterOption: req.body.bathFilterOption ? req.body.bathFilterOption : 0,
             UserState: req.cookies.UserState,
-            User: req.body.User,
+            User: req.cookies.User,
             errors: req.cookies.errors
         });
     });

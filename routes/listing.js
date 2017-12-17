@@ -78,7 +78,7 @@ router.post('/', function(req, res, next) {
                             user: user, // listing agent
                             errors: [],
                             UserState: req.cookies.UserState,
-                            // User: res.cookies.User
+                            User: req.cookies.User
                         });
                     });
                 });
@@ -89,8 +89,8 @@ router.post('/', function(req, res, next) {
             console.log(inputErrors);
             res.render('listing', {
                 errors: inputErrors,
-                UserState: req.cookies.UserState
-                // User: res.cookies.User
+                UserState: req.cookies.UserState,
+                User: res.cookies.User
             });
         }
     

@@ -42,7 +42,7 @@
                 <li class="nav-item">
                     <a class="nav-link" href="<% if (locals.fa17g09_env_prefix) { %>/<%= fa17g09_env_prefix %><%}%>/about.html">About</a>
                 </li>
-                <% if(UserState != 0 && User.userType == 'listingAgent') { %>
+                <% if(locals.UserState != 0 && User.userType == 'listingAgent') { %>
                     <li class="nav-item">
                         <a class="nav-link" href="<% if (locals.fa17g09_env_prefix) { %>/<%= fa17g09_env_prefix %><%}%>/dashboard">Dashboard</a>
                     </li>
@@ -52,7 +52,7 @@
                 <% } %>
                 <li class="nav-item">
                     <!-- SIGN IN/LOG IN -->
-                    <% if (UserState != 0) { %>
+                    <% if (locals.UserState != 0) { %>
                         <form action="<% if (locals.fa17g09_env_prefix) { %>/<%= fa17g09_env_prefix %><%}%>/logout" method="post">
                             <input  type="submit" class="btn btn-primary btn-lg btn-log-in" name="Log Out" value="Log Out" />
                         </form>
