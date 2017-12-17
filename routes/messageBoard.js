@@ -6,33 +6,28 @@ var mysql = require('mysql');
 const Op = models.sequelize.Op;
 
 router.get('/', function(req, res, next) {
-    res.render('messageBoard', {
-        title: "Your Inbox",
-        UserState: req.cookies.UserState,
-        User: req.cookies.User
-    });
-});
-router.get('/', function(req, res, next) {
-  var userId;
+    var userId = req.cookies.UserState;
+    var user = req.cookies.User;
 
-    if(req.cookies.UserState == undefined) {
-      req.cookies.UserState = 0;
-      userId = 0;
-    } else {
-      userId = req.cookies.UserState;
-    }  
-    
     models.Message.findAll({
-      where: {
-        receiver: userId
-      }
+        where: {
+            receiver: userId
+        } 
     })
-    .then(function(results) {
-      res.render('messageBoard', {
-        title: "Your Inbox",
-        results: results,
-        UserState: req.cookies.UserState,
-      });
+    .then(function(messages) {
+        models.User.findAll({
+            where: {
+                id: messages.sender
+            }
+        }).then(function(sender) {
+            res.render('messageBoard', {
+                title: "Your Inbox",
+                messages: messages,
+                UserState: req.cookies.UserState,
+                User: req.cookies.User,
+                sender: sender
+            });
+        });
     });
 });
 
