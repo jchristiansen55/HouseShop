@@ -10,6 +10,9 @@ var prevReq;
 router.get('/:listing?', function(req, res, next) {
     var listingid = req.query.listing;
     prevReq = listingid;
+
+    console.log("User state is ", req.cookies.UserState);
+    console.log("User is ", req.cookies.User);
     
     models.Listing.findOne({where: {id: listingid}})
     .then(function(listing) {
@@ -23,8 +26,8 @@ router.get('/:listing?', function(req, res, next) {
                     media: media,
                     user: user, // listing agent
                     errors: [],
-                    UserState: req.cookies.UserState,
-                    User: req.cookies.User
+                    User: req.cookies.User,
+                    UserState: req.cookies.UserState
                 });
             });
         });
