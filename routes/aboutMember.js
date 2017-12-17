@@ -35,6 +35,8 @@ router.get('/:member?' + fa17g09_env_prefix, function(req, res, next) {
         memberRole = "Frontend Developer";
     }
 
+    console.log(">>>>>>>>>>>>>>> req.cookies.User:" + req.cookies.User);
+
     // Render About Page and get User info
     res.render('aboutMember', {
         title: 'About Member Page',

@@ -16,6 +16,7 @@ router.get('/' + fa17g09_env_prefix, function(req, res, next) {
         title: 'About Page',
         User: req.cookies.User,
         UserState: userState,
+        // userType: req.user.userType,
         errors: req.cookies.errors
     });
 
