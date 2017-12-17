@@ -266,18 +266,20 @@ p {
 }
 
 /* SEARCH */
-.listing-address, .listing-features {
+.listing-features {
     text-shadow: 2px 2px 8px #343a40;
 }
 
-.listing-address {
-    position: absolute;
-    left: 3rem;
-    top: 1rem;
+.listing-address h5 {
+    font-weight: 300;
 }
 
 .listing-detail {
     margin: 0;
+}
+
+.listing-detail h4, .listing-detail h5 {
+    font-size: 1.2rem;
 }
 
 .listing-features {
@@ -373,6 +375,14 @@ p {
 
 .listing-info-address {
     margin-bottom: 0.7rem;
+}
+
+.listing-info-address h1 {
+    font-weight: 300;
+}
+
+.listing-info-detail h1 {
+    line-height: 2.6rem;
 }
 
 .listing-info h3 {

@@ -79,23 +79,21 @@
                         </div>
                     </a>
                     <div class="card-body">
-                        <div class="">
+                        <div class="listing-address">
                             <h5 class="card-title">
                                 <%= listing.address %> <br>
-                                <%= listing.city %>, <%= listing.state %>
+                                <%= listing.city %>, <%= listing.state %> <%= listing.zipcode %>
                             </h5>
                         </div>
-                        <div class="">
-                            <div class="col">
-                                <h4 class="card-title">$<%= listing.price %> </h4>
-                                <h5>
-                                    <i class="fa fa-bed" aria-hidden="true"></i>
-                                    <%= listing.numBedrooms %> bds
-                                    |
-                                    <i class="fa fa-bath" aria-hidden="true"></i>
-                                    <%= listing.numBathrooms %> ba
-                                </h5>
-                            </div>
+                        <div class="listing-detail">
+                            <h4 class="card-title">$<%= listing.price %> </h4>
+                            <h5>
+                                <i class="fa fa-bed" aria-hidden="true"></i>
+                                <%= listing.numBedrooms %> bds
+                                |
+                                <i class="fa fa-bath" aria-hidden="true"></i>
+                                <%= listing.numBathrooms %> ba
+                            </h5>
                         </div>
                     </div>
                 </div>
