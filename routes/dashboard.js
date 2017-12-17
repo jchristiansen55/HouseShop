@@ -5,7 +5,6 @@ var models = require('../models');
 const Op = models.sequelize.Op;
 
 router.get('/', function(req, res, next) {
-
     var userId;
     var totalUsers = [];
 
