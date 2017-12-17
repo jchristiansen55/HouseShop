@@ -40,7 +40,7 @@
         <div class="collapse navbar-collapse nav-end" id="navbarCollapse">
             <ul class="nav navbar-nav justify-content-end text-centered">
                 <li class="nav-item">
-                    <a class="nav-link" href="<% if (locals.fa17g09_env_prefix) { %>/<%= fa17g09_env_prefix %><%}%>/about.html">About</a>
+                    <a class="nav-link" href="<% if (locals.fa17g09_env_prefix) { %>/<%= fa17g09_env_prefix %><%}%>/about">About</a>
                 </li>
                 <% if(locals.UserState != 0 && User.userType == 'listingAgent') { %>
                     <li class="nav-item">
@@ -179,7 +179,7 @@
     <div class="container">
         <footer>
             <p class="float-right"><a href="#">Back to top</a></p>
-            <p>&copy; 2017 SFSU &middot; <a href="<% if (locals.fa17g09_env_prefix) { %>/<%= fa17g09_env_prefix %><%}%>/about.html">About</a></p>
+            <p>&copy; 2017 SFSU &middot; <a href="<% if (locals.fa17g09_env_prefix) { %>/<%= fa17g09_env_prefix %><%}%>/about">About</a></p>
         </footer>
     </div>
     <!-- END FOOTER -->
