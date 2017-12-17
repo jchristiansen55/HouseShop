@@ -154,22 +154,26 @@ p {
 .centered-form{
     margin-top: 10px;
 }
+
 .checkBoxAdjust{
     margin-left:-4%;
     margin-top:1.5%;
 }
+
 .checkBoxAdjust2{
     margin-left:10%;
 }
+
 .center-sign_up_in{
-  
     width:50%;
     margin-left:25%;
-
 }
+
 .center-titlesSignUp{
     margin-left:39.5%;
-}.center-titlesLogin{
+}
+
+.center-titlesLogin{
     margin-left:42%;
 }
 .astext {
@@ -180,24 +184,30 @@ p {
     padding:0;
     text-decoration: underline; 
 }
+
 .widthOfFields{
     width:80%;
 }
+
 .widthOfFields2{
     width:90%;
     margin-left:5%;
 }
+
 .widthOfFields3{
     width:95%;
     margin-left:2.5%;
 }
+
 .toTheLeft-footer {
     margin-right:75%;
 }
+
 .modal-size {
     width:50%;
     margin-left:-40%;
 }
+
 .divider {
     width:.5px;
     height:auto;
@@ -425,6 +435,10 @@ p {
 
 fieldset {
     border: none;
+}
+
+.was-validated .custom-select:valid~.invalid-feedback {
+    display: none;
 }
 
 /* DASHBOARD */

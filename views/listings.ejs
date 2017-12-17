@@ -1,4 +1,4 @@
-  <form ref='uploadForm'  class="container" id="needs-validation" novalidate id='uploadForm' encType="multipart/form-data"  action="<% if (locals.fa17g09_env_prefix) { %>/<%= fa17g09_env_prefix %><%}%>/listings" method="post">
+<form ref='uploadForm'  class="container" id="needs-validation" novalidate id='uploadForm' encType="multipart/form-data"  action="<% if (locals.fa17g09_env_prefix) { %>/<%= fa17g09_env_prefix %><%}%>/listings" method="post">
 
     <!-- Validation -->
     <script>
@@ -232,28 +232,32 @@
   Choose a primary picture*
 </div>
 <div class="form-group listingGroups">
-  <label class="custom-file">
-    <input type="file" id="file1" name="imageFile" class="custom-file-input" required>
-    <span class="custom-file-control"></span>
-  </label>
-
+    <label class="custom-file">
+        <input type="file" id="file1" name="imageFile" class="custom-file-input form-control" required>
+        <span class="custom-file-control"></span>
+        <div class="invalid-feedback">
+            Please select an image
+        </div>
+    </label>
 </div>
 
-<div class= "titlesForListingsForm7">
-  Choose a secondary picture*
-</div>
-<div class="form-group listingGroups">
-  <label class="custom-file">
-    <input type="file" id="file2" name="imageFile2" class="custom-file-input" required>
-    <span class="custom-file-control"></span>
-  </label>
-</div>
-<br></br>
-</label>
+    <div class= "titlesForListingsForm7">
+        Choose a secondary picture*
+    </div>
+    <div class="form-group listingGroups">
+        <label class="custom-file">
+            <input type="file" id="file2" name="imageFile2" class="custom-file-input form-control" required>
+            <span class="custom-file-control"></span>
+            <div class="invalid-feedback">
+                Please select an image
+            </div>
+        </label>
+    </div>
+    <br></br>
 </div>
 
-<div class="form-group classol">
-  <button type="submit" class="btn btn-primary" style="width: 100%">Create Listing</button>
-</div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary" style="width: 100%">Create Listing</button>
+    </div>
 </div>
 </form>
