@@ -43,7 +43,6 @@
                 </tr>
               </thead>
               <tbody class ="tests" id="listingItems">
-                <%// listings = remove_duplicates(listings)%>
                 <%listings.forEach(function(listing) { %>
                     <tr class="listing" id="listing">
                       <td><%= listing.id %></th>
@@ -74,7 +73,6 @@
               </thead>
               <tbody>
                 <%totalUsers.forEach(function(user) { %>
-                  if ()
                     <tr>
                       <th scope="row"><%= user.id %></th>
                       <td><%= user.firstName %></td>
@@ -148,17 +146,6 @@ function sortBed(table_id, sortColumn){
           }
       }
   }
-}
-function remove_duplicates(arr) {
-    var obj = {};
-    var ret_arr = [];
-    for (var i = 0; i < arr.length; i++) {
-        obj[arr[i].id] = true;
-    }
-    for (var key in obj) {
-        ret_arr.push(key);
-    }
-    return ret_arr;
 }
 </script>
   

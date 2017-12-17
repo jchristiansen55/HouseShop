@@ -9,7 +9,7 @@ router.get('/', function(req, res, next) {
     var totalUsers = [];
     
     userId = req.cookies.UserState;
-
+    var flag = true;
     models.Message.findAll({
         where: {
             receiver: userId
@@ -22,7 +22,16 @@ router.get('/', function(req, res, next) {
                     id: messages[i].sender
                 }
             }).then(function(user) {
-                totalUsers.push(user);
+                if(flag) {
+                    totalUsers.push(user);
+                    flag = false;
+                }
+                for(var j = 0; j < totalUsers.length; j++) {
+                    if(totalUsers[j].id != user.id) {
+                        totalUsers.push(user);
+                        console.log("pushing");
+                    }
+                }
             })
         }
     }).then(function(test){
