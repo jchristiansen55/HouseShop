@@ -14,7 +14,7 @@ router.post('/', passport.authenticate('local', {failureRedirect: '/login'}),
         if (req.user.userType == 'listingAgent') {
             res.redirect('dashboard');
         } else {
-            res.redirect('back');
+            res.redirect('/' + fa17g09_env_prefix);
         }
 	}
 );

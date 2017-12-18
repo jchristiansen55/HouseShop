@@ -14,11 +14,7 @@ router.get('/' + fa17g09_env_prefix, function(req, res, next) {
         userState = 0;
     }
 
-    console.log("USER COOKIE");
-    console.log(req.cookies.User);
-
     if (!user) {
-        console.log("REDEFINING USER");
         user = new Object();
         user.userType = 'guest';
         res.cookie('User', user);
