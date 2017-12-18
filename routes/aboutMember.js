@@ -5,11 +5,6 @@ var fa17g09_env_prefix = require('../prefix');
 var User = require('../models/user');
 
 router.get('/:member?' + fa17g09_env_prefix, function(req, res, next) {
-    var userState = req.cookies.UserState;
-    if (!userState) {
-        res.cookie('UserState', '0');
-        userState = 0;
-    }
 
     var member = req.query.member;
     var memberName;
@@ -35,8 +30,6 @@ router.get('/:member?' + fa17g09_env_prefix, function(req, res, next) {
         memberRole = "Frontend Developer";
     }
 
-    console.log(">>>>>>>>>>>>>>> req.cookies.User:" + req.cookies.User);
-
     // Render About Page and get User info
     res.render('aboutMember', {
         title: 'About Member Page',
@@ -44,7 +37,7 @@ router.get('/:member?' + fa17g09_env_prefix, function(req, res, next) {
         memberName: memberName,
         memberRole: memberRole,
         User: req.cookies.User,
-        UserState: userState,
+        UserState: req.cookies.UserState,
         errors: req.cookies.errors
     });
 
