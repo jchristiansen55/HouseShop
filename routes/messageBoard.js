@@ -6,34 +6,57 @@ var mysql = require('mysql');
 const Op = models.sequelize.Op;
 
 router.get('/', function(req, res, next) {
-    res.render('messageBoard', {
-        title: "Your Inbox",
-        UserState: req.cookies.UserState,
-        User: req.cookies.User
-    });
-});
-router.get('/', function(req, res, next) {
-  var userId;
+    var userId = req.cookies.UserState;
+    var user = req.cookies.User;
 
-    if(req.cookies.UserState == undefined) {
-      req.cookies.UserState = 0;
-      userId = 0;
-    } else {
-      userId = req.cookies.UserState;
-    }  
-    
     models.Message.findAll({
-      where: {
-        receiver: userId
-      }
+        where: {
+            receiver: userId
+        }
     })
-    .then(function(results) {
-      res.render('messageBoard', {
-        title: "Your Inbox",
-        results: results,
-        UserState: req.cookies.UserState,
-      });
+    .then(function(messages) {
+        var senderIds = [];
+        messages.forEach(function(message) {
+            senderIds.push(message.sender);
+        });
+        models.User.findAll({
+
+                where: {
+                    id: {
+                        [Op.in]: senderIds
+                    }
+                }
+        }).then(function(senders) {
+            var senderToUser = new Map();
+
+
+            messages.forEach(function(message) {
+                var senderObject = getSenderObject(message, senders);
+                console.log("senderObject f n " + senderObject.firstName);
+                senderToUser.set(message.sender, senderObject);
+                console.log("message.sender " + message.sender);
+
+            });
+            res.render('messageBoard', {
+                title: "Your Inbox",
+                messages: messages,
+                senderToUser: senderToUser,
+                UserState: req.cookies.UserState,
+                User: req.cookies.User,
+            });
+        });
     });
 });
+
+function getSenderObject(message, senders) {
+    var sender;
+    senders.forEach(function(thisSender) {
+        if (message.sender == thisSender.id) {
+            console.log("found sender " + thisSender);
+            sender = thisSender;
+        }
+    });
+    return sender;
+}
 
 module.exports = router;
