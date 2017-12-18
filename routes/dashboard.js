@@ -35,7 +35,11 @@ router.get('/', function(req, res, next) {
             })
         }
     }).then(function(test){
-        models.Listing.findAll().then(function(listings) {
+        models.Listing.findAll({
+            where: {
+                UserId: req.cookies.UserState
+            }
+        }).then(function(listings) {
             res.render('dashboard', {
                 title: 'Welcome to Your Dashboard',
                 listings: listings,
