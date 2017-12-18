@@ -44,15 +44,15 @@
               </thead>
               <tbody class ="tests" id="listingItems">
                 <%listings.forEach(function(listing) { %>
-                    <tr class="listing" id="listing">
-                      <td><%= listing.id %></th>
-                      <td><%= listing.address %></td>
-                      <td><%= listing.city %></td>
-                      <td><%= listing.state %></td>
-                      <td><%= listing.zipcode %></td>
-                      <td class="priceClass" id="<%= listing.price %>"><%= listing.price %></td>
-                      <td class="bedClass" id="<%= listing.numBedrooms %>"><%= listing.numBedrooms %></td>
-                      <td class="bathClass" id="<%= listing.numBathrooms %>"><%= listing.numBathrooms %></td>
+                    <tr class="listing clickable-row" id="listing" data-href='listing/result?listing=<%= listing.id %>' style="cursor: pointer;">
+                        <td><%= listing.id %></th>
+                        <td><%= listing.address %></td>
+                        <td><%= listing.city %></td>
+                        <td><%= listing.state %></td>
+                        <td><%= listing.zipcode %></td>
+                        <td class="priceClass" id="<%= listing.price %>"><%= listing.price %></td>
+                        <td class="bedClass" id="<%= listing.numBedrooms %>"><%= listing.numBedrooms %></td>
+                        <td class="bathClass" id="<%= listing.numBathrooms %>"><%= listing.numBathrooms %></td>
                     </tr>
                 <% }) %>
               </tbody>
@@ -147,5 +147,11 @@ function sortBed(table_id, sortColumn){
       }
   }
 }
+
+jQuery(document).ready(function($) {
+    $(".clickable-row").click(function() {
+        window.location = $(this).data("href");
+    });
+});
 </script>
   

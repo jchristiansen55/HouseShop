@@ -14,6 +14,7 @@ router.post('/', passport.authenticate('local', {failureRedirect: 'login'}),
         if (req.user.userType == 'listingAgent') {
             res.redirect('dashboard');
         } else {
+            // res.redirect('/');
             res.redirect('/' + fa17g09_env_prefix);
         }
 	}
@@ -30,7 +31,8 @@ router.get('/', function(req, res, next) {
         title: 'Login',
         User: req.cookies.User,
         UserState: userState,
-        errors: req.cookies.errors
+        errors: req.cookies.errors,
+        message: 'Please try to login again!'
     });
 
     res.cookie('errors', '');
