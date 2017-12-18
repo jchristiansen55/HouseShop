@@ -8,8 +8,9 @@ var key = "dkjfskjdf";
 
 /* GET signup page. */
 router.get('/', function(req, res, next) {
-  res.render('signup', {
-    UserState: req.cookies.UserState
+  res.render('login', {
+    UserState: req.cookies.UserState,
+    message: 'You\'re signed up! Please Log In.'
   });
 });
 

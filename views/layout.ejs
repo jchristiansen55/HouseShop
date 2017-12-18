@@ -168,7 +168,7 @@
                                 <div class = "checkBoxAdjust2">
                                     <label class="form-check-label" >
                                         <input type="checkbox" class="form-check-input checkBoxAdjust">
-                                        <a href="/terms" target="_blank">I agree to the terms</a>
+                                        <a href="<% if (locals.fa17g09_env_prefix) { %>/<%= fa17g09_env_prefix %><%}%>/terms" target="_blank">I agree to the terms</a>                                    
                                     </label>
                                 </div>
 
@@ -187,8 +187,8 @@
                         <!-- END Sign Up -->
                         <!-- END Modal Body -->
 
-                        <div class="modal-footer ">
-                            <div class ="toTheLeft-footer">
+                        <div class="modal-footer">
+                            <div class="div-centered">
                                 <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
                             </div>
                         </div>

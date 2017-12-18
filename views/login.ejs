@@ -1,6 +1,6 @@
 <section class="row">
     <div class="div-centered header">
-        <h1>Please try to login again!</h1>
+        <h1><%= message %></h1>
         <form action="<% if (locals.fa17g09_env_prefix) { %>/<%= fa17g09_env_prefix %><%}%>/login" method="post" id="needs-validation">
             <div class="form-group">
                 <label>Email*</label>
