@@ -4,7 +4,7 @@ var models = require('../models');
 var router = express.Router();
 var fa17g09_env_prefix = require('../prefix');
 
-router.post('/', passport.authenticate('local', {failureRedirect: fa17g09_env_prefix + '/login'}),
+router.post('/', passport.authenticate('local', {failureRedirect: 'login'}),
 
     function(req, res){
 		console.log(req.user);
