@@ -14,7 +14,7 @@ router.get('/:member?' + fa17g09_env_prefix, function(req, res, next) {
         memberName = "Khanh Nguyen";
         memberRole = "Frontend Lead";
     } else if (member == 'nm') {
-        memberName = "Nemi Nemi McCarter-Ribakoff";
+        memberName = "Nemi McCarter-Ribakoff";
         memberRole = "Backend Lead";
     } else if (member == 'fb') {
         memberName = "Franklin Boswell";

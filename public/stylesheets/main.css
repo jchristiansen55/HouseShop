@@ -214,8 +214,7 @@ p {
     display:inline-block;
 }
 
-/* not 'about', should be called header? */
-.about { 
+.header { 
     padding-top: 5%;
     padding-bottom: 3%;
 }
@@ -535,6 +534,29 @@ th {
     margin-left:12%;
     width:70%;
 }
+
+/* TERMS AND SERVICES*/
+.terms-page {
+    text-align: center;
+    padding: 2rem;
+}
+
+.terms-description p {
+    text-align: left;
+    margin-top: 0;
+}
+
+.terms-description p:nth-of-type(1) {
+    font-weight: 700;
+    margin-bottom: 0;
+}
+ 
+
+#terms-list {
+    padding-right: 40px;
+    list-style-type: none;
+}
+
 /**************
   RESPONSIVE
 ***************/
