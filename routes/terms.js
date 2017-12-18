@@ -4,7 +4,7 @@ var models = require('../models');
 var fa17g09_env_prefix = require('../prefix');
 var User = require('../models/user');
 
-router.get('/' + fa17g09_env_prefix, function(req, res, next) {
+router.get('/', function(req, res, next) {
     var userState = req.cookies.UserState;
     if (!userState) {
         res.cookie('UserState', '0');

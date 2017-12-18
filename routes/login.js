@@ -4,7 +4,7 @@ var models = require('../models');
 var router = express.Router();
 var fa17g09_env_prefix = require('../prefix');
 
-router.post('/', passport.authenticate('local', {failureRedirect: '/login'}),
+router.post('/', passport.authenticate('local', {failureRedirect: 'login'}),
 
     function(req, res){
 		console.log(req.user);
@@ -14,12 +14,13 @@ router.post('/', passport.authenticate('local', {failureRedirect: '/login'}),
         if (req.user.userType == 'listingAgent') {
             res.redirect('dashboard');
         } else {
-            res.redirect('/');
+            // res.redirect('/');
+            res.redirect('/' + fa17g09_env_prefix);
         }
 	}
 );
 
-router.get('/' + fa17g09_env_prefix, function(req, res, next) {
+router.get('/', function(req, res, next) {
     var userState = req.cookies.UserState;
     if (!userState) {
         res.cookie('UserState', '0');
