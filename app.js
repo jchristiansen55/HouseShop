@@ -9,6 +9,8 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 var index = require('./routes/index');
+var about = require('./routes/about');
+var aboutMember = require('./routes/aboutMember');
 var users = require('./routes/users');
 var search = require('./routes/search');
 var listings = require('./routes/listings');
@@ -78,6 +80,9 @@ app.use(cookieSession({
 }));
 
 app.use('/', index);
+app.use('/about', about);
+app.use('/aboutMember', aboutMember);
+
 app.use('/users', users);
 app.use('/search', search);
 app.use('/listings', listings);

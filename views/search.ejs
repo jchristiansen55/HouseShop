@@ -1,21 +1,19 @@
 <section class="filter row">
-    <div class="btn-group">
-        <form action="filter" method="post" class="form-inline">
-            <div class="row">
-
-            </div>
-            <input name="city" type="hidden" value="<% if (locals.previousSearchString) { %><%=previousSearchString %><%}%>"/>
-            <noscript><input type="submit" value="Submit"></noscript>
-        </form>
-    </div>
+    <form action="filter" method="post" class="form-inline">
+        <div class="row">
+        </div>
+        <input name="city" type="hidden" value="<% if (locals.previousSearchString) { %><%=previousSearchString %><%}%>"/>
+        <noscript><input type="submit" value="Submit"></noscript>
+    </form>
     <!-- END Filter Options  -->
 
-    <div class="btn-group">
+    <div class="btn-group col">
         <!-- Sort results by: -->
         <!-- note the extra slash before the prefix -->
         <form action="<% if (locals.fa17g09_env_prefix) { %>/<%= fa17g09_env_prefix %><%}%>/search" method="post" class="form-inline">
             <div class="row">
-                <div class="col">
+                <div class="col-3 filter-button">
+                    <h5><i class="fa fa-bed" aria-hidden="true"></i></h5>
                     <select class="custom-select" name="bedFilterOption" onchange="this.form.submit()">
                         <%  var rooms = 13; %>
                         <% for (var i = 0; i < rooms; i++){
@@ -30,7 +28,8 @@
                         <% } %>
                     </select>
                 </div>
-                <div class="col">
+                <div class="col-3 filter-button">
+                    <h5><i class="fa fa-bath" aria-hidden="true"></i></h5>
                     <select class="custom-select" name="bathFilterOption" onchange="this.form.submit()">
                         <%  var bathrooms = 13; %>
                         <% for (var i = 0; i < bathrooms; i++){
@@ -46,7 +45,8 @@
                     </select>
                 </div>
 
-                <div class="col sort-selection">
+                <div class="col-6  filter-button sort-selection">
+                    <h5><i class="fa fa-filter" aria-hidden="true"></i></h5>
                     <select class="custom-select" name="sortOption" onchange="this.form.submit()">
                         <%
                         var optionsMap = new Map();
@@ -76,63 +76,65 @@
 
 </section>
 <!-- END Filters -->
-<% if(!errors){ %>
-<section class="row">
-    <div class="col-lg-6 col-xs-12 container-map column-left">
-        <div class="google-map" id="map"></div>
-        <script>
-            // Initialize Map as a callback from google maps api
-            function initMap() {
 
-                // Map options
-                var options = {
-                    zoom: 13,
-                    center: {lat: 37.7749, lng: -122.4194}
-                };
+<section class="row content">
+    <% if(!errors){ %>
+        <div class="col-lg-6 col-xs-12 container-map column-left">
+            <div class="google-map" id="map"></div>
+            <script>
+                // Initialize Map as a callback from google maps api
+                function initMap() {
 
-                // New Map
-                var map = new google.maps.Map(document.getElementById('map'), options);
+                    // Map options
+                    var options = {
+                        zoom: 13,
+                        center: {lat: 37.7749, lng: -122.4194}
+                    };
 
-                // New Geocoder
-                geocoder = new google.maps.Geocoder();
+                    // New Map
+                    var map = new google.maps.Map(document.getElementById('map'), options);
 
-                // Get listings
-                var listings = <%- JSON.stringify(listings) %>;
+                    // New Geocoder
+                    geocoder = new google.maps.Geocoder();
 
-                if(listings == null) return;
-                if (listings) console.log(listings);
-                // Geocode each listing by passings its address
-                listings.forEach(function(listing) {
-                    // console.log(listing.address);
-                    geoCodeAddress(geocoder, map, listing.address, listing.city);
-                });
-            }
+                    // Get listings
+                    var listings = <%- JSON.stringify(listings) %>;
 
-            // Takes address, geocode and add marker to that address
-            function geoCodeAddress(geocoder, map, address, city) {
-                var fullAddress = address + city;
-                geocoder.geocode({'address': fullAddress}, function(results, status) {
-                    if (status === google.maps.GeocoderStatus.OK) {
-                        map.setCenter(results[0].geometry.location);
+                    if(listings == null) return;
+                    if (listings) console.log(listings);
+                    // Geocode each listing by passings its address
+                    listings.forEach(function(listing) {
+                        // console.log(listing.address);
+                        geoCodeAddress(geocoder, map, listing.address, listing.city);
+                    });
+                }
 
-                        // Add marker
-                        var marker = new google.maps.Marker({
-                            map: map,
-                            position: results[0].geometry.location
-                        });
+                // Takes address, geocode and add marker to that address
+                function geoCodeAddress(geocoder, map, address, city) {
+                    var fullAddress = address + city;
+                    geocoder.geocode({'address': fullAddress}, function(results, status) {
+                        if (status === google.maps.GeocoderStatus.OK) {
+                            map.setCenter(results[0].geometry.location);
 
-                    } else {
-                        alert('Geocode was not successful for the following reason: ' + status);
-                    }
-                });
-            }
-        </script>
+                            // Add marker
+                            var marker = new google.maps.Marker({
+                                map: map,
+                                position: results[0].geometry.location
+                            });
 
-        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDmesu9CCVsAtFvsAJUJxj-a31UtUyINmk&callback=initMap">
-        </script>
-    </div>
+                        } else {
+                            alert('Geocode was not successful for the following reason: ' + status);
+                        }
+                    });
+                }
+            </script>
+
+            <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDmesu9CCVsAtFvsAJUJxj-a31UtUyINmk&callback=initMap">
+            </script>
+        </div>
+    <% } %>
     <!-- END Left Container: Map -->
-<% } %>
+    
     <div class="col-lg-6 col-md-6 col-xs-12 results column-right">
         <section class="search-results" style="z-index: 50">
             <div>
@@ -164,10 +166,10 @@
                         </div>
                     </a>
                     <div class="card-body">
-                        <div class="">
+                        <div class="listing-address">
                             <h5 class="card-title">
                                 <%= listing.address %> <br>
-                                <%= listing.city %>, <%= listing.state %>
+                                <%= listing.city %>, <%= listing.state %> <%= listing.zipcode %>
                             </h5>
                         </div>
                         <div class="row listing-detail">
