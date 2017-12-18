@@ -19,7 +19,7 @@ router.get('/:member?' + fa17g09_env_prefix, function(req, res, next) {
         memberName = "Khanh Nguyen";
         memberRole = "Frontend Lead";
     } else if (member == 'nm') {
-        memberName = "Nemi Nemi McCarter-Ribakoff";
+        memberName = "Nemi McCarter-Ribakoff";
         memberRole = "Backend Lead";
     } else if (member == 'fb') {
         memberName = "Franklin Boswell";
@@ -34,8 +34,6 @@ router.get('/:member?' + fa17g09_env_prefix, function(req, res, next) {
         memberName = "Jesse Christiansen";
         memberRole = "Frontend Developer";
     }
-
-    console.log(">>>>>>>>>>>>>>> req.cookies.User:" + req.cookies.User);
 
     // Render About Page and get User info
     res.render('aboutMember', {
