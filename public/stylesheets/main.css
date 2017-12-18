@@ -214,8 +214,7 @@ p {
     display:inline-block;
 }
 
-/* not 'about', should be called header? */
-.about { 
+.header { 
     padding-top: 5%;
     padding-bottom: 3%;
 }
