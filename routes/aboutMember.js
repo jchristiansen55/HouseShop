@@ -4,7 +4,7 @@ var models = require('../models');
 var fa17g09_env_prefix = require('../prefix');
 var User = require('../models/user');
 
-router.get('/:member?' + fa17g09_env_prefix, function(req, res, next) {
+router.get('/:member?', function(req, res, next) {
 
     var member = req.query.member;
     var memberName;
