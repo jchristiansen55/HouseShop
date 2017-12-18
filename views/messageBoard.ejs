@@ -1,6 +1,6 @@
 <section class="row header">
     <div class="col">
-        <h3><%= title %></h3>            
+        <h3><%= title %></h3>
     </div>
    <!--  <div class="col-lg-4 col-md-6 col-sm-12">
         <a class="btn btn-primary" href="/sendMsg" role="button">
@@ -15,16 +15,16 @@
         <div class="tab-pane fade show active" id="listings" role="tabpanel" aria-labelledby="nav-listings-tab">
             <table class="table table-hover table-responsive">
               <tbody>
-                <% messages.forEach(function(message) { %> 
+                <% messages.forEach(function(message) { %>
                     <tr>
                         <td class="message-body">
-                            <h5 class="message-contact"> <%= message.sender %> </h5>      
+                            <h5 class="message-contact"> <%= senderToUser.get(message.sender).firstName %> <%= senderToUser.get(message.sender).lastName %> (<%= senderToUser.get(message.sender).email %>) </h5>
                             <p class="message-text">
                                 <%= message.content %>
                             </p>
                         </td>
                         <td>
-                            <h6 class="message-date"> <%= message.date %> </h6> 
+                            <h6 class="message-date"> <%= message.date %> </h6>
                             <!-- <button type="button" class="btn btn-primary message-reply-btn">Reply</button> -->
                         </td>
                     </tr>

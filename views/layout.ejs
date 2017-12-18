@@ -65,7 +65,7 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="<% if (locals.fa17g09_env_prefix) { %>/<%= fa17g09_env_prefix %><%}%>/about.html">About</a>
                             </li>
-                            <% if(locals.UserState != 0 && locals.User.userType == 'listingAgent') { %>
+                            <% if(locals.UserState != 0 && locals.User && locals.User.userType == 'listingAgent') { %>
                                 <li class="nav-item">
                                     <a class="nav-link" href="<% if (locals.fa17g09_env_prefix) { %>/<%= fa17g09_env_prefix %><%}%>/dashboard">Dashboard</a>
                                 </li>
