@@ -18,6 +18,9 @@ router.get('/:listing?', function(req, res, next) {
     .then(function(listing) {
         models.Media.findAll({where: {listingid: listingid}})
         .then(function(media) {
+            for (var i = 0; i < media.length; i++) {
+                media[i].imageFilePath = '../' + media[i].imageFilePath;
+            }
             models.User.findOne({where: {id: listing.UserId}})
             .then(function(user) {
                 res.render('listing', { // render the Listing page
@@ -72,6 +75,9 @@ router.post('/', function(req, res, next) {
             .then(function(listing) {
                 models.Media.findAll({where: {listingid: listingid}})
                 .then(function(media) {
+                    for (var i = 0; i < media.length; i++) {
+                        media[i].imageFilePath = './' + media[i].imageFilePath;
+                    }
                     models.User.findOne({where: {id: listing.UserId}})
                     .then(function(user) {
                         res.render('listing', { // render the Listing page
